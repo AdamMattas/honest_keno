@@ -31,3 +31,35 @@
     transform: rotate(360deg);
   }
 }
+
+table,
+th,
+td {
+  border: 1px solid yellow;
+  width: 50px !important;
+  height: 50px !important;
+  background-color: blue;
+  color: yellow;
+  font-size: 36px;
+  text-align: center;
+}
+
+tbody {
+  width: 100px !important;
+}
+
+.number-box-container {
+  width: 520px;
+}
+
+.number-box {
+  display: block;
+  float: left;
+  border: 1px solid yellow;
+  width: 50px !important;
+  height: 50px !important;
+  background-color: blue;
+  color: yellow;
+  font-size: 36px;
+  text-align: center;
+}
