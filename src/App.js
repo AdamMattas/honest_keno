@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import CardTable from "./components/common/cardTable";
+import Card from "./components/common/card";
 import "./App.css";
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <h1>Honest Keno</h1>
-        <CardTable />
+        <Card />
       </React.Fragment>
     );
   }

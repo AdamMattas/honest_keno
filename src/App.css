@@ -32,32 +32,22 @@
   }
 }
 
-table,
-th,
-td {
-  border: 1px solid yellow;
-  width: 50px !important;
-  height: 50px !important;
-  background-color: blue;
-  color: yellow;
-  font-size: 36px;
-  text-align: center;
-}
-
-tbody {
-  width: 100px !important;
+.container-bottom {
+  margin-top: 25px;
+  clear: left;
 }
 
 .number-box-container {
   width: 520px;
+  border: 1px solid black;
+  clear: left;
 }
 
 .number-box {
-  display: block;
-  float: left;
+  display: inline-block;
   border: 1px solid yellow;
-  width: 50px !important;
-  height: 50px !important;
+  width: 50px;
+  height: 50px;
   background-color: blue;
   color: yellow;
   font-size: 36px;
