@@ -34,22 +34,24 @@
 
 .container-bottom {
   margin-top: 25px;
-  clear: left;
 }
 
 .number-box-container {
-  width: 520px;
+  width: 620px;
   border: 1px solid black;
-  clear: left;
 }
 
 .number-box {
   display: inline-block;
   border: 1px solid yellow;
-  width: 50px;
+  width: 60px;
   height: 50px;
   background-color: blue;
   color: yellow;
   font-size: 36px;
   text-align: center;
+}
+
+.active {
+  background-color: red;
 }

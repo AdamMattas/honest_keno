@@ -1,8 +1,19 @@
 import React, { Component } from "react";
-import TableBody from "./tableBody";
+import CardBody from "./cardBody";
 
 class Card extends Component {
   state = { numbers: [], kenoNumbers: [] };
+
+  selectNumber = (e, number) => {
+    const zeroIndex = number - 1;
+    let numbers = [...this.state.kenoNumbers];
+    numbers[zeroIndex].selected = true;
+
+    console.log("NUMBERS :", numbers);
+    console.log("CLICK :", number, zeroIndex);
+
+    this.setState({ kenoNumbers: numbers });
+  };
 
   listNumbers(start, end) {
     return Array(end - start + 1)
@@ -16,7 +27,6 @@ class Card extends Component {
     numbers.forEach(num => {
       const kenoNumber = {
         number: num,
-        section: num < 41 ? "top" : "bottom",
         active: false,
         selected: false
       };
@@ -31,15 +41,14 @@ class Card extends Component {
     const numbers = this.listNumbers(1, 80);
     const kenoNumbers = this.createNumbers(numbers);
 
-    console.log(kenoNumbers);
     this.setState({ numbers, kenoNumbers });
   }
 
   render() {
     return (
-      <div>
-        <TableBody data={this.state.kenoNumbers} />
-      </div>
+      <React.Fragment>
+        <CardBody data={this.state.kenoNumbers} onSelect={this.selectNumber} />
+      </React.Fragment>
     );
   }
 }

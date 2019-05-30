@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class TableBody extends Component {
+class CardBody extends Component {
   splitNumbers = () => {
     let section = {
       top: [],
@@ -17,24 +17,30 @@ class TableBody extends Component {
 
   render() {
     const split = this.splitNumbers();
-    const top = split.top;
-    const bottom = split.bottom;
 
     return (
       <React.Fragment>
         <div className="number-box-container container-top">
-          {top.map(item => (
-            <div className="number-box" key={item.number}>
+          {split.top.map(item => (
+            <span
+              className={"number-box " + (item.active ? "active" : "")}
+              key={item.number}
+              onClick={e => this.props.onSelect(e, item.number)}
+            >
               {item.number}
-            </div>
+            </span>
           ))}
         </div>
 
         <div className="number-box-container container-bottom">
-          {bottom.map(item => (
-            <div className="number-box" key={item.number}>
+          {split.bottom.map(item => (
+            <span
+              className={"number-box " + (item.active ? "active" : "")}
+              key={item.number}
+              onClick={e => this.props.onSelect(e, item.number)}
+            >
               {item.number}
-            </div>
+            </span>
           ))}
         </div>
       </React.Fragment>
@@ -42,4 +48,4 @@ class TableBody extends Component {
   }
 }
 
-export default TableBody;
+export default CardBody;
