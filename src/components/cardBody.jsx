@@ -23,7 +23,12 @@ class CardBody extends Component {
         <div className="number-box-container container-top">
           {split.top.map(item => (
             <span
-              className={"number-box " + (item.active ? "active" : "")}
+              className={
+                "number-box " +
+                (item.active ? "active" : "") +
+                " " +
+                (item.selected ? "selected" : "")
+              }
               key={item.number}
               onClick={e => this.props.onSelect(e, item.number)}
             >
@@ -35,7 +40,12 @@ class CardBody extends Component {
         <div className="number-box-container container-bottom">
           {split.bottom.map(item => (
             <span
-              className={"number-box " + (item.active ? "active" : "")}
+              className={
+                "number-box " +
+                (item.active ? "active" : "") +
+                " " +
+                (item.selected ? "selected" : "")
+              }
               key={item.number}
               onClick={e => this.props.onSelect(e, item.number)}
             >

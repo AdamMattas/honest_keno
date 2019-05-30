@@ -1,18 +1,23 @@
 import React, { Component } from "react";
 import CardBody from "./cardBody";
+import DealButton from "./dealButton";
 
 class Card extends Component {
-  state = { numbers: [], kenoNumbers: [] };
+  state = { numbers: [], kenoNumbers: [], bet: 0 };
 
   selectNumber = (e, number) => {
     const zeroIndex = number - 1;
     let numbers = [...this.state.kenoNumbers];
     numbers[zeroIndex].selected = true;
 
-    console.log("NUMBERS :", numbers);
     console.log("CLICK :", number, zeroIndex);
 
     this.setState({ kenoNumbers: numbers });
+  };
+
+  deal = () => {
+    let random = Math.floor(Math.random() * 80 + 1);
+    console.log("DEAL :", random);
   };
 
   listNumbers(start, end) {
@@ -48,6 +53,7 @@ class Card extends Component {
     return (
       <React.Fragment>
         <CardBody data={this.state.kenoNumbers} onSelect={this.selectNumber} />
+        <DealButton deal={this.deal} />
       </React.Fragment>
     );
   }
