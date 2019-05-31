@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import CardBody from "./cardBody";
 import DealButton from "./dealButton";
+import dealer from "./workers/dealer";
 
 class Card extends Component {
   state = {
@@ -10,6 +11,13 @@ class Card extends Component {
     bet: 0,
     random: []
   };
+
+  componentDidMount() {
+    const numbers = dealer.listNumbers(1, 80);
+    const kenoNumbers = dealer.createNumbers(numbers);
+
+    this.setState({ numbers, kenoNumbers });
+  }
 
   numClick = (e, number) => {
     const isSelected = e.currentTarget.classList.contains("selected");
@@ -40,78 +48,16 @@ class Card extends Component {
     numbers[zeroIndex].selected = false;
 
     this.setState({ kenoNumbers: numbers, playerNumbers: playNums });
-    console.log("DESELECT", number, index);
-    console.log("PLAYNUMS: ", playNums);
-  };
-
-  compareNumbers = (random, player) => {
-    let hits = [];
-    player.forEach(num => {
-      const hit = random.indexOf(num);
-      if (hit !== -1) hits.push(num);
-    });
-    console.log("HITS: ", hits, " ", hits.length);
-    return hits;
   };
 
   deal = () => {
-    let genNumbers = [];
+    const numbers = [...this.state.kenoNumbers];
+    const random = dealer.deal();
+    const hits = dealer.compareNumbers(random, this.state.playerNumbers);
+    const kenoNumbers = dealer.setStatus(random, hits, numbers);
 
-    for (let i = 0; i < 20; ) {
-      const random = Math.floor(Math.random() * 80 + 1);
-      const duplicate = genNumbers.indexOf(random);
-
-      if (duplicate === -1) {
-        genNumbers.push(random);
-        i++;
-      }
-    }
-
-    const hits = this.compareNumbers(genNumbers, this.state.playerNumbers);
-    let numbers = [...this.state.kenoNumbers];
-
-    genNumbers.forEach(num => {
-      //const duplicate = this.state.playerNumbers.indexOf(num);
-      if (numbers[num]) numbers[num].active = true;
-    });
-
-    hits.forEach(num => {
-      numbers[num - 1].hit = true;
-      console.log(numbers[num]);
-    });
-
-    this.setState({ kenoNumbers: numbers, random: genNumbers });
+    this.setState({ kenoNumbers, random });
   };
-
-  listNumbers(start, end) {
-    return Array(end - start + 1)
-      .fill()
-      .map((item, index) => start + index);
-  }
-
-  createNumbers(numbers) {
-    const kenoNumbers = [];
-
-    numbers.forEach(num => {
-      const kenoNumber = {
-        number: num,
-        active: false,
-        selected: false,
-        hit: false
-      };
-
-      kenoNumbers.push(kenoNumber);
-    });
-
-    return kenoNumbers;
-  }
-
-  componentDidMount() {
-    const numbers = this.listNumbers(1, 80);
-    const kenoNumbers = this.createNumbers(numbers);
-
-    this.setState({ numbers, kenoNumbers });
-  }
 
   render() {
     return (

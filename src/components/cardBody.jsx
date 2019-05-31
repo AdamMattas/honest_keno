@@ -11,7 +11,7 @@ class CardBody extends Component {
       item.number < 41 ? section.top.push(item) : section.bottom.push(item)
     );
 
-    console.log("SECTION :", section);
+    //console.log("SECTION :", section);
     return section;
   };
 
