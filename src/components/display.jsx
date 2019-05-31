@@ -5,9 +5,11 @@ class Display extends Component {
   render() {
     return (
       <div>
+        <div>Bet: {this.props.bet}</div>
         <div>Marked: {this.props.marked}</div>
         <div>Hit: {this.props.hits}</div>
         <div>Credit: {this.props.credit}</div>
+        <div>Won: {this.props.winnings}</div>
       </div>
     );
   }

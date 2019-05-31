@@ -3,6 +3,7 @@ import ClearButton from "./clearButton";
 import DealButton from "./dealButton";
 import Display from "./display";
 import SingleCard from "./singleCard";
+import calculator from "./workers/calculator";
 import dealer from "./workers/dealer";
 
 class Machine extends Component {
@@ -14,7 +15,8 @@ class Machine extends Component {
     hitNumbers: [],
     hit: "",
     bet: 25,
-    credit: 100
+    credit: 1000,
+    winnings: 0
   };
 
   componentDidMount() {
@@ -72,9 +74,14 @@ class Machine extends Component {
   deal = numbers => {
     const random = dealer.deal();
     const hits = dealer.compareNumbers(random, this.state.marked);
+    const winnings = calculator.calculateWinnings(
+      hits,
+      this.state.marked,
+      this.state.bet
+    );
     const kenoNumbers = dealer.setStatus(random, hits, numbers);
 
-    this.setState({ kenoNumbers, random, hit: hits.length });
+    this.setState({ kenoNumbers, random, winnings, hit: hits.length });
   };
 
   clearSingleCard = () => {
@@ -92,13 +99,19 @@ class Machine extends Component {
   };
 
   render() {
-    const { marked, hit, credit } = this.state;
+    const { bet, marked, hit, credit, winnings } = this.state;
 
     return (
       <React.Fragment>
-        <DealButton deal={this.initDeal} />
         <ClearButton clear={this.clearSingleCard} />
-        <Display marked={marked.length} hits={hit} credit={credit} />
+        <DealButton deal={this.initDeal} />
+        <Display
+          bet={bet}
+          marked={marked.length}
+          hits={hit}
+          credit={credit}
+          winnings={winnings}
+        />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
       </React.Fragment>
     );
