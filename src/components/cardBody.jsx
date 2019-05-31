@@ -30,7 +30,7 @@ class CardBody extends Component {
                 (item.selected ? "selected" : "")
               }
               key={item.number}
-              onClick={e => this.props.onSelect(e, item.number)}
+              onClick={e => this.props.numSelect(e, item.number)}
             >
               {item.number}
             </span>
@@ -47,7 +47,7 @@ class CardBody extends Component {
                 (item.selected ? "selected" : "")
               }
               key={item.number}
-              onClick={e => this.props.onSelect(e, item.number)}
+              onClick={e => this.props.numSelect(e, item.number)}
             >
               {item.number}
             </span>

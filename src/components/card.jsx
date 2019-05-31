@@ -11,17 +11,37 @@ class Card extends Component {
     random: []
   };
 
-  selectNumber = (e, number) => {
+  numClick = (e, number) => {
+    const isSelected = e.currentTarget.classList.contains("selected");
+    isSelected ? this.deselectNumber(number) : this.selectNumber(number);
+  };
+
+  selectNumber = number => {
+    const playNums = [...this.state.playerNumbers];
+    if (playNums.length < 10) {
+      const zeroIndex = number - 1;
+      let numbers = [...this.state.kenoNumbers];
+      numbers[zeroIndex].selected = true;
+
+      playNums.push(number);
+
+      this.setState({ kenoNumbers: numbers, playerNumbers: playNums });
+    }
+  };
+
+  deselectNumber = number => {
+    const playNums = [...this.state.playerNumbers];
     const zeroIndex = number - 1;
+    const index = playNums.indexOf(number);
     let numbers = [...this.state.kenoNumbers];
-    numbers[zeroIndex].selected = true;
 
-    const numberArr = [...this.state.playerNumbers];
-    numberArr.push(number);
+    playNums.splice(index, 1);
 
-    console.log("CLICK :", number, zeroIndex);
+    numbers[zeroIndex].selected = false;
 
-    this.setState({ kenoNumbers: numbers, playerNumbers: numberArr });
+    this.setState({ kenoNumbers: numbers, playerNumbers: playNums });
+    console.log("DESELECT", number, index);
+    console.log("PLAYNUMS: ", playNums);
   };
 
   deal = () => {
@@ -50,7 +70,7 @@ class Card extends Component {
       console.log("NUM: ", this.state.playerNumbers.indexOf(num));
       const duplicate = this.state.playerNumbers.indexOf(num);
       //if (duplicate !== -1) {
-      numbers[num].active = true;
+      if (numbers[num]) numbers[num].active = true;
       //}
     });
     this.setState({ kenoNumbers: numbers, random: genNumbers });
@@ -88,7 +108,7 @@ class Card extends Component {
   render() {
     return (
       <React.Fragment>
-        <CardBody data={this.state.kenoNumbers} onSelect={this.selectNumber} />
+        <CardBody data={this.state.kenoNumbers} numSelect={this.numClick} />
         <DealButton deal={this.deal} />
       </React.Fragment>
     );
