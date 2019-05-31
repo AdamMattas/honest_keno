@@ -27,7 +27,9 @@ class CardBody extends Component {
                 "number-box " +
                 (item.active ? "active" : "") +
                 " " +
-                (item.selected ? "selected" : "")
+                (item.selected ? "selected" : "") +
+                " " +
+                (item.hit ? "hit" : "")
               }
               key={item.number}
               onClick={e => this.props.numSelect(e, item.number)}
@@ -44,7 +46,9 @@ class CardBody extends Component {
                 "number-box " +
                 (item.active ? "active" : "") +
                 " " +
-                (item.selected ? "selected" : "")
+                (item.selected ? "selected" : "") +
+                " " +
+                (item.hit ? "hit" : "")
               }
               key={item.number}
               onClick={e => this.props.numSelect(e, item.number)}

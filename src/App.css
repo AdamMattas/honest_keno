@@ -59,3 +59,7 @@
 .selected {
   background-color: green;
 }
+
+.hit {
+  background-color: purple !important;
+}

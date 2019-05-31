@@ -44,35 +44,42 @@ class Card extends Component {
     console.log("PLAYNUMS: ", playNums);
   };
 
+  compareNumbers = (random, player) => {
+    let hits = [];
+    player.forEach(num => {
+      const hit = random.indexOf(num);
+      if (hit !== -1) hits.push(num);
+    });
+    console.log("HITS: ", hits, " ", hits.length);
+    return hits;
+  };
+
   deal = () => {
     let genNumbers = [];
 
     for (let i = 0; i < 20; ) {
       const random = Math.floor(Math.random() * 80 + 1);
-
       const duplicate = genNumbers.indexOf(random);
 
       if (duplicate === -1) {
         genNumbers.push(random);
-        console.log("IIIIIII: ", i);
         i++;
       }
-
-      console.log("DUPLICATE CHECK: ", duplicate);
-      console.log("DEAL :", random);
-      console.log("genNumbers", genNumbers.length);
-      console.log("genNumbers", genNumbers);
     }
 
-    const numbers = [...this.state.kenoNumbers];
+    const hits = this.compareNumbers(genNumbers, this.state.playerNumbers);
+    let numbers = [...this.state.kenoNumbers];
 
     genNumbers.forEach(num => {
-      console.log("NUM: ", this.state.playerNumbers.indexOf(num));
-      const duplicate = this.state.playerNumbers.indexOf(num);
-      //if (duplicate !== -1) {
+      //const duplicate = this.state.playerNumbers.indexOf(num);
       if (numbers[num]) numbers[num].active = true;
-      //}
     });
+
+    hits.forEach(num => {
+      numbers[num - 1].hit = true;
+      console.log(numbers[num]);
+    });
+
     this.setState({ kenoNumbers: numbers, random: genNumbers });
   };
 
@@ -89,7 +96,8 @@ class Card extends Component {
       const kenoNumber = {
         number: num,
         active: false,
-        selected: false
+        selected: false,
+        hit: false
       };
 
       kenoNumbers.push(kenoNumber);
