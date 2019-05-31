@@ -15,13 +15,15 @@ export function deal() {
 }
 
 export function setStatus(random, hits, numbers) {
+  console.log(hits);
   random.forEach(num => {
-    if (numbers[num]) numbers[num].active = true;
+    if (numbers[num - 1]) numbers[num - 1].active = true;
+    //console.log("CALLED RAND!", numbers[num - 1]);
   });
 
   hits.forEach(num => {
     numbers[num - 1].hit = true;
-    //console.log(numbers[num]);
+    //console.log(numbers[num - 1]);
   });
 
   return numbers;

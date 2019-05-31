@@ -53,6 +53,7 @@ class Card extends Component {
   deal = () => {
     const numbers = [...this.state.kenoNumbers];
     const random = dealer.deal();
+    //console.log("State: ", this.state.playerNumbers);
     const hits = dealer.compareNumbers(random, this.state.playerNumbers);
     const kenoNumbers = dealer.setStatus(random, hits, numbers);
 
