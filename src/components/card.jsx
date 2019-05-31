@@ -50,10 +50,23 @@ class Card extends Component {
     this.setState({ kenoNumbers: numbers, playerNumbers: playNums });
   };
 
-  deal = () => {
-    const numbers = [...this.state.kenoNumbers];
+  initDeal = () => {
+    let numbers = [...this.state.kenoNumbers];
+
+    numbers.forEach(num => {
+      const zeroIndex = num.number - 1;
+      if (numbers[zeroIndex]) numbers[zeroIndex].active = false;
+      if (numbers[zeroIndex]) numbers[zeroIndex].hit = false;
+    });
+
+    this.setState({ kenoNumbers: numbers });
+
+    this.deal(numbers);
+  };
+
+  deal = numbers => {
     const random = dealer.deal();
-    //console.log("State: ", this.state.playerNumbers);
+    console.log("DEAL!");
     const hits = dealer.compareNumbers(random, this.state.playerNumbers);
     const kenoNumbers = dealer.setStatus(random, hits, numbers);
 
@@ -64,7 +77,7 @@ class Card extends Component {
     return (
       <React.Fragment>
         <CardBody data={this.state.kenoNumbers} numSelect={this.numClick} />
-        <DealButton deal={this.deal} />
+        <DealButton deal={this.initDeal} />
       </React.Fragment>
     );
   }
