@@ -1,15 +1,20 @@
 import React, { Component } from "react";
-import CardBody from "./cardBody";
+import ClearButton from "./clearButton";
 import DealButton from "./dealButton";
+import Display from "./display";
+import SingleCard from "./singleCard";
 import dealer from "./workers/dealer";
 
-class Card extends Component {
+class Machine extends Component {
   state = {
+    random: [],
     numbers: [],
     kenoNumbers: [],
-    playerNumbers: [],
-    bet: 0,
-    random: []
+    marked: [],
+    hitNumbers: [],
+    hit: "",
+    bet: 25,
+    credit: 100
   };
 
   componentDidMount() {
@@ -25,29 +30,29 @@ class Card extends Component {
   };
 
   selectNumber = number => {
-    const playNums = [...this.state.playerNumbers];
-    if (playNums.length < 10) {
+    const marked = [...this.state.marked];
+    if (marked.length < 10) {
       const zeroIndex = number - 1;
       let numbers = [...this.state.kenoNumbers];
       numbers[zeroIndex].selected = true;
 
-      playNums.push(number);
+      marked.push(number);
 
-      this.setState({ kenoNumbers: numbers, playerNumbers: playNums });
+      this.setState({ kenoNumbers: numbers, marked: marked });
     }
   };
 
   deselectNumber = number => {
-    const playNums = [...this.state.playerNumbers];
+    const marked = [...this.state.marked];
     const zeroIndex = number - 1;
-    const index = playNums.indexOf(number);
+    const index = marked.indexOf(number);
     let numbers = [...this.state.kenoNumbers];
 
-    playNums.splice(index, 1);
+    marked.splice(index, 1);
 
     numbers[zeroIndex].selected = false;
 
-    this.setState({ kenoNumbers: numbers, playerNumbers: playNums });
+    this.setState({ kenoNumbers: numbers, marked: marked });
   };
 
   initDeal = () => {
@@ -66,21 +71,38 @@ class Card extends Component {
 
   deal = numbers => {
     const random = dealer.deal();
-    console.log("DEAL!");
-    const hits = dealer.compareNumbers(random, this.state.playerNumbers);
+    const hits = dealer.compareNumbers(random, this.state.marked);
     const kenoNumbers = dealer.setStatus(random, hits, numbers);
 
-    this.setState({ kenoNumbers, random });
+    this.setState({ kenoNumbers, random, hit: hits.length });
+  };
+
+  clearSingleCard = () => {
+    const marked = [];
+    let kenoNumbers = [...this.state.kenoNumbers];
+
+    kenoNumbers.forEach(num => {
+      const zeroIndex = num.number - 1;
+      kenoNumbers[zeroIndex].active = false;
+      kenoNumbers[zeroIndex].hit = false;
+      kenoNumbers[zeroIndex].selected = false;
+    });
+    console.log("CLEAR!");
+    this.setState({ kenoNumbers, marked });
   };
 
   render() {
+    const { marked, hit, credit } = this.state;
+
     return (
       <React.Fragment>
-        <CardBody data={this.state.kenoNumbers} numSelect={this.numClick} />
         <DealButton deal={this.initDeal} />
+        <ClearButton clear={this.clearSingleCard} />
+        <Display marked={marked.length} hits={hit} credit={credit} />
+        <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
       </React.Fragment>
     );
   }
 }
 
-export default Card;
+export default Machine;
