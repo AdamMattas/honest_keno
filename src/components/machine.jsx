@@ -19,6 +19,7 @@ class Machine extends Component {
     denomination: 25,
     bet: 0,
     maxBet: 5,
+    newBet: false,
     credit: 30,
     winnings: 0,
     status: "ready"
@@ -27,8 +28,12 @@ class Machine extends Component {
   componentDidMount() {
     const numbers = dealer.listNumbers(1, 80);
     const kenoNumbers = dealer.createNumbers(numbers);
-
+    //console.log("New Bet: ", this.state.newBet);
     this.setState({ numbers, kenoNumbers });
+  }
+
+  componentDidUpdate() {
+    console.log("New Bet: ", this.state.newBet);
   }
 
   numClick = (e, number) => {
@@ -63,39 +68,43 @@ class Machine extends Component {
   };
 
   initDeal = () => {
-    let numbers = [...this.state.kenoNumbers];
+    const { status, bet } = this.state;
+    if (status === "ready" && bet > 0) {
+      let kenoNumbers = [...this.state.kenoNumbers];
+      let credit = this.state.credit - bet;
+      console.log("Credit: ", credit);
 
-    numbers.forEach(num => {
-      const zeroIndex = num.number - 1;
-      if (numbers[zeroIndex]) numbers[zeroIndex].active = false;
-      if (numbers[zeroIndex]) numbers[zeroIndex].hit = false;
-    });
+      kenoNumbers.forEach(num => {
+        const zeroIndex = num.number - 1;
+        if (kenoNumbers[zeroIndex]) kenoNumbers[zeroIndex].active = false;
+        if (kenoNumbers[zeroIndex]) kenoNumbers[zeroIndex].hit = false;
+      });
 
-    this.setState({ kenoNumbers: numbers });
+      this.setState({ kenoNumbers: kenoNumbers });
 
-    this.deal(numbers);
+      this.deal(kenoNumbers, credit);
+    }
   };
 
-  deal = numbers => {
-    if (this.state.status === "ready" && this.state.bet > 0) {
-      const random = dealer.deal();
-      const hits = dealer.compareNumbers(random, this.state.marked);
-      const winnings = calculator.calculateWinnings(
-        hits,
-        this.state.marked,
-        this.state.bet
-      );
-      const credit = winnings + this.state.credit;
-      const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
+  deal = (numbers, credit) => {
+    const random = dealer.deal();
+    const hits = dealer.compareNumbers(random, this.state.marked);
+    const winnings = calculator.calculateWinnings(
+      hits,
+      this.state.marked,
+      this.state.bet
+    );
+    credit = credit + winnings;
+    const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
 
-      this.setState({
-        kenoNumbers,
-        random,
-        winnings,
-        credit,
-        hit: hits.length
-      });
-    }
+    this.setState({
+      kenoNumbers,
+      random,
+      winnings,
+      credit,
+      hit: hits.length,
+      newBet: false
+    });
   };
 
   clearSingleCard = () => {
@@ -118,7 +127,7 @@ class Machine extends Component {
     if (credit > 0 && bet < 5) {
       credit--;
       bet++;
-      this.setState({ credit, bet });
+      this.setState({ credit, bet, newBet: true });
     }
   };
 
@@ -130,13 +139,13 @@ class Machine extends Component {
     if (betDiff > 0 && credit >= betDiff) {
       credit -= betDiff;
       bet += betDiff;
-      this.setState({ credit, bet });
+      this.setState({ credit, bet, newBet: true });
     }
 
     if (credit < betDiff) {
       bet = bet + credit;
       credit = 0;
-      this.setState({ bet, credit });
+      this.setState({ bet, credit, newBet: true });
     }
   };
 
