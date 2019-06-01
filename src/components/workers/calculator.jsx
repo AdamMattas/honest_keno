@@ -18,9 +18,7 @@ export function calculateWinnings(hits, marked, bet) {
   console.log("Bet: ", bet);
   console.log("Won!", spots[marked.length - 1][hits.length - 1]);
 
-  const betConvert = bet / 25;
-
-  const winnings = spots[marked.length - 1][hits.length - 1];
+  const winnings = spots[marked.length - 1][hits.length - 1] * bet;
 
   return winnings ? winnings : 0;
 }

@@ -19,8 +19,9 @@ class Machine extends Component {
     denomination: 25,
     bet: 0,
     maxBet: 5,
-    credit: 1000,
-    winnings: 0
+    credit: 30,
+    winnings: 0,
+    status: "ready"
   };
 
   componentDidMount() {
@@ -76,16 +77,25 @@ class Machine extends Component {
   };
 
   deal = numbers => {
-    const random = dealer.deal();
-    const hits = dealer.compareNumbers(random, this.state.marked);
-    const winnings = calculator.calculateWinnings(
-      hits,
-      this.state.marked,
-      this.state.bet
-    );
-    const kenoNumbers = dealer.setStatus(random, hits, numbers);
+    if (this.state.status === "ready" && this.state.bet > 0) {
+      const random = dealer.deal();
+      const hits = dealer.compareNumbers(random, this.state.marked);
+      const winnings = calculator.calculateWinnings(
+        hits,
+        this.state.marked,
+        this.state.bet
+      );
+      const credit = winnings + this.state.credit;
+      const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
 
-    this.setState({ kenoNumbers, random, winnings, hit: hits.length });
+      this.setState({
+        kenoNumbers,
+        random,
+        winnings,
+        credit,
+        hit: hits.length
+      });
+    }
   };
 
   clearSingleCard = () => {
@@ -103,18 +113,30 @@ class Machine extends Component {
   };
 
   betOne = () => {
+    let credit = this.state.credit;
     let bet = this.state.bet;
-    if (bet < 5) {
+    if (credit > 0 && bet < 5) {
+      credit--;
       bet++;
-      this.setState({ bet });
+      this.setState({ credit, bet });
     }
   };
 
   betMax = () => {
+    const maxBet = this.state.maxBet;
+    let credit = this.state.credit;
     let bet = this.state.bet;
-    if (bet < 5) {
-      bet = 5;
-      this.setState({ bet });
+    let betDiff = maxBet - bet;
+    if (betDiff > 0 && credit >= betDiff) {
+      credit -= betDiff;
+      bet += betDiff;
+      this.setState({ credit, bet });
+    }
+
+    if (credit < betDiff) {
+      bet = bet + credit;
+      credit = 0;
+      this.setState({ bet, credit });
     }
   };
 

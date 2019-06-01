@@ -14,7 +14,7 @@ export function deal() {
   return genNumbers;
 }
 
-export function setStatus(random, hits, numbers) {
+export function setNumberStatus(random, hits, numbers) {
   console.log(hits);
   random.forEach(num => {
     if (numbers[num - 1]) numbers[num - 1].active = true;
@@ -72,7 +72,7 @@ export function listNumbers(start, end) {
 
 export default {
   deal,
-  setStatus,
+  setNumberStatus,
   compareNumbers,
   createNumbers,
   listNumbers
