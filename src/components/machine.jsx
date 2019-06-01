@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import BetOneButton from "./betOneButton";
+import BetMaxButton from "./betMaxButton";
 import ClearButton from "./clearButton";
 import DealButton from "./dealButton";
 import Display from "./display";
@@ -102,7 +103,19 @@ class Machine extends Component {
   };
 
   betOne = () => {
-    console.log("Bet One!");
+    let bet = this.state.bet;
+    if (bet < 5) {
+      bet++;
+      this.setState({ bet });
+    }
+  };
+
+  betMax = () => {
+    let bet = this.state.bet;
+    if (bet < 5) {
+      bet = 5;
+      this.setState({ bet });
+    }
   };
 
   render() {
@@ -117,7 +130,8 @@ class Machine extends Component {
           credit={credit}
           winnings={winnings}
         />
-        <BetOneButton bet={this.betOne} />
+        <BetOneButton betOne={this.betOne} />
+        <BetMaxButton betMax={this.betMax} />
         <ClearButton clear={this.clearSingleCard} />
         <DealButton deal={this.initDeal} />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
