@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import BetOneButton from "./betOneButton";
 import ClearButton from "./clearButton";
 import DealButton from "./dealButton";
 import Display from "./display";
@@ -14,7 +15,9 @@ class Machine extends Component {
     marked: [],
     hitNumbers: [],
     hit: "",
-    bet: 25,
+    denomination: 25,
+    bet: 0,
+    maxBet: 5,
     credit: 1000,
     winnings: 0
   };
@@ -98,13 +101,15 @@ class Machine extends Component {
     this.setState({ kenoNumbers, marked });
   };
 
+  betOne = () => {
+    console.log("Bet One!");
+  };
+
   render() {
     const { bet, marked, hit, credit, winnings } = this.state;
 
     return (
       <React.Fragment>
-        <ClearButton clear={this.clearSingleCard} />
-        <DealButton deal={this.initDeal} />
         <Display
           bet={bet}
           marked={marked.length}
@@ -112,6 +117,9 @@ class Machine extends Component {
           credit={credit}
           winnings={winnings}
         />
+        <BetOneButton bet={this.betOne} />
+        <ClearButton clear={this.clearSingleCard} />
+        <DealButton deal={this.initDeal} />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
       </React.Fragment>
     );
