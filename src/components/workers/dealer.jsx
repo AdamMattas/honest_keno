@@ -1,7 +1,7 @@
-export function deal() {
+export function generate(quantity) {
   let genNumbers = [];
 
-  for (let i = 0; i < 20; ) {
+  for (let i = 0; i < quantity; ) {
     const random = Math.floor(Math.random() * 80 + 1);
     const duplicate = genNumbers.indexOf(random);
 
@@ -23,6 +23,15 @@ export function setNumberStatus(random, hits, numbers) {
 
   hits.forEach(num => {
     numbers[num - 1].hit = true;
+    //console.log(numbers[num - 1]);
+  });
+
+  return numbers;
+}
+
+export function setQuickPick(random, numbers) {
+  random.forEach(num => {
+    numbers[num - 1].selected = true;
     //console.log(numbers[num - 1]);
   });
 
@@ -71,9 +80,10 @@ export function listNumbers(start, end) {
 // }
 
 export default {
-  deal,
+  generate,
   setNumberStatus,
   compareNumbers,
   createNumbers,
-  listNumbers
+  listNumbers,
+  setQuickPick
 };

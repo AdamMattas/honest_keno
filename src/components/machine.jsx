@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import BetPlusButton from "./betPlusButton";
+import AddCreditButton from "./addCreditButton";
 import BetMinusButton from "./betMinusButton";
 import BetMaxButton from "./betMaxButton";
 import ClearButton from "./clearButton";
 import DealButton from "./dealButton";
+import QuickPickButton from "./quickPickButton";
 import Display from "./display";
 import SingleCard from "./singleCard";
 import calculator from "./workers/calculator";
@@ -18,13 +20,16 @@ class Machine extends Component {
     hitNumbers: [],
     hit: "",
     denomination: 25,
+    denomOption: [5, 25],
     bet: 0,
     maxBet: 5,
     newBet: false,
     credit: 30,
+    addCredit: 100,
     winnings: 0,
     status: "ready",
-    lastBet: 0
+    lastBet: 0,
+    lastMarked: 0
   };
 
   componentDidMount() {
@@ -37,6 +42,7 @@ class Machine extends Component {
   componentDidUpdate() {
     console.log("New Bet: ", this.state.newBet);
     console.log("Last Bet: ", this.state.lastBet);
+    console.log("Last Marked: ", this.state.lastMarked);
   }
 
   numClick = (e, number) => {
@@ -71,11 +77,11 @@ class Machine extends Component {
   };
 
   initDeal = () => {
-    const { status, bet, lastBet, credit } = this.state;
+    const { status, bet, lastBet, credit, marked } = this.state;
     if (lastBet > credit) {
       console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
-    if (status === "ready" && bet > 0 && credit >= bet) {
+    if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
       let kenoNumbers = [...this.state.kenoNumbers];
       let credit = this.state.credit - bet;
       console.log("Credit: ", credit);
@@ -94,7 +100,7 @@ class Machine extends Component {
 
   deal = (numbers, credit) => {
     const { marked, bet } = this.state;
-    const random = dealer.deal();
+    const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random, marked);
     const winnings = calculator.calculateWinnings(hits, marked, bet);
     credit = credit + winnings;
@@ -107,7 +113,8 @@ class Machine extends Component {
       credit,
       hit: hits.length,
       newBet: false,
-      lastBet: bet
+      lastBet: bet,
+      lastMarked: marked.length
     });
   };
 
@@ -129,6 +136,14 @@ class Machine extends Component {
     });
     console.log("CLEAR!");
     this.setState({ kenoNumbers, marked });
+  };
+
+  addCredit = () => {
+    console.log("Credit++");
+    const credit = this.state.addCredit;
+    if (this.state.credit < credit) {
+      this.setState({ credit });
+    }
   };
 
   betPlus = () => {
@@ -169,6 +184,17 @@ class Machine extends Component {
     }
   };
 
+  quickPick = () => {
+    this.clearSingleCard();
+    let numbers = [...this.state.kenoNumbers];
+    const lastMarked = this.state.lastMarked;
+    const random = dealer.generate(lastMarked);
+    console.log("Random: ", random);
+    const kenoNumbers = dealer.setQuickPick(random, numbers);
+
+    this.setState({ kenoNumbers, marked: random });
+  };
+
   render() {
     const { bet, marked, hit, credit, winnings } = this.state;
 
@@ -185,6 +211,8 @@ class Machine extends Component {
         <BetMinusButton betMinus={this.betMinus} />
         <BetMaxButton betMax={this.betMax} />
         <ClearButton clear={this.clearSingleCard} />
+        <AddCreditButton add={this.addCredit} />
+        <QuickPickButton pick={this.quickPick} />
         <DealButton deal={this.initDeal} />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
       </React.Fragment>
