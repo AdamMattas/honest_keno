@@ -79,11 +79,26 @@ export function listNumbers(start, end) {
 //   }
 // }
 
+export function selectNumber(number, marked, kenoNumbers) {
+  //const marked = [...this.state.marked];
+  if (marked.length < 10) {
+    const zeroIndex = number - 1;
+    //let numbers = [...this.state.kenoNumbers];
+    kenoNumbers[zeroIndex].selected = true;
+
+    marked.push(number);
+
+    //this.setState({ kenoNumbers: numbers, marked: marked });
+    return { kenoNumbers, marked };
+  }
+}
+
 export default {
   generate,
   setNumberStatus,
   compareNumbers,
   createNumbers,
   listNumbers,
-  setQuickPick
+  setQuickPick,
+  selectNumber
 };

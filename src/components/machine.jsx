@@ -51,16 +51,9 @@ class Machine extends Component {
   };
 
   selectNumber = number => {
-    const marked = [...this.state.marked];
-    if (marked.length < 10) {
-      const zeroIndex = number - 1;
-      let numbers = [...this.state.kenoNumbers];
-      numbers[zeroIndex].selected = true;
-
-      marked.push(number);
-
-      this.setState({ kenoNumbers: numbers, marked: marked });
-    }
+    const { marked, kenoNumbers } = this.state;
+    const returnSelected = dealer.selectNumber(number, marked, kenoNumbers);
+    this.setState({ returnSelected });
   };
 
   deselectNumber = number => {
