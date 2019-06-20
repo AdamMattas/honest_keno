@@ -57,16 +57,17 @@ class Machine extends Component {
   };
 
   deselectNumber = number => {
-    const marked = [...this.state.marked];
-    const zeroIndex = number - 1;
-    const index = marked.indexOf(number);
-    let numbers = [...this.state.kenoNumbers];
+    const { marked, kenoNumbers } = this.state;
+    const returnDeselected = dealer.deselectNumber(number, marked, kenoNumbers);
+    this.setState({ returnDeselected });
+    // const zeroIndex = number - 1;
+    // const index = marked.indexOf(number);
 
-    marked.splice(index, 1);
+    // marked.splice(index, 1);
 
-    numbers[zeroIndex].selected = false;
+    // numbers[zeroIndex].selected = false;
 
-    this.setState({ kenoNumbers: numbers, marked: marked });
+    // this.setState({ kenoNumbers: numbers, marked: marked });
   };
 
   initDeal = () => {
