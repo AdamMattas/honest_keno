@@ -35,7 +35,6 @@ class Machine extends Component {
   componentDidMount() {
     const numbers = dealer.listNumbers(1, 80);
     const kenoNumbers = dealer.createNumbers(numbers);
-    //console.log("New Bet: ", this.state.newBet);
     this.setState({ numbers, kenoNumbers });
   }
 
@@ -60,14 +59,6 @@ class Machine extends Component {
     const { marked, kenoNumbers } = this.state;
     const returnDeselected = dealer.deselectNumber(number, marked, kenoNumbers);
     this.setState({ returnDeselected });
-    // const zeroIndex = number - 1;
-    // const index = marked.indexOf(number);
-
-    // marked.splice(index, 1);
-
-    // numbers[zeroIndex].selected = false;
-
-    // this.setState({ kenoNumbers: numbers, marked: marked });
   };
 
   initDeal = () => {
@@ -78,12 +69,13 @@ class Machine extends Component {
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
       let kenoNumbers = [...this.state.kenoNumbers];
       let credit = this.state.credit - bet;
-      console.log("Credit: ", credit);
 
       kenoNumbers.forEach(num => {
         const zeroIndex = num.number - 1;
-        if (kenoNumbers[zeroIndex]) kenoNumbers[zeroIndex].active = false;
-        if (kenoNumbers[zeroIndex]) kenoNumbers[zeroIndex].hit = false;
+        if (kenoNumbers[zeroIndex]) {
+          kenoNumbers[zeroIndex].active = false;
+          kenoNumbers[zeroIndex].hit = false;
+        }
       });
 
       this.setState({ kenoNumbers: kenoNumbers });
@@ -113,7 +105,6 @@ class Machine extends Component {
   };
 
   clearBet = () => {
-    console.log("Clear Bet!");
     const bet = 0;
     this.setState({ bet });
   };
@@ -128,12 +119,10 @@ class Machine extends Component {
       kenoNumbers[zeroIndex].hit = false;
       kenoNumbers[zeroIndex].selected = false;
     });
-    console.log("CLEAR!");
     this.setState({ kenoNumbers, marked });
   };
 
   addCredit = () => {
-    console.log("Credit++");
     const credit = this.state.addCredit;
     if (this.state.credit < credit) {
       this.setState({ credit });
