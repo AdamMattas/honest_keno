@@ -62,24 +62,14 @@ class Machine extends Component {
   };
 
   initDeal = () => {
-    const { status, bet, lastBet, credit, marked } = this.state;
+    const { status, bet, lastBet, credit, marked, kenoNumbers } = this.state;
     if (lastBet > credit) {
       console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
+
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
-      let kenoNumbers = [...this.state.kenoNumbers];
-      let credit = this.state.credit - bet;
-
-      kenoNumbers.forEach(num => {
-        const zeroIndex = num.number - 1;
-        if (kenoNumbers[zeroIndex]) {
-          kenoNumbers[zeroIndex].active = false;
-          kenoNumbers[zeroIndex].hit = false;
-        }
-      });
-
-      this.setState({ kenoNumbers: kenoNumbers });
-
+      const credit = this.state.credit - bet;
+      this.setState({ kenoNumbers: dealer.setNumberDeal(kenoNumbers) });
       this.deal(kenoNumbers, credit);
     }
   };
@@ -91,7 +81,6 @@ class Machine extends Component {
     const winnings = calculator.calculateWinnings(hits, marked, bet);
     credit = credit + winnings;
     const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
-
     this.setState({
       kenoNumbers,
       random,
@@ -111,8 +100,7 @@ class Machine extends Component {
 
   clearSingleCard = () => {
     const marked = [];
-    let kenoNumbers = [...this.state.kenoNumbers];
-
+    const kenoNumbers = [...this.state.kenoNumbers];
     kenoNumbers.forEach(num => {
       const zeroIndex = num.number - 1;
       kenoNumbers[zeroIndex].active = false;
@@ -174,7 +162,6 @@ class Machine extends Component {
     const random = dealer.generate(lastMarked);
     console.log("Random: ", random);
     const kenoNumbers = dealer.setQuickPick(random, numbers);
-
     this.setState({ kenoNumbers, marked: random });
   };
 
