@@ -1,3 +1,5 @@
+@import "./index";
+
 .App {
   text-align: center;
 }
@@ -16,7 +18,7 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: $white;
 }
 
 .App-link {
@@ -38,28 +40,32 @@
 
 .number-box-container {
   width: 620px;
-  border: 1px solid black;
+  border: 20px solid black;
 }
 
 .number-box {
   display: inline-block;
-  border: 1px solid yellow;
+  border: 1px solid black;
   width: 60px;
   height: 50px;
-  background-color: blue;
-  color: yellow;
+  background-color: $blue;
+  color: $white;
   font-size: 36px;
+  text-shadow: 2px 2px 5px black;
   text-align: center;
 }
 
 .active {
-  background-color: red;
+  background-color: $red;
 }
 
 .selected {
-  background-color: green;
+  background-color: $yellow;
 }
 
 .hit {
-  background-color: purple !important;
+  background-color: $green !important;
+  box-shadow: 0px 0px 15px $white;
+  position: relative;
+  z-index: 100;
 }
