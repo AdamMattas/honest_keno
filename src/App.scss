@@ -54,9 +54,9 @@
   text-shadow: 2px 2px 5px black;
   text-align: center;
   //transition: ease-out 0s;
-  // -webkit-transition: -webkit-transform 0s ease-out;
-  // -ms-transition: -ms-transform 0s ease-out;
-  // transition: 0s ease-out;
+  -webkit-transition: -webkit-transform 0s ease-out;
+  -ms-transition: -ms-transform 0s ease-out;
+  transition: 0s ease-out;
 }
 
 .active {
@@ -68,10 +68,10 @@
   // -ms-transform: rotate(45deg);
   // -webkit-transform: rotate(45deg);
 
-  // transition: ease-in 1s;
-  // transition: ease-out 0s;
-  // transition-delay: 2s;
-  // -webkit-transition-delay: 2s; /* Safari */
+  transition: ease-in 1s;
+  //transition: ease-out 0s;
+  transition-delay: 2s;
+  -webkit-transition-delay: 2s; /* Safari */
 }
 
 .selected {
@@ -93,10 +93,10 @@
   // -ms-transform: rotate(45deg);
   // -webkit-transform: rotate(45deg);
 
-  // transition: ease-in 1s;
-  // transition: ease-out 0s;
-  // transition-delay: 2s;
-  // -webkit-transition-delay: 2s; /* Safari */
+  transition: ease-in 1s;
+  //transition: ease-out 0s;
+  transition-delay: 2s;
+  -webkit-transition-delay: 2s; /* Safari */
 }
 
 .ball {

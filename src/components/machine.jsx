@@ -76,9 +76,13 @@ class Machine extends Component {
       const credit = this.state.credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
       //console.log("SET NUMBERS: ", setNumbers);
-      this.setState({ kenoNumbers: setNumbers }, () => {
+      // this.setState({ kenoNumbers: setNumbers }, () => {
+      //   this.deal(setNumbers, credit);
+      // });
+      this.setState({ kenoNumbers: setNumbers });
+      setTimeout(() => {
         this.deal(setNumbers, credit);
-      });
+      }, 100);
     }
   };
 
