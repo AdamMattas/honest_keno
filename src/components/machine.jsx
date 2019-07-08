@@ -8,6 +8,7 @@ import DealButton from "./dealButton";
 import QuickPickButton from "./quickPickButton";
 import Display from "./display";
 import SingleCard from "./singleCard";
+import KenoBallRack from "./kenoBallRack";
 import calculator from "./workers/calculator";
 import dealer from "./workers/dealer";
 
@@ -166,7 +167,7 @@ class Machine extends Component {
   };
 
   render() {
-    const { bet, marked, hit, credit, winnings } = this.state;
+    const { bet, marked, random, hit, credit, winnings } = this.state;
 
     return (
       <React.Fragment>
@@ -185,6 +186,7 @@ class Machine extends Component {
         <QuickPickButton pick={this.quickPick} />
         <DealButton deal={this.initDeal} />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
+        <KenoBallRack random={random} hit={hit} />
       </React.Fragment>
     );
   }
