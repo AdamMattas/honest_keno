@@ -20,6 +20,7 @@ class Machine extends Component {
     marked: [],
     hitNumbers: [],
     hit: "",
+    hits: [],
     denomination: 25,
     denomOption: [5, 25],
     bet: 0,
@@ -63,15 +64,19 @@ class Machine extends Component {
   };
 
   initDeal = () => {
-    const { status, bet, lastBet, credit, marked, kenoNumbers } = this.state;
+    const { status, bet, lastBet, credit, marked } = this.state;
+    const kenoNumbers = [...this.state.kenoNumbers];
     if (lastBet > credit) {
       console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
 
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
       const credit = this.state.credit - bet;
-      this.setState({ kenoNumbers: dealer.setNumberDeal(kenoNumbers) });
-      this.deal(kenoNumbers, credit);
+      const setNumbers = dealer.setNumberDeal(kenoNumbers);
+      console.log("SET NUMBERS: ", setNumbers);
+      this.setState({ kenoNumbers: setNumbers }, () => {
+        this.deal(setNumbers, credit);
+      });
     }
   };
 
@@ -88,6 +93,7 @@ class Machine extends Component {
       winnings,
       credit,
       hit: hits.length,
+      hits,
       newBet: false,
       lastBet: bet,
       lastMarked: marked.length
@@ -167,7 +173,7 @@ class Machine extends Component {
   };
 
   render() {
-    const { bet, marked, random, hit, credit, winnings } = this.state;
+    const { bet, marked, random, hit, hits, credit, winnings } = this.state;
 
     return (
       <React.Fragment>
@@ -186,7 +192,7 @@ class Machine extends Component {
         <QuickPickButton pick={this.quickPick} />
         <DealButton deal={this.initDeal} />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
-        <KenoBallRack random={random} hit={hit} />
+        <KenoBallRack random={random} hits={hits} />
       </React.Fragment>
     );
   }

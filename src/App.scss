@@ -53,10 +53,24 @@
   font-size: 36px;
   text-shadow: 2px 2px 5px black;
   text-align: center;
+  //transition: ease-out 0s;
+  -webkit-transition: -webkit-transform 0s ease-out;
+  -ms-transition: -ms-transform 0s ease-out;
+  transition: 0s ease-out;
 }
 
 .active {
   background-color: $red;
+  // -webkit-transition: -webkit-transform 0.8s ease-in;
+  // -ms-transition: -ms-transform 0.8s ease-in;
+  // transition: transform 0.8s ease-in;
+  // transform: rotate(45deg);
+  // -ms-transform: rotate(45deg);
+  // -webkit-transform: rotate(45deg);
+
+  transition: ease-in 1s;
+  transition-delay: 2s;
+  -webkit-transition-delay: 2s; /* Safari */
 }
 
 .selected {
@@ -71,4 +85,63 @@
   //border: 2px solid $white;
   // position: relative;
   // z-index: 100;
+  // -webkit-transition: -webkit-transform 0.8s ease-in;
+  // -ms-transition: -ms-transform 0.8s ease-in;
+  // transition: transform 0.8s ease-in;
+  // transform: rotate(45deg);
+  // -ms-transform: rotate(45deg);
+  // -webkit-transform: rotate(45deg);
+
+  transition: ease-in 1s;
+  transition-delay: 2s;
+  -webkit-transition-delay: 2s; /* Safari */
+}
+
+.ball {
+  display: inline-block;
+  width: 65px;
+  height: 65px;
+  margin: 50px auto 0;
+  border-radius: 50%;
+  border: 1px solid black;
+  position: relative;
+  text-align: center;
+}
+
+.ball-green {
+  background: radial-gradient(
+    circle at 65% 15%,
+    white 1px,
+    #e3fee7 10%,
+    #02550f 80%,
+    #e3fee7 100%
+  );
+}
+
+.ball-red {
+  background: radial-gradient(
+    circle at 65% 15%,
+    white 1px,
+    #fddddf 10%,
+    #ac2c34 80%,
+    #fddddf 100%
+  );
+}
+
+.ball > span {
+  display: inline-block;
+  color: white;
+  font-family: Arial;
+  font-size: 36px;
+  text-shadow: 2px 2px 5px black;
+  margin-top: calc(50% - 21px);
+  -webkit-transition: -webkit-transform 0.8s ease-in-out;
+  -ms-transition: -ms-transform 0.8s ease-in-out;
+  transition: transform 0.8s ease-in-out;
+}
+
+.ball > span:hover {
+  transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }

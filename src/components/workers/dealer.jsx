@@ -24,6 +24,7 @@ export function setNumberStatus(random, hits, numbers) {
 }
 
 export function setNumberDeal(kenoNumbers) {
+  console.log("KENO NUMBERS: ", kenoNumbers);
   kenoNumbers.forEach(num => {
     const zeroIndex = num.number - 1;
     if (kenoNumbers[zeroIndex]) {

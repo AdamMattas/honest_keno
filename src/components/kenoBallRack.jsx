@@ -3,15 +3,29 @@ import KenoBall from "./kenoBall";
 
 const KenoBallRack = props => {
   console.log("Props Random: ", props.random);
-  console.log("Props Hit: ", props.hit);
+  console.log("Props Hits: ", props.hits);
+  const balls = [];
 
   if (props.random !== undefined) {
-    const random = props.random.map(rand => (
+    if (props.hits !== undefined) {
+      props.random.forEach(rand => {
+        if (props.hits.indexOf(rand) !== -1) {
+          balls.push({ number: rand, status: "ball-green" });
+          console.log("STATUS: ", balls);
+        } else {
+          balls.push({ number: rand, status: "ball-red" });
+        }
+      });
+    }
+  }
+
+  if (props.random !== undefined) {
+    const kenoBalls = balls.map(ball => (
       //number.number < 41 ? section.top.push(number) : section.bottom.push(number)
-      <KenoBall number={rand} />
+      <KenoBall number={ball.number} status={ball.status} />
     ));
 
-    return random;
+    return kenoBalls;
   }
 
   return null;
