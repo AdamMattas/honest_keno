@@ -44,6 +44,7 @@ class Machine extends Component {
     console.log("New Bet: ", this.state.newBet);
     console.log("Last Bet: ", this.state.lastBet);
     console.log("Last Marked: ", this.state.lastMarked);
+    console.log("UPDATE KENO NUMBERS", this.state.kenoNumbers);
   }
 
   numClick = (e, number) => {
@@ -66,14 +67,15 @@ class Machine extends Component {
   initDeal = () => {
     const { status, bet, lastBet, credit, marked } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
+    console.log("1st KENO NUMBERS: ", kenoNumbers);
     if (lastBet > credit) {
-      console.log("Last Bet: ", lastBet, "Credit: ", credit);
+      //console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
 
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
       const credit = this.state.credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
-      console.log("SET NUMBERS: ", setNumbers);
+      //console.log("SET NUMBERS: ", setNumbers);
       this.setState({ kenoNumbers: setNumbers }, () => {
         this.deal(setNumbers, credit);
       });
@@ -81,6 +83,7 @@ class Machine extends Component {
   };
 
   deal = (numbers, credit) => {
+    console.log("NUMBERS DEAL FUNCTION: ", numbers);
     const { marked, bet } = this.state;
     const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random, marked);
