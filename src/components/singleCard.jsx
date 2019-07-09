@@ -29,7 +29,9 @@ class SingleCard extends Component {
                 " " +
                 (item.selected ? "selected" : "") +
                 " " +
-                (item.hit ? "hit" : "")
+                (item.hit ? "hit" : "") +
+                " " +
+                (item.randomOrder ? `random-${item.randomOrder}` : "")
               }
               key={item.number}
               onClick={e => this.props.numSelect(e, item.number)}
@@ -48,7 +50,9 @@ class SingleCard extends Component {
                 " " +
                 (item.selected ? "selected" : "") +
                 " " +
-                (item.hit ? "hit" : "")
+                (item.hit ? "hit" : "") +
+                " " +
+                (item.randomOrder ? `random-${item.randomOrder}` : "")
               }
               key={item.number}
               onClick={e => this.props.numSelect(e, item.number)}

@@ -13,8 +13,11 @@ export function generate(quantity) {
 
 export function setNumberStatus(random, hits, numbers) {
   console.log(hits);
-  random.forEach(num => {
-    if (numbers[num - 1]) numbers[num - 1].active = true;
+  random.forEach((num, i) => {
+    if (numbers[num - 1]) {
+      numbers[num - 1].active = true;
+      numbers[num - 1].randomOrder = i + 1;
+    }
   });
 
   hits.forEach(num => {
@@ -30,6 +33,7 @@ export function setNumberDeal(kenoNumbers) {
     //if (kenoNumbers[zeroIndex]) {
     num.active = false;
     num.hit = false;
+    num.randomOrder = null;
     //}
   });
   return kenoNumbers;
@@ -58,7 +62,9 @@ export function createNumbers(numbers) {
       number: num,
       active: false,
       selected: false,
-      hit: false
+      hit: false,
+      sound: false,
+      randomOrder: null
     };
     kenoNumbers.push(kenoNumber);
   });
