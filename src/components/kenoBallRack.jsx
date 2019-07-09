@@ -20,9 +20,9 @@ const KenoBallRack = props => {
   }
 
   if (props.random !== undefined) {
-    const kenoBalls = balls.map(ball => (
+    const kenoBalls = balls.map((ball, index) => (
       //number.number < 41 ? section.top.push(number) : section.bottom.push(number)
-      <KenoBall number={ball.number} status={ball.status} />
+      <KenoBall number={ball.number} status={ball.status} index={index} />
     ));
 
     return kenoBalls;
