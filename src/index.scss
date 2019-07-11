@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -12,6 +13,9 @@ code {
     monospace;
 }
 
+$background: url("./public/The_Strip_3_Amelinda_B_Lee.0.0.jpg");
+
+$black: #000000;
 $blue: #011f6b;
 $darkBlue: #3a3b5a;
 $gray: #6b635b;

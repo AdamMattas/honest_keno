@@ -191,6 +191,7 @@ class Machine extends Component {
           credit={credit}
           winnings={winnings}
         />
+        <KenoBallRack random={random} hits={hits} />
         <BetPlusButton betPlus={this.betPlus} />
         <BetMinusButton betMinus={this.betMinus} />
         <BetMaxButton betMax={this.betMax} />
@@ -199,7 +200,6 @@ class Machine extends Component {
         <QuickPickButton pick={this.quickPick} />
         <DealButton deal={this.initDeal} />
         <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
-        <KenoBallRack random={random} hits={hits} />
       </React.Fragment>
     );
   }
