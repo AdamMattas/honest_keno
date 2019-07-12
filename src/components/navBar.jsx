@@ -2,7 +2,12 @@ import React from "react";
 //import { Link, NavLink } from "react-router-dom";
 
 const NavBar = () => {
-  return <nav className="navbar" />;
+  return (
+    <div>
+      <span className="logo-text">Honest Keno</span>
+      <div className="navbar" />
+    </div>
+  );
 };
 
 export default NavBar;

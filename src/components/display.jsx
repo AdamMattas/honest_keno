@@ -4,7 +4,7 @@ class Display extends Component {
   state = {};
   render() {
     return (
-      <div>
+      <div className="display-wrap">
         <div>Bet: {this.props.bet}</div>
         <div>Marked: {this.props.marked}</div>
         <div>Hit: {this.props.hits}</div>

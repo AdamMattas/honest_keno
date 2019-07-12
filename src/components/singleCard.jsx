@@ -19,7 +19,7 @@ class SingleCard extends Component {
     const split = this.splitNumbers();
 
     return (
-      <React.Fragment>
+      <div className="number-box-wrap">
         <div className="number-box-container container-top">
           {split.top.map(item => (
             <span
@@ -61,7 +61,7 @@ class SingleCard extends Component {
             </span>
           ))}
         </div>
-      </React.Fragment>
+      </div>
     );
   }
 }

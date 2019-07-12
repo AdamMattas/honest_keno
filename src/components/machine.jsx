@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import BetPlusButton from "./betPlusButton";
-import AddCreditButton from "./addCreditButton";
-import BetMinusButton from "./betMinusButton";
-import BetMaxButton from "./betMaxButton";
-import ClearButton from "./clearButton";
-import DealButton from "./dealButton";
-import QuickPickButton from "./quickPickButton";
+import Buttons from "./buttons";
 import Display from "./display";
 import SingleCard from "./singleCard";
 import KenoBallRack from "./kenoBallRack";
@@ -184,22 +178,29 @@ class Machine extends Component {
 
     return (
       <React.Fragment>
-        <Display
-          bet={bet}
-          marked={marked.length}
-          hits={hit}
-          credit={credit}
-          winnings={winnings}
-        />
-        <KenoBallRack random={random} hits={hits} />
-        <BetPlusButton betPlus={this.betPlus} />
-        <BetMinusButton betMinus={this.betMinus} />
-        <BetMaxButton betMax={this.betMax} />
-        <ClearButton clear={this.clearSingleCard} />
-        <AddCreditButton add={this.addCredit} />
-        <QuickPickButton pick={this.quickPick} />
-        <DealButton deal={this.initDeal} />
-        <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
+        <div className="machine-wrap">
+          <KenoBallRack random={random} hits={hits} />
+          <Display
+            bet={bet}
+            marked={marked.length}
+            hits={hit}
+            credit={credit}
+            winnings={winnings}
+          />
+          <div className="spacer-25" />
+          <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
+        </div>
+        <div className="button-wrap">
+          <Buttons
+            betPlus={this.betPlus}
+            betMinus={this.betMinus}
+            betMax={this.betMax}
+            clear={this.clearSingleCard}
+            add={this.addCredit}
+            pick={this.quickPick}
+            deal={this.initDeal}
+          />
+        </div>
       </React.Fragment>
     );
   }

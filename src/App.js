@@ -11,7 +11,6 @@ class App extends Component {
       <div>
         <NavBar />
         <Background />
-        <h1>Honest Keno</h1>
         <Machine />
       </div>
     );
