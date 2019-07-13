@@ -60,8 +60,8 @@ class Display extends Component {
               if (pays > 0) {
                 return (
                   <tr>
+                    <td>Hit{payTable.indexOf(pays) + 1}</td>
                     <td>Win{pays}</td>
-                    <td>Bet{pays}</td>
                   </tr>
                 );
               } else {
