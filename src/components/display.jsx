@@ -5,20 +5,21 @@ const Display = props => {
   const payTable = calculator.payTable(props.marked);
 
   return (
-    <div>
-      <table className="display-wrap">
+    <div className="display-wrap">
+      <table>
         <tbody>
-          <tr>
-            <th>Hits</th>
-            <th>Win</th>
+          <tr className="display-row-top">
+            <th className="text-left">Hits</th>
+            <th className="text-right">Win</th>
           </tr>
           {payTable.map((pays, i) => {
             console.log("PAYS: ", pays);
             if (pays > 0) {
+              const payProduct = props.bet ? props.bet : 1;
               return (
                 <tr>
-                  <td>Hit{payTable.indexOf(pays) + 1}</td>
-                  <td>Win{pays}</td>
+                  <td className="text-left">{payTable.indexOf(pays) + 1}</td>
+                  <td className="text-right">{pays * payProduct}</td>
                 </tr>
               );
             } else {
