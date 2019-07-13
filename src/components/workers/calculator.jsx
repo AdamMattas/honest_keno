@@ -23,6 +23,17 @@ export function calculateWinnings(hits, marked, bet) {
   return winnings ? winnings : 0;
 }
 
+export function payTable(marked) {
+  console.log("Marked Calc: ", marked);
+  if (marked > 0) {
+    return spots[marked - 1];
+  } else {
+    return spots[marked];
+  }
+  //marked > 0 ? return spots[marked - 1] : return spots[marked];
+}
+
 export default {
-  calculateWinnings
+  calculateWinnings,
+  payTable
 };
