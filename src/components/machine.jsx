@@ -187,7 +187,7 @@ class Machine extends Component {
             credit={credit}
             winnings={winnings}
           />
-          <div className="spacer-25" />
+          <div className="spacer-200" />
           <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
         </div>
         <div className="button-wrap">

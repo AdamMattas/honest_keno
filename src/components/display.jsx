@@ -12,20 +12,22 @@ const Display = props => {
             <th className="text-left">Hits</th>
             <th className="text-right">Win</th>
           </tr>
-          {payTable.map((pays, i) => {
-            console.log("PAYS: ", pays);
-            if (pays > 0) {
-              const payProduct = props.bet ? props.bet : 1;
-              return (
-                <tr>
-                  <td className="text-left">{payTable.indexOf(pays) + 1}</td>
-                  <td className="text-right">{pays * payProduct}</td>
-                </tr>
-              );
-            } else {
-              return <tr />;
-            }
-          })}
+          <tr className="table-row-wrap">
+            {payTable.map((pays, i) => {
+              console.log("PAYS: ", pays);
+              if (pays > 0) {
+                const payProduct = props.bet ? props.bet : 1;
+                return (
+                  <tr>
+                    <td className="text-left">{payTable.indexOf(pays) + 1}</td>
+                    <td className="text-right">{pays * payProduct}</td>
+                  </tr>
+                );
+              } else {
+                return null;
+              }
+            })}
+          </tr>
         </tbody>
       </table>
       <div>Bet: {props.bet}</div>

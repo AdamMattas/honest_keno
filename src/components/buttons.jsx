@@ -10,11 +10,11 @@ import QuickPickButton from "./quickPickButton";
 const Buttons = props => {
   return (
     <div className="button-container">
+      <AddCreditButton add={props.add} />
       <BetPlusButton betPlus={props.betPlus} />
       <BetMinusButton betMinus={props.betMinus} />
       <BetMaxButton betMax={props.betMax} />
       <ClearButton clear={props.clear} />
-      <AddCreditButton add={props.add} />
       <QuickPickButton pick={props.pick} />
       <DealButton deal={props.deal} />
     </div>
