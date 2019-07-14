@@ -4,8 +4,8 @@ class BetMinusButton extends Component {
   state = { ready: false };
   render() {
     return (
-      <span className="button" onClick={this.props.betMinus}>
-        BET -
+      <span className="button minus" onClick={this.props.betMinus}>
+        <span>-</span>
       </span>
     );
   }

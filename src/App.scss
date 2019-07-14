@@ -79,7 +79,7 @@
 
 .display-wrap {
   display: table-cell;
-  width: 27.8%;
+  width: 27.6%;
   min-height: 200px;
   //border: 1px solid $black;
   border: 2px solid $black-75;
@@ -148,7 +148,7 @@ th {
 .number-box-wrap {
   display: table-cell;
   //width: calc(75% - 2px);
-  width: 56.6%;
+  width: 56.8%;
   vertical-align: top;
   margin-top: 50px;
 }
@@ -268,6 +268,30 @@ th {
   // opacity: 0.75;
   // filter: alpha(opacity=75); /* For IE8 and earlier */
   cursor: pointer;
+}
+
+.bet-wrap {
+  //flex: 0 0 13%;
+  display: flex;
+  width: 13%;
+  justify-content: space-between;
+  //border: 1px solid red;
+}
+
+.plus:first-child {
+  //margin-right: 13%;
+}
+
+.plus,
+.minus {
+  //font-size: 48px;
+  //width: 50%;
+  flex: 0 0 43%;
+}
+
+.plus,
+.minus > span {
+  //position: absolute;
 }
 
 .random-1 {
