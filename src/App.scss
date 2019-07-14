@@ -2,15 +2,23 @@
 
 .navbar {
   width: 100%;
-  height: 60px;
+  height: 65px;
   background-color: $black-75;
   position: relative;
   top: 0px;
 }
 
+.logo {
+  content: url($logo);
+  width: 15%;
+  position: relative;
+  padding: 0 5px;
+  top: 16px;
+}
+
 .logo-text {
   position: absolute;
-  top: 4px;
+  top: -12px;
   left: calc(5% + 5px);
   font-size: 36px;
   //font-weight: 350;
@@ -74,12 +82,12 @@
   //border: 1px solid red;
   margin: 0 auto;
   position: relative;
-  top: 25px;
+  top: 100px;
 }
 
 .display-wrap {
   display: table-cell;
-  width: 27.6%;
+  width: 27.9%;
   min-height: 200px;
   //border: 1px solid $black;
   border: 2px solid $black-75;
@@ -249,7 +257,7 @@ th {
   position: relative;
   width: 90%;
   margin: 0 auto;
-  top: 50px;
+  top: 125px;
   display: flex;
   justify-content: space-between;
 }

@@ -4,7 +4,11 @@ import React from "react";
 const NavBar = () => {
   return (
     <div>
-      <span className="logo-text">Honest Keno</span>
+      <span className="logo-text">
+        Honest
+        <img className="logo" />
+        Keno
+      </span>
       <div className="navbar" />
     </div>
   );
