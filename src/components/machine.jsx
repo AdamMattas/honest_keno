@@ -114,6 +114,7 @@ class Machine extends Component {
       kenoNumbers[zeroIndex].active = false;
       kenoNumbers[zeroIndex].hit = false;
       kenoNumbers[zeroIndex].selected = false;
+      kenoNumbers[zeroIndex].randomOrder = false;
     });
     this.setState({ kenoNumbers, marked });
   };

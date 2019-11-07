@@ -9,8 +9,8 @@ const Display = props => {
       <table>
         <tbody>
           <tr className="display-row-top">
-            <th className="text-left">Hits</th>
-            <th className="text-right">Win</th>
+            <th className="text-left">HITS</th>
+            <th className="text-right">WIN</th>
           </tr>
           <React.Fragment className="table-row-wrap">
             {payTable.map((pays, i) => {
