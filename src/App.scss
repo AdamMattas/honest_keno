@@ -196,11 +196,6 @@ th {
   transition: 0s ease-out;
 }
 
-.running {
-  cursor: not-allowed !important;
-  background-color: $red !important;
-}
-
 .active {
   background-color: $red;
 }
@@ -281,6 +276,11 @@ th {
   // opacity: 0.75;
   // filter: alpha(opacity=75); /* For IE8 and earlier */
   cursor: pointer;
+}
+
+.running {
+  // cursor: not-allowed !important;
+  background-color: $red;
 }
 
 .bet-wrap {

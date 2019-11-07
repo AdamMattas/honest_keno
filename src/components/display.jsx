@@ -12,7 +12,7 @@ const Display = props => {
             <th className="text-left">HITS</th>
             <th className="text-right">WIN</th>
           </tr>
-          <React.Fragment className="table-row-wrap">
+          <React.Fragment>
             {payTable.map((pays, i) => {
               console.log("PAYS: ", pays);
               if (pays > 0) {

@@ -24,14 +24,14 @@ class SingleCard extends Component {
           {split.top.map(item => (
             <span
               className={
-                "number-box " +
-                (item.active ? "active" : "") +
-                " " +
-                (item.selected ? "selected" : "") +
-                " " +
-                (item.hit ? "hit" : "") +
-                " " +
-                (item.randomOrder ? `random-${item.randomOrder}` : "")
+                "number-box" +
+                (item.active ? " active" : "") +
+                "" +
+                (item.selected ? " selected" : "") +
+                "" +
+                (item.hit ? " hit" : "") +
+                "" +
+                (item.randomOrder ? ` random-${item.randomOrder}` : "")
               }
               key={item.number}
               onClick={e => this.props.numSelect(e, item.number)}
@@ -45,14 +45,14 @@ class SingleCard extends Component {
           {split.bottom.map(item => (
             <span
               className={
-                "number-box " +
-                (item.active ? "active" : "") +
-                " " +
-                (item.selected ? "selected" : "") +
-                " " +
-                (item.hit ? "hit" : "") +
-                " " +
-                (item.randomOrder ? `random-${item.randomOrder}` : "")
+                "number-box" +
+                (item.active ? " active" : "") +
+                "" +
+                (item.selected ? " selected" : "") +
+                "" +
+                (item.hit ? " hit" : "") +
+                "" +
+                (item.randomOrder ? ` random-${item.randomOrder}` : "")
               }
               key={item.number}
               onClick={e => this.props.numSelect(e, item.number)}

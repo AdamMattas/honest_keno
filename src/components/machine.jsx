@@ -105,26 +105,24 @@ class Machine extends Component {
     }, 1900 * this.state.delayExponent);
   };
 
-  // running = () => {
-
-  // };
-
   clearBet = () => {
     const bet = 0;
     this.setState({ bet });
   };
 
   clearSingleCard = () => {
-    const marked = [];
-    const kenoNumbers = [...this.state.kenoNumbers];
-    kenoNumbers.forEach(num => {
-      const zeroIndex = num.number - 1;
-      kenoNumbers[zeroIndex].active = false;
-      kenoNumbers[zeroIndex].hit = false;
-      kenoNumbers[zeroIndex].selected = false;
-      kenoNumbers[zeroIndex].randomOrder = false;
-    });
-    this.setState({ kenoNumbers, marked });
+    if (this.state.status === "ready") {
+      const marked = [];
+      const kenoNumbers = [...this.state.kenoNumbers];
+      kenoNumbers.forEach(num => {
+        const zeroIndex = num.number - 1;
+        kenoNumbers[zeroIndex].active = false;
+        kenoNumbers[zeroIndex].hit = false;
+        kenoNumbers[zeroIndex].selected = false;
+        kenoNumbers[zeroIndex].randomOrder = false;
+      });
+      this.setState({ kenoNumbers, marked });
+    }
   };
 
   addCredit = () => {
@@ -173,13 +171,15 @@ class Machine extends Component {
   };
 
   quickPick = () => {
-    this.clearSingleCard();
-    let numbers = [...this.state.kenoNumbers];
-    const lastMarked = this.state.lastMarked;
-    const random = dealer.generate(lastMarked);
-    console.log("Random: ", random);
-    const kenoNumbers = dealer.setQuickPick(random, numbers);
-    this.setState({ kenoNumbers, marked: random });
+    if (this.state.status === "ready") {
+      this.clearSingleCard();
+      let numbers = [...this.state.kenoNumbers];
+      const lastMarked = this.state.lastMarked;
+      const random = dealer.generate(lastMarked);
+      console.log("Random: ", random);
+      const kenoNumbers = dealer.setQuickPick(random, numbers);
+      this.setState({ kenoNumbers, marked: random });
+    }
   };
 
   render() {
