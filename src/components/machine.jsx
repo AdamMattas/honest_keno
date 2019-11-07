@@ -25,7 +25,8 @@ class Machine extends Component {
     winnings: 0,
     status: "ready",
     lastBet: 0,
-    lastMarked: 0
+    lastMarked: 0,
+    delayExponent: 2
   };
 
   componentDidMount() {
@@ -73,7 +74,7 @@ class Machine extends Component {
       // this.setState({ kenoNumbers: setNumbers }, () => {
       //   this.deal(setNumbers, credit);
       // });
-      this.setState({ kenoNumbers: setNumbers });
+      this.setState({ kenoNumbers: setNumbers, status: "running" });
       setTimeout(() => {
         this.deal(setNumbers, credit);
       }, 100);
@@ -99,7 +100,14 @@ class Machine extends Component {
       lastBet: bet,
       lastMarked: marked.length
     });
+    setTimeout(() => {
+      this.setState({ status: "ready" });
+    }, 1900 * this.state.delayExponent);
   };
+
+  // running = () => {
+
+  // };
 
   clearBet = () => {
     const bet = 0;
@@ -200,6 +208,7 @@ class Machine extends Component {
             add={this.addCredit}
             pick={this.quickPick}
             deal={this.initDeal}
+            status={this.state.status}
           />
         </div>
       </React.Fragment>

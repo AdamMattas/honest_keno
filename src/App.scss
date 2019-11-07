@@ -196,6 +196,11 @@ th {
   transition: 0s ease-out;
 }
 
+.running {
+  cursor: not-allowed !important;
+  background-color: $red !important;
+}
+
 .active {
   background-color: $red;
 }

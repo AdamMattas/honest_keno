@@ -17,10 +17,10 @@ const Buttons = props => {
         <BetMinusButton betMinus={props.betMinus} />
         <BetPlusButton betPlus={props.betPlus} />
       </span>
-      <SpeedButton />
-      <ClearButton clear={props.clear} />
-      <QuickPickButton pick={props.pick} />
-      <DealButton deal={props.deal} />
+      <SpeedButton status={props.status} />
+      <ClearButton status={props.status} clear={props.clear} />
+      <QuickPickButton status={props.status} pick={props.pick} />
+      <DealButton status={props.status} deal={props.deal} />
     </div>
   );
 };
