@@ -12,22 +12,24 @@ const Display = props => {
             <th className="text-left">Hits</th>
             <th className="text-right">Win</th>
           </tr>
-          <tr className="table-row-wrap">
+          <React.Fragment className="table-row-wrap">
             {payTable.map((pays, i) => {
               console.log("PAYS: ", pays);
               if (pays > 0) {
                 const payProduct = props.bet ? props.bet : 1;
                 return (
                   <tr>
-                    <td className="text-left">{payTable.indexOf(pays) + 1}</td>
-                    <td className="text-right">{pays * payProduct}</td>
+                    <td className="text-left pay-text">
+                      {payTable.indexOf(pays) + 1}
+                    </td>
+                    <td className="text-right pay-text">{pays * payProduct}</td>
                   </tr>
                 );
               } else {
                 return null;
               }
             })}
-          </tr>
+          </React.Fragment>
         </tbody>
       </table>
       <div>Bet: {props.bet}</div>

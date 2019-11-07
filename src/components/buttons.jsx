@@ -14,8 +14,8 @@ const Buttons = props => {
       <AddCreditButton add={props.add} />
       <BetMaxButton betMax={props.betMax} />
       <span className="bet-wrap">
-        <BetPlusButton betPlus={props.betPlus} />
         <BetMinusButton betMinus={props.betMinus} />
+        <BetPlusButton betPlus={props.betPlus} />
       </span>
       <SpeedButton />
       <ClearButton clear={props.clear} />
