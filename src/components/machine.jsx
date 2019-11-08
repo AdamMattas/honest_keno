@@ -26,7 +26,8 @@ class Machine extends Component {
     status: "ready",
     lastBet: 0,
     lastMarked: 0,
-    delayExponent: 2
+    delayExponent: 2,
+    randomHitOrder: []
   };
 
   componentDidMount() {
@@ -36,10 +37,10 @@ class Machine extends Component {
   }
 
   componentDidUpdate() {
-    console.log("New Bet: ", this.state.newBet);
-    console.log("Last Bet: ", this.state.lastBet);
-    console.log("Last Marked: ", this.state.lastMarked);
-    console.log("UPDATE KENO NUMBERS", this.state.kenoNumbers);
+    //console.log("New Bet: ", this.state.newBet);
+    //console.log("Last Bet: ", this.state.lastBet);
+    //console.log("Last Marked: ", this.state.lastMarked);
+    //console.log("UPDATE KENO NUMBERS", this.state.kenoNumbers);
   }
 
   numClick = (e, number) => {
@@ -62,7 +63,7 @@ class Machine extends Component {
   initDeal = () => {
     const { status, bet, lastBet, credit, marked } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
-    console.log("1st KENO NUMBERS: ", kenoNumbers);
+    //console.log("1st KENO NUMBERS: ", kenoNumbers);
     if (lastBet > credit) {
       //console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
@@ -82,12 +83,13 @@ class Machine extends Component {
   };
 
   deal = (numbers, credit) => {
-    console.log("NUMBERS DEAL FUNCTION: ", numbers);
+    //console.log("NUMBERS DEAL FUNCTION: ", numbers);
     const { marked, bet } = this.state;
     const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random, marked);
     const winnings = calculator.calculateWinnings(hits, marked, bet);
     credit = credit + winnings;
+    const randomHitOrder = dealer.randomHitOrder(random, hits);
     const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
     this.setState({
       kenoNumbers,
@@ -98,7 +100,8 @@ class Machine extends Component {
       hits,
       newBet: false,
       lastBet: bet,
-      lastMarked: marked.length
+      lastMarked: marked.length,
+      randomHitOrder
     });
     setTimeout(() => {
       this.setState({ status: "ready" });
@@ -176,7 +179,7 @@ class Machine extends Component {
       let numbers = [...this.state.kenoNumbers];
       const lastMarked = this.state.lastMarked;
       const random = dealer.generate(lastMarked);
-      console.log("Random: ", random);
+      //console.log("Random: ", random);
       const kenoNumbers = dealer.setQuickPick(random, numbers);
       this.setState({ kenoNumbers, marked: random });
     }

@@ -12,7 +12,9 @@ export function generate(quantity) {
 }
 
 export function setNumberStatus(random, hits, numbers) {
-  console.log(hits);
+  // console.log("RANDOM: ", random);
+  // console.log("HITS: ", hits);
+  // console.log("NUMBERS: ", numbers);
   random.forEach((num, i) => {
     if (numbers[num - 1]) {
       numbers[num - 1].active = true;
@@ -27,7 +29,7 @@ export function setNumberStatus(random, hits, numbers) {
 }
 
 export function setNumberDeal(kenoNumbers) {
-  console.log("KENO NUMBERS: ", kenoNumbers);
+  //console.log("KENO NUMBERS: ", kenoNumbers);
   kenoNumbers.forEach(num => {
     //const zeroIndex = num.number - 1;
     //if (kenoNumbers[zeroIndex]) {
@@ -53,6 +55,15 @@ export function compareNumbers(random, player) {
     if (hit !== -1) hits.push(num);
   });
   return hits;
+}
+
+export function randomHitOrder(random, hits) {
+  const hitOrder = [];
+  hits.forEach(num => {
+    const index = random.indexOf(num);
+    hitOrder.push({ hit: num, index });
+  });
+  return hitOrder;
 }
 
 export function createNumbers(numbers) {
@@ -110,6 +121,7 @@ export default {
   setNumberStatus,
   setNumberDeal,
   compareNumbers,
+  randomHitOrder,
   createNumbers,
   listNumbers,
   setQuickPick,

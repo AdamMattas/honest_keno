@@ -7,6 +7,8 @@ class SingleCard extends Component {
       bottom: []
     };
 
+    //console.log("DATA: ", this.props.data);
+
     this.props.data.map(item =>
       item.number < 41 ? section.top.push(item) : section.bottom.push(item)
     );
