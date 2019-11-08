@@ -110,11 +110,15 @@ class Machine extends Component {
   };
 
   payLine = (order, marked, delay) => {
-    console.log("PAY LINE! ", order);
+    console.log("PAY LINE! ", order); // [{obj}]
     console.log("PAY LINE MARKED! ", marked);
     console.log("PAY LINE DELAY! ", delay);
-    const delayLength = dealer.payLine();
-    console.log("PAY LINE DELAY LENGTH! ", delayLength.length);
+    const delayLength = calculator.payTable(marked);
+    console.log("PAY LINE FROM TABLE! ", delayLength);
+    order.forEach(num => {
+      console.log("PAY LINE NUM!", num);
+      //order[num] =
+    });
   };
 
   clearBet = () => {
