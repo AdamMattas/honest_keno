@@ -66,6 +66,34 @@ export function randomHitOrder(random, hits) {
   return hitOrder;
 }
 
+export function payLine(order, marked) {
+  const delay = [
+    0,
+    100,
+    200,
+    300,
+    400,
+    500,
+    600,
+    700,
+    800,
+    900,
+    1000,
+    1100,
+    1200,
+    1300,
+    1400,
+    1500,
+    1600,
+    1700,
+    1800,
+    1900
+  ];
+  // console.log("PAY LINE! ", order);
+  // console.log("PAY LINE MARKED! ", marked);
+  return delay;
+}
+
 export function createNumbers(numbers) {
   const kenoNumbers = [];
   numbers.forEach(num => {
@@ -122,6 +150,7 @@ export default {
   setNumberDeal,
   compareNumbers,
   randomHitOrder,
+  payLine,
   createNumbers,
   listNumbers,
   setQuickPick,

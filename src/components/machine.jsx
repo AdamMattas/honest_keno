@@ -103,9 +103,18 @@ class Machine extends Component {
       lastMarked: marked.length,
       randomHitOrder
     });
+    this.payLine(randomHitOrder, marked.length, this.state.delayExponent);
     setTimeout(() => {
       this.setState({ status: "ready" });
     }, 1900 * this.state.delayExponent);
+  };
+
+  payLine = (order, marked, delay) => {
+    console.log("PAY LINE! ", order);
+    console.log("PAY LINE MARKED! ", marked);
+    console.log("PAY LINE DELAY! ", delay);
+    const delayLength = dealer.payLine();
+    console.log("PAY LINE DELAY LENGTH! ", delayLength.length);
   };
 
   clearBet = () => {
