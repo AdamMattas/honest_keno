@@ -17,8 +17,12 @@ const Display = props => {
               console.log("PAYS: ", pays);
               if (pays > 0) {
                 const payProduct = props.bet ? props.bet : 1;
+                const divId = payTable.indexOf(pays) + 1;
                 return (
-                  <tr id={payTable.indexOf(pays) + 1}>
+                  <tr
+                    className={props.active === divId ? "pay" : ""}
+                    id={divId}
+                  >
                     <td className="text-left pay-text">
                       {payTable.indexOf(pays) + 1}
                     </td>

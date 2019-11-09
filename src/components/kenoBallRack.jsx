@@ -11,7 +11,7 @@ const KenoBallRack = props => {
       props.random.forEach(rand => {
         if (props.hits.indexOf(rand) !== -1) {
           balls.push({ number: rand, status: "ball-green" });
-          console.log("STATUS: ", balls);
+          //console.log("STATUS: ", balls);
         } else {
           balls.push({ number: rand, status: "ball-red" });
         }

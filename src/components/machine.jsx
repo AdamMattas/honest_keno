@@ -27,7 +27,8 @@ class Machine extends Component {
     lastBet: 0,
     lastMarked: 0,
     delayExponent: 2,
-    randomHitOrder: []
+    randomHitOrder: [],
+    activePayLine: null
   };
 
   componentDidMount() {
@@ -101,7 +102,8 @@ class Machine extends Component {
       newBet: false,
       lastBet: bet,
       lastMarked: marked.length,
-      randomHitOrder
+      randomHitOrder,
+      activePayLine: null
     });
     this.payLine(randomHitOrder, marked.length, this.state.delayExponent);
     setTimeout(() => {
@@ -113,12 +115,28 @@ class Machine extends Component {
     console.log("PAY LINE! ", order); // [{obj}]
     console.log("PAY LINE MARKED! ", marked);
     console.log("PAY LINE DELAY! ", delay);
-    const delayLength = calculator.payTable(marked);
-    console.log("PAY LINE FROM TABLE! ", delayLength);
+    const payArray = calculator.payTable(marked);
+    console.log("PAY LINE FROM TABLE! ", payArray);
     order.forEach(num => {
-      console.log("PAY LINE NUM!", num);
-      //order[num] =
+      const payIndex = order.indexOf(num);
+      if (payArray[payIndex] > 0) {
+        num.pay = true;
+        num.divId = payIndex + 1;
+        num.delay = dealer.payDelay()[num.index];
+        this.setPayLine(num.divId, num.delay);
+      } else {
+        num.pay = false;
+      }
+      console.log("PAY LINE INDEX!", payIndex);
+
+      console.log("PAY LINE NUM!", order);
     });
+  };
+
+  setPayLine = (divId, delay) => {
+    setTimeout(() => {
+      this.setState({ activePayLine: divId });
+    }, delay * this.state.delayExponent);
   };
 
   clearBet = () => {
@@ -206,6 +224,7 @@ class Machine extends Component {
         <div className="machine-wrap">
           <KenoBallRack random={random} hits={hits} />
           <Display
+            active={this.state.activePayLine}
             bet={bet}
             marked={marked.length}
             hits={hit}

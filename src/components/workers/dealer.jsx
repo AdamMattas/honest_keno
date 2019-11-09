@@ -61,12 +61,23 @@ export function randomHitOrder(random, hits) {
   const hitOrder = [];
   hits.forEach(num => {
     const index = random.indexOf(num);
-    hitOrder.push({ hit: num, index });
+    hitOrder.push({ hit: num, index, pay: null, divId: null, delay: null });
   });
+  function compare(a, b) {
+    if (a.index < b.index) {
+      return -1;
+    }
+    if (a.index > b.index) {
+      return 1;
+    }
+    return 0;
+  }
+
+  hitOrder.sort(compare);
   return hitOrder;
 }
 
-export function payLine(order, marked) {
+export function payDelay(order, marked) {
   const delay = [
     0,
     100,
@@ -150,7 +161,7 @@ export default {
   setNumberDeal,
   compareNumbers,
   randomHitOrder,
-  payLine,
+  payDelay,
   createNumbers,
   listNumbers,
   setQuickPick,
