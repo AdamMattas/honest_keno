@@ -15,7 +15,7 @@ class KenoBall extends Component {
   }
 
   componentDidUpdate() {
-    console.log("UPDATE", this.state.index);
+    //console.log("UPDATE", this.state.index);
     // const index = this.props.index + 1;
     // if (index !== this.state.index) this.setState({ index });
   }
