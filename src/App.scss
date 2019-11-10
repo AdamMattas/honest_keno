@@ -147,6 +147,11 @@ td {
   background-color: $black-75;
 }
 
+.display-bottom-wrap {
+  position: absolute;
+  bottom: 0px;
+}
+
 th {
   color: $white;
   font-size: 36px;

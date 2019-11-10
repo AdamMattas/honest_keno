@@ -36,11 +36,18 @@ const Display = props => {
           </React.Fragment>
         </tbody>
       </table>
-      <div>Bet: {props.bet}</div>
-      <div>Marked: {props.marked}</div>
-      <div>Hit: {props.hits}</div>
-      <div>Credit: {props.credit}</div>
-      <div>Won: {props.winnings}</div>
+      <table>
+        <tbody>
+          <tr className="display-bottom-wrap">
+            <td className="text-left">CREDIT:</td>
+            <td className="text-right">{props.credit}</td>
+          </tr>
+          <div>Bet: {props.bet}</div>
+          <div>Marked: {props.marked}</div>
+          <div>Hit: {props.hits}</div>
+          <div>Won: {props.winnings}</div>
+        </tbody>
+      </table>
     </div>
   );
 };
