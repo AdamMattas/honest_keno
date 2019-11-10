@@ -158,6 +158,14 @@ th {
   background-color: $green;
 }
 
+.pay > td {
+  color: $white;
+}
+
+tr > td {
+  font-size: 36px;
+}
+
 .number-box-wrap {
   display: table-cell;
   //width: calc(75% - 2px);
