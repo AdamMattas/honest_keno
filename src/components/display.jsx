@@ -6,46 +6,54 @@ const Display = props => {
 
   return (
     <div className="display-wrap">
-      <table>
+      <table className="table-top">
         <tbody>
           <tr className="display-row-top">
             <th className="text-left">HITS</th>
             <th className="text-right">WIN</th>
           </tr>
-          <React.Fragment>
-            {payTable.map((pays, i) => {
-              console.log("PAYS: ", pays);
-              if (pays > 0) {
-                const payProduct = props.bet ? props.bet : 1;
-                const divId = payTable.indexOf(pays) + 1;
-                return (
-                  <tr
-                    className={props.active === divId ? "pay" : ""}
-                    id={divId}
-                  >
-                    <td className="text-left pay-text">
-                      {payTable.indexOf(pays) + 1}
-                    </td>
-                    <td className="text-right pay-text">{pays * payProduct}</td>
-                  </tr>
-                );
-              } else {
-                return null;
-              }
-            })}
-          </React.Fragment>
+
+          {payTable.map((pays, i) => {
+            console.log("PAYS: ", pays);
+            if (pays > 0) {
+              const payProduct = props.bet ? props.bet : 1;
+              const divId = payTable.indexOf(pays) + 1;
+              return (
+                <tr className={props.active === divId ? "pay" : ""} id={divId}>
+                  <td className="text-left pay-text">
+                    {payTable.indexOf(pays) + 1}
+                  </td>
+                  <td className="text-right pay-text">{pays * payProduct}</td>
+                </tr>
+              );
+            } else {
+              return null;
+            }
+          })}
         </tbody>
       </table>
-      <table>
+      <table className="table-bottom">
         <tbody>
-          <tr className="display-bottom-wrap">
+          <tr>
             <td className="text-left">CREDIT:</td>
             <td className="text-right">{props.credit}</td>
           </tr>
-          <div>Bet: {props.bet}</div>
-          <div>Marked: {props.marked}</div>
-          <div>Hit: {props.hits}</div>
-          <div>Won: {props.winnings}</div>
+          <tr>
+            <td className="text-left">BET:</td>
+            <td className="text-right">{props.bet}</td>
+          </tr>
+          <tr>
+            <td className="text-left">MARKED:</td>
+            <td className="text-right">{props.marked}</td>
+          </tr>
+          <tr>
+            <td className="text-left">HIT:</td>
+            <td className="text-right">{props.hits}</td>
+          </tr>
+          <tr>
+            <td className="text-left">WON:</td>
+            <td className="text-right">{props.winnings}</td>
+          </tr>
         </tbody>
       </table>
     </div>

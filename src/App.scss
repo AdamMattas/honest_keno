@@ -96,6 +96,22 @@
   //background-color: rgba(255, 255, 255, 0.5);
 }
 
+.table-top tr > td {
+  font-size: 36px;
+}
+
+.table-bottom {
+  border-top: 2px solid $black-75;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 27.9% !important;
+}
+
+.table-bottom tr > td {
+  font-size: 18px;
+}
+
 // .table-filler {
 //   min-height: 350px;
 // }
@@ -147,11 +163,6 @@ td {
   background-color: $black-75;
 }
 
-.display-bottom-wrap {
-  position: absolute;
-  bottom: 0px;
-}
-
 th {
   color: $white;
   font-size: 36px;
@@ -165,10 +176,6 @@ th {
 
 .pay > td {
   color: $white;
-}
-
-tr > td {
-  font-size: 36px;
 }
 
 .number-box-wrap {

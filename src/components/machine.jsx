@@ -13,7 +13,7 @@ class Machine extends Component {
     kenoNumbers: [],
     marked: [],
     hitNumbers: [],
-    hit: "",
+    hit: "0",
     hits: [],
     denomination: 25,
     denomOption: [5, 25],
