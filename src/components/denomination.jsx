@@ -10,9 +10,9 @@ const Denomination = props => {
   return (
     <div className="spacer-200">
       <span className="denomination" onClick={props.changeDenom}>
-        {denom}
+        {denom}&cent;
       </span>
-      <span>&#65504;</span>
+
       <Credit
         credit={props.credit}
         type={props.type}
