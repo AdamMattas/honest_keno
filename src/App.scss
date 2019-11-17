@@ -187,7 +187,22 @@ th {
 }
 
 .spacer-200 {
-  width: 200px;
+  width: 15%;
+  border: 2px solid black;
+  position: absolute;
+  bottom: 0px;
+  text-align: center;
+}
+
+.denomination {
+  font-size: 75px;
+  // position: absolute;
+  // bottom: 0px;
+}
+
+.denomination + span {
+  font-size: 50px;
+  margin-left: -10px;
 }
 
 .container-bottom {

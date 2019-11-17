@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Buttons from "./buttons";
+import Denomination from "./denomination";
 import Display from "./display";
 import SingleCard from "./singleCard";
 import KenoBallRack from "./kenoBallRack";
@@ -16,7 +17,7 @@ class Machine extends Component {
     hit: "0",
     hits: [],
     denomination: 25,
-    denomOption: [5, 25],
+    denomOption: [1, 5, 10, 25],
     bet: 0,
     maxBet: 5,
     newBet: false,
@@ -231,7 +232,7 @@ class Machine extends Component {
             credit={credit}
             winnings={winnings}
           />
-          <div className="spacer-200" />
+          <Denomination denom={this.state.denomination} />
           <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
         </div>
         <div className="button-wrap">
