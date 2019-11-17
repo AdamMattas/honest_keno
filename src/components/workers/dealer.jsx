@@ -155,6 +155,16 @@ export function deselectNumber(number, marked, kenoNumbers) {
   }
 }
 
+export function setDenomination(denom, options) {
+  if (!denom) return 0.25;
+  if (denom) {
+    let index = options.indexOf(denom);
+    if (index === 3) return options[0];
+    index++;
+    return options[index];
+  }
+}
+
 export default {
   generate,
   setNumberStatus,
@@ -166,5 +176,6 @@ export default {
   listNumbers,
   setQuickPick,
   selectNumber,
-  deselectNumber
+  deselectNumber,
+  setDenomination
 };

@@ -16,8 +16,8 @@ class Machine extends Component {
     hitNumbers: [],
     hit: "0",
     hits: [],
-    denomination: 25,
-    denomOption: [1, 5, 10, 25],
+    denomination: "",
+    denomOption: [0.01, 0.05, 0.1, 0.25],
     bet: 0,
     maxBet: 5,
     newBet: false,
@@ -33,9 +33,11 @@ class Machine extends Component {
   };
 
   componentDidMount() {
+    const { denomination, denomOption } = this.state;
     const numbers = dealer.listNumbers(1, 80);
     const kenoNumbers = dealer.createNumbers(numbers);
-    this.setState({ numbers, kenoNumbers });
+    const getDenom = dealer.setDenomination(denomination, denomOption);
+    this.setState({ numbers, kenoNumbers, denomination: getDenom });
   }
 
   componentDidUpdate() {
@@ -217,8 +219,26 @@ class Machine extends Component {
     }
   };
 
+  changeDenom = () => {
+    if (this.state.status === "ready") {
+      const { denomination, denomOption } = this.state;
+      const getDenom = dealer.setDenomination(denomination, denomOption);
+      this.setState({ denomination: getDenom });
+    }
+  };
+
   render() {
-    const { bet, marked, random, hit, hits, credit, winnings } = this.state;
+    const {
+      bet,
+      marked,
+      random,
+      hit,
+      hits,
+      kenoNumbers,
+      credit,
+      denomination,
+      winnings
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -232,8 +252,12 @@ class Machine extends Component {
             credit={credit}
             winnings={winnings}
           />
-          <Denomination denom={this.state.denomination} />
-          <SingleCard data={this.state.kenoNumbers} numSelect={this.numClick} />
+          <Denomination
+            credit={credit}
+            denom={denomination}
+            changeDenom={this.changeDenom}
+          />
+          <SingleCard data={kenoNumbers} numSelect={this.numClick} />
         </div>
         <div className="button-wrap">
           <Buttons
