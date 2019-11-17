@@ -239,6 +239,7 @@ class Machine extends Component {
 
   render() {
     const {
+      activePayLine,
       bet,
       marked,
       random,
@@ -256,7 +257,7 @@ class Machine extends Component {
         <div className="machine-wrap">
           <KenoBallRack random={random} hits={hits} />
           <Display
-            active={this.state.activePayLine}
+            active={activePayLine}
             bet={bet}
             marked={marked.length}
             hits={hit}

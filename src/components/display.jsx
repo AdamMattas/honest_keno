@@ -35,10 +35,6 @@ const Display = props => {
       <table className="table-bottom">
         <tbody>
           <tr>
-            <td className="text-left">CREDIT:</td>
-            <td className="text-right">{props.credit}</td>
-          </tr>
-          <tr>
             <td className="text-left">BET:</td>
             <td className="text-right">{props.bet}</td>
           </tr>
