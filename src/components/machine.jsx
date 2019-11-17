@@ -22,6 +22,7 @@ class Machine extends Component {
     maxBet: 5,
     newBet: false,
     credit: 30,
+    creditType: "dollar",
     addCredit: 100,
     winnings: 0,
     status: "ready",
@@ -227,6 +228,15 @@ class Machine extends Component {
     }
   };
 
+  toggleCredits = () => {
+    if (this.state.status === "ready") {
+      console.log("CLICKED!!!!!!!!!!!!!");
+      const creditType =
+        this.state.creditType === "dollar" ? "credit" : "dollar";
+      this.setState({ creditType });
+    }
+  };
+
   render() {
     const {
       bet,
@@ -236,6 +246,7 @@ class Machine extends Component {
       hits,
       kenoNumbers,
       credit,
+      creditType,
       denomination,
       winnings
     } = this.state;
@@ -255,7 +266,9 @@ class Machine extends Component {
           <Denomination
             credit={credit}
             denom={denomination}
+            type={creditType}
             changeDenom={this.changeDenom}
+            toggleCredits={this.toggleCredits}
           />
           <SingleCard data={kenoNumbers} numSelect={this.numClick} />
         </div>

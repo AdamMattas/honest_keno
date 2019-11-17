@@ -1,11 +1,13 @@
 import React from "react";
 
 const Credit = props => {
+  console.log("TYPE: ", props.type);
+  const equation = (props.credit * props.denom).toFixed(2);
+  const credit = props.type === "dollar" ? equation : props.credit;
   return (
-    <div>
-      {props.credit}
-      <div>{props.denom}</div>
-    </div>
+    <div onClick={props.toggle}>{`${
+      props.type === "dollar" ? "$" : ""
+    }${credit}`}</div>
   );
 };
 

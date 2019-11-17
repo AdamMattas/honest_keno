@@ -13,7 +13,12 @@ const Denomination = props => {
         {denom}
       </span>
       <span>&#65504;</span>
-      <Credit credit={props.credit} denom={props.denom} />
+      <Credit
+        credit={props.credit}
+        type={props.type}
+        denom={props.denom}
+        toggle={props.toggleCredits}
+      />
     </div>
   );
 };
