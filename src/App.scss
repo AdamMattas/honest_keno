@@ -270,12 +270,13 @@ th {
   height: 65px;
   margin: 50px auto 0;
   position: absolute;
-  left: -70px;
+  top: -220px;
+  left: 32.8%;
   border-radius: 50%;
   //border: 1px solid black;
   text-align: center;
-  transition: left 1.5s;
-  -webkit-transition: left 1.5s; /* Safari 3.1 to 6.0 */
+  transition: top 1.5s;
+  -webkit-transition: top 1.5s; /* Safari 3.1 to 6.0 */
   transition-timing-function: linear;
 }
 
@@ -463,61 +464,61 @@ th {
 }
 
 .ball-1 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0s * $delayExponent;
   -webkit-transition-delay: 0s * $delayExponent; /* Safari */
 }
 
 .ball-2 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.1s * $delayExponent;
   -webkit-transition-delay: 0.1s * $delayExponent; /* Safari */
 }
 
 .ball-3 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.2s * $delayExponent;
   -webkit-transition-delay: 0.2s * $delayExponent; /* Safari */
 }
 
 .ball-4 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.3s * $delayExponent;
   -webkit-transition-delay: 0.3s * $delayExponent; /* Safari */
 }
 
 .ball-5 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.4s * $delayExponent;
   -webkit-transition-delay: 0.4s * $delayExponent; /* Safari */
 }
 
 .ball-6 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.5s * $delayExponent;
   -webkit-transition-delay: 0.5s * $delayExponent; /* Safari */
 }
 
 .ball-7 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.6s * $delayExponent;
   -webkit-transition-delay: 0.6s * $delayExponent; /* Safari */
 }
 
 .ball-8 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.7s * $delayExponent;
   -webkit-transition-delay: 0.7s * $delayExponent; /* Safari */
 }
 
 .ball-9 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.8s * $delayExponent;
   -webkit-transition-delay: 0.8s * $delayExponent; /* Safari */
 }
 
 .ball-10 {
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
   transition-delay: 0.9s * $delayExponent;
   -webkit-transition-delay: 0.9s * $delayExponent; /* Safari */
 }
@@ -525,59 +526,59 @@ th {
 .ball-11 {
   transition-delay: 1s * $delayExponent;
   -webkit-transition-delay: 1s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-12 {
   transition-delay: 1.1s * $delayExponent;
   -webkit-transition-delay: 1.1s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-13 {
   transition-delay: 1.2s * $delayExponent;
   -webkit-transition-delay: 1.2s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-14 {
   transition-delay: 1.3s * $delayExponent;
   -webkit-transition-delay: 1.3s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-15 {
   transition-delay: 1.4s * $delayExponent;
   -webkit-transition-delay: 1.4s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-16 {
   transition-delay: 1.5s * $delayExponent;
   -webkit-transition-delay: 1.5s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-17 {
   transition-delay: 1.6s * $delayExponent;
   -webkit-transition-delay: 1.6s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-18 {
   transition-delay: 1.7s * $delayExponent;
   -webkit-transition-delay: 1.7s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-19 {
   transition-delay: 1.8s * $delayExponent;
   -webkit-transition-delay: 1.8s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }
 
 .ball-20 {
   transition-delay: 1.9s * $delayExponent;
   -webkit-transition-delay: 1.9s * $delayExponent; /* Safari */
-  left: calc(100% - 100px) !important;
+  top: calc(100% - 100px) !important;
 }

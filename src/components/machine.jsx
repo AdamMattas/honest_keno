@@ -254,8 +254,8 @@ class Machine extends Component {
 
     return (
       <React.Fragment>
+        <KenoBallRack random={random} hits={hits} />
         <div className="machine-wrap">
-          <KenoBallRack random={random} hits={hits} />
           <Display
             active={activePayLine}
             bet={bet}
@@ -268,7 +268,6 @@ class Machine extends Component {
             toggleCredits={this.toggleCredits}
           />
           <div className="spacer-200">HOLD</div>
-
           <SingleCard
             data={kenoNumbers}
             denom={denomination}
