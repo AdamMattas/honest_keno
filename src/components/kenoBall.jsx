@@ -29,7 +29,7 @@ class KenoBall extends Component {
 
     return (
       <span
-        className={`ball ${numType} ball-${this.state.index} ${this.props.status}`}
+        className={`ball ${numType} ball-${this.state.index} ${this.props.status} time-${this.state.index}`}
       >
         <span>{this.props.number}</span>
       </span>
