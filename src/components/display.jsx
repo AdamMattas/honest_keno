@@ -1,4 +1,5 @@
 import React from "react";
+import Credit from "./credit";
 import calculator from "./workers/calculator";
 
 const Display = props => {
@@ -9,7 +10,7 @@ const Display = props => {
       <table className="table-top">
         <tbody>
           <tr className="display-row-top">
-            <th className="text-left">HITS</th>
+            <th className="text-left">HIT</th>
             <th className="text-right">WIN</th>
           </tr>
 
@@ -38,10 +39,7 @@ const Display = props => {
             <td className="text-left">BET:</td>
             <td className="text-right">{props.bet}</td>
           </tr>
-          <tr>
-            <td className="text-left">MARKED:</td>
-            <td className="text-right">{props.marked}</td>
-          </tr>
+
           <tr>
             <td className="text-left">HIT:</td>
             <td className="text-right">{props.hits}</td>
@@ -52,6 +50,12 @@ const Display = props => {
           </tr>
         </tbody>
       </table>
+      <Credit
+        credit={props.credit}
+        type={props.type}
+        denom={props.denom}
+        toggle={props.toggleCredits}
+      />
     </div>
   );
 };

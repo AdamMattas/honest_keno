@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Denomination from "./denomination";
 
 class SingleCard extends Component {
   splitNumbers = () => {
@@ -42,6 +43,11 @@ class SingleCard extends Component {
             </span>
           ))}
         </div>
+
+        <Denomination
+          denom={this.props.denom}
+          changeDenom={this.props.changeDenom}
+        />
 
         <div className="number-box-container container-bottom">
           {split.bottom.map(item => (

@@ -262,16 +262,19 @@ class Machine extends Component {
             marked={marked.length}
             hits={hit}
             credit={credit}
-            winnings={winnings}
-          />
-          <Denomination
-            credit={credit}
             denom={denomination}
             type={creditType}
-            changeDenom={this.changeDenom}
+            winnings={winnings}
             toggleCredits={this.toggleCredits}
           />
-          <SingleCard data={kenoNumbers} numSelect={this.numClick} />
+          <div className="spacer-200">HOLD</div>
+
+          <SingleCard
+            data={kenoNumbers}
+            denom={denomination}
+            changeDenom={this.changeDenom}
+            numSelect={this.numClick}
+          />
         </div>
         <div className="button-wrap">
           <Buttons
