@@ -267,7 +267,7 @@ class Machine extends Component {
             winnings={winnings}
             toggleCredits={this.toggleCredits}
           />
-          <div className="spacer-200">HOLD</div>
+          <div className="spacer-200"></div>
           <SingleCard
             data={kenoNumbers}
             denom={denomination}

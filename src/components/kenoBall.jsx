@@ -25,8 +25,12 @@ class KenoBall extends Component {
     // const delay2 = setTimeout(() => {
     //   return this.props.index + 1;
     // }, 3000);
+    const numType = this.props.index % 2 ? "odd" : "even";
+
     return (
-      <div className={`ball ball-${this.state.index} ${this.props.status}`}>
+      <div
+        className={`ball ${numType} ball-${this.state.index} ${this.props.status}`}
+      >
         <span>{this.props.number}</span>
       </div>
     );
