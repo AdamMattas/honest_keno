@@ -276,18 +276,16 @@ class Machine extends Component {
             numSelect={this.numClick}
           />
         </div>
-        <div className="button-wrap">
-          <Buttons
-            betPlus={this.betPlus}
-            betMinus={this.betMinus}
-            betMax={this.betMax}
-            clear={this.clearSingleCard}
-            add={this.addCredit}
-            pick={this.quickPick}
-            deal={this.initDeal}
-            status={this.state.status}
-          />
-        </div>
+        <Buttons
+          betPlus={this.betPlus}
+          betMinus={this.betMinus}
+          betMax={this.betMax}
+          clear={this.clearSingleCard}
+          add={this.addCredit}
+          pick={this.quickPick}
+          deal={this.initDeal}
+          status={this.state.status}
+        />
       </React.Fragment>
     );
   }

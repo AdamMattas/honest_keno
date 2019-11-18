@@ -8,11 +8,11 @@ import "./App.scss";
 class App extends Component {
   render() {
     return (
-      <div>
+      <React.Fragment>
         <NavBar />
         <Background />
         <Machine />
-      </div>
+      </React.Fragment>
     );
   }
 }
