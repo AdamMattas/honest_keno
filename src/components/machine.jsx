@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Buttons from "./buttons";
-import Denomination from "./denomination";
 import Display from "./display";
 import SingleCard from "./singleCard";
 import KenoBallRack from "./kenoBallRack";
