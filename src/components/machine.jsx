@@ -75,7 +75,7 @@ class Machine extends Component {
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
       const credit = this.state.credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
-      //console.log("SET NUMBERS: ", setNumbers);
+      // console.log("SET NUMBERS: ", setNumbers);
       // this.setState({ kenoNumbers: setNumbers }, () => {
       //   this.deal(setNumbers, credit);
       // });
@@ -253,7 +253,6 @@ class Machine extends Component {
 
     return (
       <React.Fragment>
-        <KenoBallRack random={random} hits={hits} />
         <div className="machine-wrap">
           <Display
             active={activePayLine}
@@ -266,6 +265,8 @@ class Machine extends Component {
             winnings={winnings}
             toggleCredits={this.toggleCredits}
           />
+
+          <KenoBallRack random={random} hits={hits} />
           <div className="spacer-200"></div>
           <SingleCard
             data={kenoNumbers}
