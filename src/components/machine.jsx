@@ -11,6 +11,7 @@ class Machine extends Component {
     random: [],
     numbers: [],
     kenoNumbers: [],
+    kenoBallStatus: "",
     marked: [],
     hitNumbers: [],
     hit: "0",
@@ -79,7 +80,11 @@ class Machine extends Component {
       // this.setState({ kenoNumbers: setNumbers }, () => {
       //   this.deal(setNumbers, credit);
       // });
-      this.setState({ kenoNumbers: setNumbers, status: "running" });
+      this.setState({
+        kenoNumbers: setNumbers,
+        status: "running",
+        kenoBallStatus: "remove"
+      });
       setTimeout(() => {
         this.deal(setNumbers, credit);
       }, 100);
@@ -109,6 +114,7 @@ class Machine extends Component {
       activePayLine: null
     });
     this.payLine(randomHitOrder, marked.length, this.state.delayExponent);
+    this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
       this.setState({ status: "ready" });
     }, 1900 * this.state.delayExponent);
@@ -245,6 +251,7 @@ class Machine extends Component {
       hit,
       hits,
       kenoNumbers,
+      kenoBallStatus,
       credit,
       creditType,
       denomination,
@@ -266,7 +273,7 @@ class Machine extends Component {
             toggleCredits={this.toggleCredits}
           />
 
-          <KenoBallRack random={random} hits={hits} />
+          <KenoBallRack status={kenoBallStatus} random={random} hits={hits} />
           <div className="spacer-200"></div>
           <SingleCard
             data={kenoNumbers}

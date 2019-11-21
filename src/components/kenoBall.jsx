@@ -1,3 +1,6 @@
+//import ReactCSSTransitionGroup from "react-addons-css-transition-group";
+//import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
+import { CSSTransitionGroup } from "react-transition-group";
 import React, { Component } from "react";
 
 class KenoBall extends Component {
@@ -14,10 +17,8 @@ class KenoBall extends Component {
     }, 0);
   }
 
-  componentDidUpdate() {
-    //console.log("UPDATE", this.state.index);
-    // const index = this.props.index + 1;
-    // if (index !== this.state.index) this.setState({ index });
+  componentWillUnmount() {
+    console.log("KENO BALL UNMOUNTING!");
   }
 
   render() {
@@ -26,6 +27,11 @@ class KenoBall extends Component {
     //   return this.props.index + 1;
     // }, 3000);
     const numType = this.props.index % 2 ? "even" : "odd";
+
+    // const add = `ball add ${numType} ball-${this.state.index} ${this.props.status} time-${this.state.index}`;
+    // const remove = `ball remove ${numType} ball-${this.state.index} ${this.props.status} time-${this.state.index}`;
+
+    // const component = this.props.compStatus === "add" ? add : remove;
 
     return (
       <span

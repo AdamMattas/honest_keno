@@ -1,5 +1,6 @@
 import React from "react";
 import KenoBall from "./kenoBall";
+import { CSSTransitionGroup } from "react-transition-group";
 
 const KenoBallRack = props => {
   console.log("Props Random: ", props.random);
@@ -19,10 +20,15 @@ const KenoBallRack = props => {
     }
   }
 
-  if (props.random !== undefined) {
+  if (props.random !== undefined && props.status !== "remove") {
     const kenoBalls = balls.map((ball, index) => (
       //number.number < 41 ? section.top.push(number) : section.bottom.push(number)
-      <KenoBall number={ball.number} status={ball.status} index={index} />
+      <KenoBall
+        number={ball.number}
+        status={ball.status}
+        index={index}
+        compStatus={props.status}
+      />
     ));
 
     return kenoBalls;
