@@ -988,3 +988,12 @@ th {
     top: 0%;
   }
 }
+
+.fade-trans {
+  opacity: 0;
+}
+
+.fade-out {
+  transition: opacity 0.5s * $delayExponent;
+  transition-timing-function: linear;
+}
