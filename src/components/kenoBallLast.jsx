@@ -4,11 +4,8 @@ class KenoBall extends Component {
   state = { index: null };
 
   componentDidMount() {
-    // const index = 0;
-    // this.setState({ index });
     console.log("KENOBALL PROPS", this.props);
     const index = this.props.index + 1;
-    //this.setState({ index });
     setTimeout(() => {
       this.setState({ index });
     }, 0);
@@ -19,10 +16,6 @@ class KenoBall extends Component {
   }
 
   render() {
-    //console.log("RANDOM: ", this.props);
-    // const delay2 = setTimeout(() => {
-    //   return this.props.index + 1;
-    // }, 3000);
     console.log("REMOVE STATUS: ", this.props.status);
     const numType = this.props.index % 2 ? "even-last" : "odd-last";
     const remove = this.props.fade ? "fade-trans fade-out" : "";
