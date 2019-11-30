@@ -541,42 +541,40 @@ th {
 // }
 
 .ball {
-  //display: inline-block;
   width: 55px;
   height: 55px;
-  //margin: 50px auto 0;
   position: absolute;
-
   top: $topPix;
   border-radius: 50%;
-  //border: 1px solid black;
   text-align: center;
+}
 
-  // transition: top 0.75s;
-  // -webkit-transition: top 0.75s; /* Safari 3.1 to 6.0 */
-  // transition-timing-function: linear;
+.last-ball {
+  width: 55px;
+  height: 55px;
+  position: absolute;
+  border-radius: 50%;
+  text-align: center;
 }
 
 .even {
   left: -140px;
-  // animation-name: keno-ball-even;
-  // animation-duration: 1s;
-  // animation-timing-function: linear;
-  // animation-fill-mode: forwards;
-
   transition: left 0.5s * $delayExponent;
   transition-timing-function: linear;
 }
 
+.even-last {
+  left: $leftPercent;
+}
+
 .odd {
   right: -125px;
-  // animation-name: keno-ball-odd;
-  // animation-duration: 1s;
-  // animation-timing-function: linear;
-  // animation-fill-mode: forwards;
-
   transition: right 0.5s * $delayExponent;
   transition-timing-function: linear;
+}
+
+.odd-last {
+  right: $rightPercent;
 }
 
 .ball-green {
@@ -599,6 +597,7 @@ th {
   );
 }
 
+.last-ball > span,
 .ball > span {
   display: inline-block;
   color: white;
@@ -609,121 +608,110 @@ th {
 }
 
 .ball-1 {
-  //top: calc(90% - 49px) !important;
-
   animation-name: keno-ball-down-1;
   animation-duration: 0.5s * $delayExponent;
   animation-timing-function: linear;
   animation-delay: 0.5s * $delayExponent;
   -webkit-animation-delay: 0.5s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   right: $rightPercent;
 }
 
 .ball-2 {
-  //top: calc(90% - 49px) !important;
-
   animation-name: keno-ball-down-1;
   animation-duration: 0.5s * $delayExponent;
   animation-timing-function: linear;
   animation-delay: 0.6s * $delayExponent;
   -webkit-animation-delay: 0.6s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.1s * $delayExponent;
-
   left: $leftPercent;
+}
+
+.last-ball-1,
+.last-ball-2 {
+  top: 90%;
 }
 
 @keyframes keno-ball-down-1 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 90%;
   }
 }
 
 .ball-3 {
-  //top: calc(80% - 49px) !important;
   animation-name: keno-ball-down-2;
   animation-duration: 0.45s * $delayExponent;
   animation-timing-function: linear;
   animation-delay: 0.7s * $delayExponent;
   -webkit-animation-delay: 0.7s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.2s * $delayExponent;
-
   right: $rightPercent;
 }
 
 .ball-4 {
-  //top: calc(80% - 49px) !important;
   animation-name: keno-ball-down-2;
   animation-duration: 0.45s * $delayExponent;
   animation-timing-function: linear;
   animation-delay: 0.8s * $delayExponent;
   -webkit-animation-delay: 0.8s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.3s * $delayExponent;
-
   left: $leftPercent;
+}
+
+.last-ball-3,
+.last-ball-4 {
+  top: 80%;
 }
 
 @keyframes keno-ball-down-2 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 80%;
   }
 }
 
 .ball-5 {
-  //top: calc(70% - 49px) !important;
   animation-name: keno-ball-down-3;
   animation-duration: 0.4s * $delayExponent;
   animation-timing-function: linear;
   animation-delay: 0.9s * $delayExponent;
   -webkit-animation-delay: 0.9s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.4s * $delayExponent;
   right: $rightPercent;
 }
 
 .ball-6 {
-  //top: calc(70% - 49px) !important;
   animation-name: keno-ball-down-3;
   animation-duration: 0.4s * $delayExponent;
   animation-timing-function: linear;
   animation-delay: 1s * $delayExponent;
   -webkit-animation-delay: 1s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.5s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-5,
+.last-ball-6 {
+  top: 70%;
 }
 
 @keyframes keno-ball-down-3 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 70%;
   }
@@ -736,7 +724,6 @@ th {
   animation-delay: 1.1s * $delayExponent;
   -webkit-animation-delay: 1.1s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.6s * $delayExponent;
   right: $rightPercent;
 }
@@ -748,19 +735,20 @@ th {
   animation-delay: 1.2s * $delayExponent;
   -webkit-animation-delay: 1.2s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.7s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-7,
+.last-ball-8 {
+  top: 60%;
 }
 
 @keyframes keno-ball-down-4 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 60%;
   }
@@ -773,7 +761,6 @@ th {
   animation-delay: 1.3s * $delayExponent;
   -webkit-animation-delay: 1.3s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.8s * $delayExponent;
   right: $rightPercent;
 }
@@ -785,19 +772,20 @@ th {
   animation-delay: 1.4s * $delayExponent;
   -webkit-animation-delay: 1.4s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 0.9s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-9,
+.last-ball-10 {
+  top: 50%;
 }
 
 @keyframes keno-ball-down-5 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 50%;
   }
@@ -810,10 +798,8 @@ th {
   animation-delay: 1.5s * $delayExponent;
   -webkit-animation-delay: 1.5s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1s * $delayExponent;
   right: $rightPercent;
-  //top: calc(40% - 49px) !important;
 }
 
 .ball-12 {
@@ -823,19 +809,20 @@ th {
   animation-delay: 1.6s * $delayExponent;
   -webkit-animation-delay: 1.6s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.1s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-11,
+.last-ball-12 {
+  top: 40%;
 }
 
 @keyframes keno-ball-down-6 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 40%;
   }
@@ -848,7 +835,6 @@ th {
   animation-delay: 1.7s * $delayExponent;
   -webkit-animation-delay: 1.7s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.2s * $delayExponent;
   right: $rightPercent;
 }
@@ -860,19 +846,20 @@ th {
   animation-delay: 1.8s * $delayExponent;
   -webkit-animation-delay: 1.8s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.3s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-13,
+.last-ball-14 {
+  top: 30%;
 }
 
 @keyframes keno-ball-down-7 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 30%;
   }
@@ -885,7 +872,6 @@ th {
   animation-delay: 1.9s * $delayExponent;
   -webkit-animation-delay: 1.9s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.4s * $delayExponent;
   right: $rightPercent;
 }
@@ -897,19 +883,20 @@ th {
   animation-delay: 2s * $delayExponent;
   -webkit-animation-delay: 2s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.5s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-15,
+.last-ball-16 {
+  top: 20%;
 }
 
 @keyframes keno-ball-down-8 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 20%;
   }
@@ -922,7 +909,6 @@ th {
   animation-delay: 2.1s * $delayExponent;
   -webkit-animation-delay: 2.1s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.6s * $delayExponent;
   right: $rightPercent;
 }
@@ -934,19 +920,20 @@ th {
   animation-delay: 2.2s * $delayExponent;
   -webkit-animation-delay: 2.2s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.7s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-17,
+.last-ball-18 {
+  top: 10%;
 }
 
 @keyframes keno-ball-down-9 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 10%;
   }
@@ -959,7 +946,6 @@ th {
   animation-delay: 2.3s * $delayExponent;
   -webkit-animation-delay: 2.3s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.8s * $delayExponent;
   right: $rightPercent;
 }
@@ -971,19 +957,20 @@ th {
   animation-delay: 2.4s * $delayExponent;
   -webkit-animation-delay: 2.4s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
-
   transition-delay: 1.9s * $delayExponent;
   left: $leftPercent;
+}
+
+.last-ball-19,
+.last-ball-20 {
+  top: 0%;
 }
 
 @keyframes keno-ball-down-10 {
   0% {
     top: $topPix;
   }
-  // 50% {
-  //   top: 50px;
-  //   right: 70%;
-  // }
+
   100% {
     top: 0%;
   }

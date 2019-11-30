@@ -3,19 +3,25 @@ import Buttons from "./buttons";
 import Display from "./display";
 import SingleCard from "./singleCard";
 import KenoBallRack from "./kenoBallRack";
+import KenoBallRackLast from "./kenoBallRackLast";
 import calculator from "./workers/calculator";
 import dealer from "./workers/dealer";
 
 class Machine extends Component {
   state = {
     random: [],
+    randomLast: [],
     numbers: [],
     kenoNumbers: [],
+    kenoNumbersLast: [],
     kenoBallStatus: "",
+    kenoBallExit: false,
     marked: [],
+    firstPlay: true,
     hitNumbers: [],
     hit: "0",
     hits: [],
+    hitsLast: [],
     denomination: "",
     denomOption: [0.01, 0.05, 0.1, 0.25],
     bet: 0,
@@ -68,7 +74,6 @@ class Machine extends Component {
   initDeal = () => {
     const { status, bet, lastBet, credit, marked } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
-    //console.log("1st KENO NUMBERS: ", kenoNumbers);
     if (lastBet > credit) {
       //console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
@@ -76,7 +81,6 @@ class Machine extends Component {
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
       const credit = this.state.credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
-      // console.log("SET NUMBERS: ", setNumbers);
       // this.setState({ kenoNumbers: setNumbers }, () => {
       //   this.deal(setNumbers, credit);
       // });
@@ -92,7 +96,6 @@ class Machine extends Component {
   };
 
   deal = (numbers, credit) => {
-    //console.log("NUMBERS DEAL FUNCTION: ", numbers);
     const { marked, bet } = this.state;
     const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random, marked);
@@ -102,6 +105,7 @@ class Machine extends Component {
     const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
     this.setState({
       kenoNumbers,
+      kenoBallExit: true,
       random,
       winnings,
       credit,
@@ -113,11 +117,21 @@ class Machine extends Component {
       randomHitOrder,
       activePayLine: null
     });
+    if (this.state.firstPlay) this.firstPlay();
     this.payLine(randomHitOrder, marked.length, this.state.delayExponent);
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
-      this.setState({ status: "ready" });
-    }, 1900 * this.state.delayExponent);
+      this.setState({
+        status: "ready",
+        kenoBallExit: false,
+        randomLast: this.state.random,
+        hitsLast: this.state.hits
+      });
+    }, 2500 * this.state.delayExponent);
+  };
+
+  firstPlay = () => {
+    this.setState({ firstPlay: false });
   };
 
   payLine = (order, marked, delay) => {
@@ -248,10 +262,13 @@ class Machine extends Component {
       bet,
       marked,
       random,
+      randomLast,
       hit,
       hits,
+      hitsLast,
       kenoNumbers,
       kenoBallStatus,
+      kenoBallExit,
       credit,
       creditType,
       denomination,
@@ -273,6 +290,11 @@ class Machine extends Component {
             toggleCredits={this.toggleCredits}
           />
 
+          <KenoBallRackLast
+            fade={kenoBallExit}
+            random={randomLast}
+            hits={hitsLast}
+          />
           <KenoBallRack status={kenoBallStatus} random={random} hits={hits} />
           <div className="spacer-200"></div>
           <SingleCard

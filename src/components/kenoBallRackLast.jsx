@@ -1,7 +1,7 @@
 import React from "react";
-import KenoBall from "./kenoBall";
+import KenoBallLast from "./kenoBallLast";
 
-const KenoBallRack = props => {
+const KenoBallRackLast = props => {
   console.log("Props Random: ", props.random);
   console.log("Props Hits: ", props.hits);
   const balls = [];
@@ -19,12 +19,13 @@ const KenoBallRack = props => {
     }
   }
 
-  if (props.random !== undefined && props.status !== "remove") {
+  if (props.random !== undefined) {
     const kenoBalls = balls.map((ball, index) => (
       //number.number < 41 ? section.top.push(number) : section.bottom.push(number)
-      <KenoBall
+      <KenoBallLast
         number={ball.number}
         status={ball.status}
+        fade={props.fade}
         index={index}
         compStatus={props.status}
       />
@@ -36,4 +37,4 @@ const KenoBallRack = props => {
   return null;
 };
 
-export default KenoBallRack;
+export default KenoBallRackLast;
