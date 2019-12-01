@@ -420,132 +420,12 @@ th {
   -webkit-transition-delay: 1.9s * $delayExponent; /* Safari */
 }
 
-// .time-1 {
-//   transition: top 0.6s;
-//   -webkit-transition: top 0.6s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-2 {
-//   transition: top 0.6s;
-//   -webkit-transition: top 0.6s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-3 {
-//   transition: top 0.59s;
-//   -webkit-transition: top 0.59s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-4 {
-//   transition: top 0.59s;
-//   -webkit-transition: top 0.59s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-5 {
-//   transition: top 0.58s;
-//   -webkit-transition: top 0.58s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-6 {
-//   transition: top 0.58s;
-//   -webkit-transition: top 0.58s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-7 {
-//   transition: top 0.57s;
-//   -webkit-transition: top 0.57s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-8 {
-//   transition: top 0.57s;
-//   -webkit-transition: top 0.57s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-9 {
-//   transition: top 0.56s;
-//   -webkit-transition: top 0.56s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-10 {
-//   transition: top 0.56s;
-//   -webkit-transition: top 0.56s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-11 {
-//   transition: top 0.55s;
-//   -webkit-transition: top 0.55s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-12 {
-//   transition: top 0.55s;
-//   -webkit-transition: top 0.55s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-13 {
-//   transition: top 0.54s;
-//   -webkit-transition: top 0.54s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-14 {
-//   transition: top 0.54s;
-//   -webkit-transition: top 0.54s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-15 {
-//   transition: top 0.53s;
-//   -webkit-transition: top 0.53s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-16 {
-//   transition: top 0.53s;
-//   -webkit-transition: top 0.53s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-17 {
-//   transition: top 0.52s;
-//   -webkit-transition: top 0.52s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-18 {
-//   transition: top 0.52s;
-//   -webkit-transition: top 0.52s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-19 {
-//   transition: top 0.51s;
-//   -webkit-transition: top 0.51s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
-// .time-20 {
-//   transition: top 0.51s;
-//   -webkit-transition: top 0.51s; /* Safari 3.1 to 6.0 */
-//   transition-timing-function: linear;
-// }
-
 .ball {
   width: 55px;
   height: 55px;
   position: absolute;
   top: $topPix;
-  border-radius: 50%;
+  //border-radius: 50%;
   text-align: center;
 }
 
@@ -578,23 +458,33 @@ th {
 }
 
 .ball-green {
-  background: radial-gradient(
-    circle at 65% 15%,
-    white 1px,
-    #e3fee7 10%,
-    #02550f 80%,
-    #e3fee7 100%
-  );
+  // background: radial-gradient(
+  //   circle at 65% 15%,
+  //   white 1px,
+  //   #e3fee7 10%,
+  //   #02550f 80%,
+  //   #e3fee7 100%
+  // );
+  background: $greenBall;
+  border-radius: 50%;
+  background: -webkit-radial-gradient(circle at 20px 20px, $greenBall, $black);
+  background: -moz-radial-gradient(circle at 20px 20px, $greenBall, $black);
+  background: radial-gradient(circle at 20px 20px, $greenBall, $black);
 }
 
 .ball-red {
-  background: radial-gradient(
-    circle at 65% 15%,
-    white 1px,
-    #fddddf 10%,
-    #ac2c34 80%,
-    #fddddf 100%
-  );
+  // background: radial-gradient(
+  //   circle at 65% 15%,
+  //   white 1px,
+  //   #fddddf 10%,
+  //   #ac2c34 80%,
+  //   #fddddf 100%
+  // );
+  background: $redBall;
+  border-radius: 50%;
+  background: -webkit-radial-gradient(circle at 20px 20px, $redBall, $black);
+  background: -moz-radial-gradient(circle at 20px 20px, $redBall, $black);
+  background: radial-gradient(circle at 20px 20px, $redBall, $black);
 }
 
 .last-ball > span,
