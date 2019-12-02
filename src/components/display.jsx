@@ -36,8 +36,8 @@ const Display = props => {
       </table>
       <table className="table-bottom">
         <tbody>
-          <tr>
-            <td className="text-left">BET:</td>
+          <tr className="bet-line">
+            <td className="text-left">BET</td>
             <td className="text-right">{props.bet}</td>
           </tr>
         </tbody>
