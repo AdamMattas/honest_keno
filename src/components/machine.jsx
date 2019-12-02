@@ -61,15 +61,30 @@ class Machine extends Component {
   };
 
   selectNumber = number => {
+    this.softInit();
     const { marked, kenoNumbers } = this.state;
     const returnSelected = dealer.selectNumber(number, marked, kenoNumbers);
     this.setState({ returnSelected });
   };
 
   deselectNumber = number => {
+    this.softInit();
     const { marked, kenoNumbers } = this.state;
     const returnDeselected = dealer.deselectNumber(number, marked, kenoNumbers);
     this.setState({ returnDeselected });
+  };
+
+  softInit = () => {
+    const status = this.state.status;
+    const kenoNumbers = [...this.state.kenoNumbers];
+
+    if (status === "ready") {
+      const setNumbers = dealer.setNumberDeal(kenoNumbers);
+
+      this.setState({
+        kenoNumbers: setNumbers
+      });
+    }
   };
 
   initDeal = () => {
