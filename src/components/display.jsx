@@ -21,7 +21,12 @@ const Display = props => {
               const payProduct = props.bet ? props.bet : 1;
               const divId = payTable.indexOf(pays) + 1;
               return (
-                <tr className={props.active === divId ? "pay" : ""} id={divId}>
+                <tr
+                  className={
+                    props.active === divId ? "pay-line pay" : "pay-line"
+                  }
+                  id={divId}
+                >
                   <td className="text-left pay-text">
                     {payTable.indexOf(pays) + 1}
                   </td>
@@ -36,7 +41,7 @@ const Display = props => {
       </table>
       <table className="table-bottom">
         <tbody>
-          <tr className="bet-line">
+          <tr>
             <td className="text-left">BET</td>
             <td className="text-right">{props.bet}</td>
           </tr>
