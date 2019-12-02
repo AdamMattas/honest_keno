@@ -22,6 +22,7 @@ class Machine extends Component {
     hit: "0",
     hits: [],
     hitsLast: [],
+    hitDelayed: "",
     denomination: "",
     denomOption: [0.01, 0.05, 0.1, 0.25],
     bet: 0,
@@ -86,6 +87,7 @@ class Machine extends Component {
       // });
       this.setState({
         kenoNumbers: setNumbers,
+        hitDelayed: "",
         status: "running",
         kenoBallStatus: "remove"
       });
@@ -119,6 +121,7 @@ class Machine extends Component {
     });
     if (this.state.firstPlay) this.firstPlay();
     this.payLine(randomHitOrder, marked.length, this.state.delayExponent);
+    this.hitTiming(randomHitOrder);
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
       this.setState({
@@ -159,6 +162,24 @@ class Machine extends Component {
   setPayLine = (divId, delay) => {
     setTimeout(() => {
       this.setState({ activePayLine: divId });
+    }, delay * this.state.delayExponent);
+  };
+
+  hitTiming = order => {
+    let hit = 0;
+    order.forEach(num => {
+      //console.log("HIT TIMING ORDER: ", order);
+      num.delay = dealer.payDelay()[num.index];
+      //console.log("HIT TIMING: ", num);
+      hit++;
+      this.setHit(hit, num.delay);
+    });
+  };
+
+  setHit = (hit, delay) => {
+    setTimeout(() => {
+      this.setState({ hitDelayed: hit });
+      console.log("HIT DELAYED: ", this.state.hitDelayed);
     }, delay * this.state.delayExponent);
   };
 
@@ -266,6 +287,7 @@ class Machine extends Component {
       hit,
       hits,
       hitsLast,
+      hitDelayed,
       kenoNumbers,
       kenoBallStatus,
       kenoBallExit,
@@ -283,6 +305,7 @@ class Machine extends Component {
             bet={bet}
             marked={marked.length}
             hits={hit}
+            hitDelayed={hitDelayed}
             credit={credit}
             denom={denomination}
             type={creditType}

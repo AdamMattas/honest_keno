@@ -4,13 +4,14 @@ import calculator from "./workers/calculator";
 
 const Display = props => {
   const payTable = calculator.payTable(props.marked);
+  const hitDelay = props.hitDelayed ? ` ${props.hitDelayed}` : "";
 
   return (
     <div className="display-wrap">
       <table className="table-top">
         <tbody>
           <tr className="display-row-top">
-            <th className="text-left">HIT</th>
+            <th className="text-left">HIT {hitDelay}</th>
             <th className="text-right">WIN</th>
           </tr>
 
@@ -38,15 +39,6 @@ const Display = props => {
           <tr>
             <td className="text-left">BET:</td>
             <td className="text-right">{props.bet}</td>
-          </tr>
-
-          <tr>
-            <td className="text-left">HIT:</td>
-            <td className="text-right">{props.hits}</td>
-          </tr>
-          <tr>
-            <td className="text-left">WON:</td>
-            <td className="text-right">{props.winnings}</td>
           </tr>
         </tbody>
       </table>

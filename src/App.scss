@@ -128,6 +128,7 @@ tbody {
   width: 100%;
   // min-height: 350px;
   padding: 0;
+  //box-sizing: border-box;
 }
 
 .pay-line-win {
@@ -170,11 +171,13 @@ th {
 }
 
 .pay {
-  background-color: $green;
+  background-color: $white;
+  //border-top: 2px solid black;
+  //border-bottom: 2px solid black;
 }
 
 .pay > td {
-  color: $white;
+  color: $green;
 }
 
 .number-box-wrap {
@@ -205,6 +208,7 @@ th {
   // margin-right: -0.3em;
   // position: absolute;
   // bottom: 0px;
+  text-shadow: 2px 2px 5px white, -2px -2px 5px white;
 }
 
 .denomination + span {
@@ -213,7 +217,10 @@ th {
 }
 
 .credit-text {
+  background-color: $green;
+  color: $white;
   font-size: 36px;
+  //text-shadow: 2px 2px 5px $black, -2px -2px 5px $black;
   border: 2px solid $black;
   text-align: center;
   position: absolute;
