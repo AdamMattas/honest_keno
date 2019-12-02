@@ -27,7 +27,7 @@ class Machine extends Component {
     denomOption: [0.01, 0.05, 0.1, 0.25],
     bet: 0,
     maxBet: 5,
-    newBet: false,
+    newBet: true,
     credit: 30,
     creditType: "dollar",
     addCredit: 100,
@@ -95,12 +95,14 @@ class Machine extends Component {
     }
 
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
-      const credit = this.state.credit - bet;
+      let credit = this.state.credit;
+      credit = credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
       // this.setState({ kenoNumbers: setNumbers }, () => {
       //   this.deal(setNumbers, credit);
       // });
       this.setState({
+        credit,
         kenoNumbers: setNumbers,
         hitDelayed: "",
         status: "running",
@@ -125,7 +127,6 @@ class Machine extends Component {
       kenoBallExit: true,
       random,
       winnings,
-      credit,
       hit: hits.length,
       hits,
       newBet: false,
@@ -141,6 +142,7 @@ class Machine extends Component {
     setTimeout(() => {
       this.setState({
         status: "ready",
+        credit,
         kenoBallExit: false,
         randomLast: this.state.random,
         hitsLast: this.state.hits
@@ -221,46 +223,48 @@ class Machine extends Component {
   addCredit = () => {
     const credit = this.state.addCredit;
     if (this.state.credit < credit) {
+      this.clearBet();
       this.setState({ credit });
     }
   };
 
   betPlus = () => {
-    let credit = this.state.credit;
+    //let credit = this.state.credit;
     let bet = this.state.bet;
-    if (credit > 0 && bet < 5) {
-      credit--;
+    if (bet < 5) {
+      //credit--;
       bet++;
-      this.setState({ credit, bet, newBet: true });
+      this.setState({ bet, newBet: true });
     }
   };
 
   betMinus = () => {
-    let credit = this.state.credit;
+    //let credit = this.state.credit;
     let bet = this.state.bet;
     if (bet > 0) {
-      credit++;
+      //credit++;
       bet--;
-      this.setState({ credit, bet, newBet: true });
+      this.setState({ bet, newBet: true });
     }
   };
 
   betMax = () => {
-    const maxBet = this.state.maxBet;
-    let credit = this.state.credit;
-    let bet = this.state.bet;
-    let betDiff = maxBet - bet;
-    if (betDiff > 0 && credit >= betDiff) {
-      credit -= betDiff;
-      bet += betDiff;
-      this.setState({ credit, bet, newBet: true });
-    }
+    // const maxBet = this.state.maxBet;
+    // let credit = this.state.credit;
+    // let bet = this.state.bet;
+    // let betDiff = maxBet - bet;
+    // if (betDiff > 0 && credit >= betDiff) {
+    //   credit -= betDiff;
+    //   bet += betDiff;
+    //   this.setState({ credit, bet, newBet: true });
+    // }
 
-    if (credit < betDiff) {
-      bet = bet + credit;
-      credit = 0;
-      this.setState({ bet, credit, newBet: true });
-    }
+    // if (credit < betDiff) {
+    //   bet = bet + credit;
+    //   credit = 0;
+    //   this.setState({ bet, credit, newBet: true });
+    // }
+    this.setState({ bet: this.state.maxBet });
   };
 
   quickPick = () => {
