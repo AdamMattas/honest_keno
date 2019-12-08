@@ -77,31 +77,37 @@ export function randomHitOrder(random, hits) {
   return hitOrder;
 }
 
-export function payDelay(order, marked) {
-  const delay = [
-    0,
-    100,
-    200,
-    300,
-    400,
-    500,
-    600,
-    700,
-    800,
-    900,
-    1000,
-    1100,
-    1200,
-    1300,
-    1400,
-    1500,
-    1600,
-    1700,
-    1800,
-    1900
-  ];
-  // console.log("PAY LINE! ", order);
-  // console.log("PAY LINE MARKED! ", marked);
+export function payDelay() {
+  // const delay = [
+  //   0,
+  //   100,
+  //   200,
+  //   300,
+  //   400,
+  //   500,
+  //   600,
+  //   700,
+  //   800,
+  //   900,
+  //   1000,
+  //   1100,
+  //   1200,
+  //   1300,
+  //   1400,
+  //   1500,
+  //   1600,
+  //   1700,
+  //   1800,
+  //   1900
+  // ];
+  const delay = [];
+
+  for (let i = 100; i <= 1900; i += 100) {
+    delay.push(i);
+  }
+
+  console.log("DELAY ARRAY COMPILED: ", delay);
+
   return delay;
 }
 
