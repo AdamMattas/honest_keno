@@ -6,6 +6,7 @@ import KenoBallRack from "./kenoBallRack";
 import KenoBallRackLast from "./kenoBallRackLast";
 import calculator from "./workers/calculator";
 import dealer from "./workers/dealer";
+import ding from "../public/ding_01.mp3";
 
 class Machine extends Component {
   state = {
@@ -122,6 +123,7 @@ class Machine extends Component {
     credit = credit + winnings;
     const randomHitOrder = dealer.randomHitOrder(random, hits);
     const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
+    this.playSound();
     this.setState({
       kenoNumbers,
       kenoBallExit: true,
@@ -148,6 +150,28 @@ class Machine extends Component {
         hitsLast: this.state.hits
       });
     }, 2500 * this.state.delayExponent);
+  };
+
+  playSound = () => {
+    function sound(src) {
+      this.sound = document.createElement("audio");
+      this.sound.src = src;
+      this.sound.setAttribute("preload", "auto");
+      this.sound.setAttribute("controls", "none");
+      this.sound.style.display = "none";
+      document.body.appendChild(this.sound);
+      this.play = function() {
+        this.sound.play();
+        //console.log("PLAY!!!!!!!!", ding);
+      };
+      this.stop = function() {
+        this.sound.pause();
+      };
+    }
+
+    const dingSound = new sound(ding);
+
+    dingSound.play();
   };
 
   firstPlay = () => {
