@@ -47,6 +47,7 @@ class Machine extends Component {
     const numbers = dealer.listNumbers(1, 80);
     const kenoNumbers = dealer.createNumbers(numbers);
     const getDenom = dealer.setDenomination(denomination, denomOption);
+    // sounds.createSounds(this.state.volume);
     this.setState({ numbers, kenoNumbers, denomination: getDenom });
   }
 
@@ -117,14 +118,14 @@ class Machine extends Component {
   };
 
   deal = (numbers, credit) => {
-    const { marked, bet } = this.state;
+    const { marked, bet, volume, delayExponent } = this.state;
     const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random, marked);
     const winnings = calculator.calculateWinnings(hits, marked, bet);
     credit = credit + winnings;
     const randomHitOrder = dealer.randomHitOrder(random, hits);
     const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
-    sounds.playSound(this.state.volume);
+    sounds.playSounds(volume, random, hits, delayExponent);
     this.setState({
       kenoNumbers,
       kenoBallExit: true,
@@ -139,7 +140,7 @@ class Machine extends Component {
       activePayLine: null
     });
     if (this.state.firstPlay) this.firstPlay();
-    this.payLine(randomHitOrder, marked.length, this.state.delayExponent);
+    this.payLine(randomHitOrder, marked.length, delayExponent);
     this.hitTiming(randomHitOrder);
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
@@ -150,7 +151,7 @@ class Machine extends Component {
         randomLast: this.state.random,
         hitsLast: this.state.hits
       });
-    }, 2500 * this.state.delayExponent);
+    }, 2500 * delayExponent);
   };
 
   firstPlay = () => {
@@ -158,11 +159,11 @@ class Machine extends Component {
   };
 
   payLine = (order, marked, delay) => {
-    console.log("PAY LINE! ", order); // [{obj}]
-    console.log("PAY LINE MARKED! ", marked);
-    console.log("PAY LINE DELAY! ", delay);
+    //console.log("PAY LINE! ", order); // [{obj}]
+    //console.log("PAY LINE MARKED! ", marked);
+    //console.log("PAY LINE DELAY! ", delay);
     const payArray = calculator.payTable(marked);
-    console.log("PAY LINE FROM TABLE! ", payArray);
+    //console.log("PAY LINE FROM TABLE! ", payArray);
     order.forEach(num => {
       const payIndex = order.indexOf(num);
       if (payArray[payIndex] > 0) {
@@ -173,9 +174,9 @@ class Machine extends Component {
       } else {
         num.pay = false;
       }
-      console.log("PAY LINE INDEX!", payIndex);
+      //console.log("PAY LINE INDEX!", payIndex);
 
-      console.log("PAY LINE NUM!", order);
+      //console.log("PAY LINE NUM!", order);
     });
   };
 
@@ -199,7 +200,7 @@ class Machine extends Component {
   setHit = (hit, delay) => {
     setTimeout(() => {
       this.setState({ hitDelayed: hit });
-      console.log("HIT DELAYED: ", this.state.hitDelayed);
+      //console.log("HIT DELAYED: ", this.state.hitDelayed);
     }, delay * this.state.delayExponent);
   };
 
@@ -292,7 +293,6 @@ class Machine extends Component {
 
   toggleCredits = () => {
     if (this.state.status === "ready") {
-      console.log("CLICKED!!!!!!!!!!!!!");
       const creditType =
         this.state.creditType === "dollar" ? "credit" : "dollar";
       this.setState({ creditType });

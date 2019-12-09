@@ -4,7 +4,7 @@ class KenoBall extends Component {
   state = { index: null };
 
   componentDidMount() {
-    console.log("KENOBALL PROPS", this.props);
+    //console.log("KENOBALL PROPS", this.props);
     const index = this.props.index + 1;
     setTimeout(() => {
       this.setState({ index });
@@ -12,11 +12,11 @@ class KenoBall extends Component {
   }
 
   componentWillUnmount() {
-    console.log("KENO BALL UNMOUNTING!");
+    //console.log("KENO BALL UNMOUNTING!");
   }
 
   render() {
-    console.log("REMOVE STATUS: ", this.props.status);
+    //console.log("REMOVE STATUS: ", this.props.status);
     const numType = this.props.index % 2 ? "even-last" : "odd-last";
     const remove = this.props.fade ? "fade-trans fade-out" : "";
 

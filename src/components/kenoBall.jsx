@@ -6,7 +6,7 @@ class KenoBall extends Component {
   componentDidMount() {
     // const index = 0;
     // this.setState({ index });
-    console.log("KENOBALL PROPS", this.props);
+    //console.log("KENOBALL PROPS", this.props);
     const index = this.props.index + 1;
     // this.setState({ index });
     setTimeout(() => {
@@ -15,7 +15,7 @@ class KenoBall extends Component {
   }
 
   componentWillUnmount() {
-    console.log("KENO BALL UNMOUNTING!");
+    //console.log("KENO BALL UNMOUNTING!");
   }
 
   render() {

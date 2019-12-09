@@ -19,11 +19,13 @@ export function setNumberStatus(random, hits, numbers) {
     if (numbers[num - 1]) {
       numbers[num - 1].active = true;
       numbers[num - 1].randomOrder = i + 1;
+      numbers[num - 1].sound = "ding";
     }
   });
 
   hits.forEach(num => {
     numbers[num - 1].hit = true;
+    numbers[num - 1].sound = "dong";
   });
   return numbers;
 }
@@ -78,31 +80,9 @@ export function randomHitOrder(random, hits) {
 }
 
 export function payDelay() {
-  // const delay = [
-  //   0,
-  //   100,
-  //   200,
-  //   300,
-  //   400,
-  //   500,
-  //   600,
-  //   700,
-  //   800,
-  //   900,
-  //   1000,
-  //   1100,
-  //   1200,
-  //   1300,
-  //   1400,
-  //   1500,
-  //   1600,
-  //   1700,
-  //   1800,
-  //   1900
-  // ];
   const delay = [];
 
-  for (let i = 100; i <= 1900; i += 100) {
+  for (let i = 0; i <= 1900; i += 100) {
     delay.push(i);
   }
 
