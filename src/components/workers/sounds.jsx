@@ -12,6 +12,14 @@ import synth2 from "../../public/synth_02.ogg";
 import closed1 from "../../public/hat_close_01.ogg";
 import closed2 from "../../public/hat_close_02.ogg";
 import open1 from "../../public/hat_open_01.ogg";
+import soundA1 from "../../public/soundA_1.ogg";
+import soundA2 from "../../public/soundA_2.ogg";
+import soundA3 from "../../public/soundA_3.ogg";
+import soundA4 from "../../public/soundA_4.ogg";
+import sound1 from "../../public/sound_1.ogg";
+import sound2 from "../../public/sound_2.ogg";
+import sound3 from "../../public/sound_3.ogg";
+import sound4 from "../../public/sound_4.ogg";
 
 export function playSounds(volume, random, hits, delayExponent) {
   let delay = 0;
@@ -29,7 +37,9 @@ export function playSounds(volume, random, hits, delayExponent) {
       //     //element.remove();
       //   }, delay * delayExponent);
 
-      new Sound(synth1, volume, delay);
+      //new Sound(soundA3, volume, delay);
+      if (toggle) new Sound(soundA4, volume, delay);
+      if (!toggle) new Sound(soundA3, volume, delay);
       toggle = toggle ? false : true;
       array.push(delay);
     } else {
@@ -38,8 +48,8 @@ export function playSounds(volume, random, hits, delayExponent) {
       //     dongSound.play();
       //     //element = document.getElementById(delay);
       //   }, delay * delayExponent);
-      if (toggle) new Sound(synth0, volume, delay);
-      if (!toggle) new Sound(synth001, volume, delay);
+      if (toggle) new Sound(soundA2, volume, delay);
+      if (!toggle) new Sound(soundA1, volume, delay);
 
       toggle = toggle ? false : true;
       //new Sound(synth0, volume, delay);
