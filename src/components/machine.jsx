@@ -145,7 +145,7 @@ class Machine extends Component {
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
       if (this.state.activePayLine) sounds.playWinSound(volume);
-    }, 2100 * delayExponent);
+    }, 2000 * delayExponent);
     setTimeout(() => {
       this.setState({
         status: "ready",

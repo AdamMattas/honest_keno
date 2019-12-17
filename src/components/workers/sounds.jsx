@@ -8,6 +8,7 @@ import win3 from "../../public/win_3.ogg";
 import win4 from "../../public/win_4.ogg";
 import winSlow from "../../public/win_slow.ogg";
 import winFast from "../../public/win_fast.ogg";
+import winFastShort from "../../public/win_fast_short.ogg";
 import test from "../../public/test.ogg";
 import testShort from "../../public/test_short.ogg";
 import testShortInc from "../../public/test_short_increase.ogg";
