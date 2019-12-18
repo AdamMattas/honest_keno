@@ -47,15 +47,7 @@ class Machine extends Component {
     const numbers = dealer.listNumbers(1, 80);
     const kenoNumbers = dealer.createNumbers(numbers);
     const getDenom = dealer.setDenomination(denomination, denomOption);
-    // sounds.createSounds(this.state.volume);
     this.setState({ numbers, kenoNumbers, denomination: getDenom });
-  }
-
-  componentDidUpdate() {
-    //console.log("New Bet: ", this.state.newBet);
-    //console.log("Last Bet: ", this.state.lastBet);
-    //console.log("Last Marked: ", this.state.lastMarked);
-    //console.log("UPDATE KENO NUMBERS", this.state.kenoNumbers);
   }
 
   numClick = (e, number) => {
@@ -79,7 +71,7 @@ class Machine extends Component {
 
   simulateJackPot = (picked, hit) => {
     console.log("CLICKED");
-    const { status, bet, credit, marked } = this.state;
+    const { status, bet } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
 
     if (status === "ready" && bet > 0) {
@@ -90,7 +82,6 @@ class Machine extends Component {
         kenoNumbers: setNumbers,
         hitDelayed: "",
         marked: random.simMarked,
-        //status: "running",
         kenoBallStatus: "remove"
       });
       setTimeout(() => {
@@ -100,11 +91,8 @@ class Machine extends Component {
   };
 
   simulate = (numbers, random) => {
-    console.log("Called");
-    //const random = dealer.simulate(picked, hit);
     console.log("SIMNUMBERS", random);
     const { bet, volume, delayExponent } = this.state;
-    //const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random.simNumbers, random.simMarked);
     const winnings = calculator.calculateWinnings(hits, random.simMarked, bet);
     const credit = this.state.credit + winnings;
@@ -131,9 +119,17 @@ class Machine extends Component {
     this.payLine(randomHitOrder, random.simMarked.length, delayExponent);
     this.hitTiming(randomHitOrder);
     this.setState({ kenoBallStatus: "add" });
+
     setTimeout(() => {
-      if (this.state.activePayLine) sounds.playWinSound(volume);
+      if (this.state.activePayLine) {
+        sounds.playWinSound(volume);
+        this.creditRoll(winnings); //Animate credit increase
+      }
     }, 2000 * delayExponent);
+
+    // setTimeout(() => {
+    //   if (this.state.activePayLine) sounds.playWinSound(volume);
+    // }, 2000 * delayExponent);
     setTimeout(() => {
       this.setState({
         status: "ready",
@@ -169,9 +165,6 @@ class Machine extends Component {
       let credit = this.state.credit;
       credit = credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
-      // this.setState({ kenoNumbers: setNumbers }, () => {
-      //   this.deal(setNumbers, credit);
-      // });
       this.setState({
         credit,
         kenoNumbers: setNumbers,
@@ -212,17 +205,42 @@ class Machine extends Component {
     this.hitTiming(randomHitOrder);
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
-      if (this.state.activePayLine) sounds.playWinSound(volume);
+      if (this.state.activePayLine) {
+        sounds.playWinSound(volume);
+        this.creditRoll(winnings); //Animate credit increase
+      }
     }, 2000 * delayExponent);
     setTimeout(() => {
       this.setState({
         status: "ready",
-        credit,
+        //credit,
         kenoBallExit: false,
         randomLast: this.state.random,
         hitsLast: this.state.hits
       });
     }, 2500 * delayExponent);
+  };
+
+  creditRoll = winnings => {
+    let prevCredit = this.state.credit;
+    console.log("WINNER!!!");
+    console.log("PREV CREDIT", prevCredit);
+    console.log("WINNINGS", winnings);
+    let tempCredit = prevCredit;
+    let time = 50;
+    for (let i = 1; i <= winnings; i++) {
+      tempCredit += 1;
+      console.log("TEMP CREDIT", tempCredit);
+      this.creditTimeout(time, tempCredit);
+      time += 50;
+      //i++;
+    }
+  };
+
+  creditTimeout = (time, credit) => {
+    setTimeout(() => {
+      this.setState({ credit });
+    }, time);
   };
 
   firstPlay = () => {
