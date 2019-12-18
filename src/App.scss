@@ -310,6 +310,11 @@ th {
   cursor: pointer;
 }
 
+.button-simulate {
+  position: absolute;
+  bottom: 0px;
+}
+
 .running {
   // cursor: not-allowed !important;
   background-color: $red;

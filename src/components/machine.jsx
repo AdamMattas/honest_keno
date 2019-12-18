@@ -77,6 +77,74 @@ class Machine extends Component {
     this.setState({ returnDeselected });
   };
 
+  simulateJackPot = (picked, hit) => {
+    console.log("CLICKED");
+    const { status, bet, credit, marked } = this.state;
+    const kenoNumbers = [...this.state.kenoNumbers];
+
+    if (status === "ready" && bet > 0) {
+      const setNumbers = dealer.setNumberDeal(kenoNumbers);
+      const random = dealer.simulate(picked, hit);
+
+      this.setState({
+        kenoNumbers: setNumbers,
+        hitDelayed: "",
+        marked: random.simMarked,
+        //status: "running",
+        kenoBallStatus: "remove"
+      });
+      setTimeout(() => {
+        this.simulate(setNumbers, random);
+      }, 100);
+    }
+  };
+
+  simulate = (numbers, random) => {
+    console.log("Called");
+    //const random = dealer.simulate(picked, hit);
+    console.log("SIMNUMBERS", random);
+    const { bet, volume, delayExponent } = this.state;
+    //const random = dealer.generate(20);
+    const hits = dealer.compareNumbers(random.simNumbers, random.simMarked);
+    const winnings = calculator.calculateWinnings(hits, random.simMarked, bet);
+    const credit = this.state.credit + winnings;
+    const randomHitOrder = dealer.randomHitOrder(random.simNumbers, hits);
+    const kenoNumbers = dealer.setNumberStatus(
+      random.simNumbers,
+      hits,
+      numbers
+    );
+    sounds.playSounds(volume, random.simNumbers, hits, delayExponent);
+    this.setState({
+      kenoNumbers,
+      kenoBallExit: true,
+      random: random.simNumbers,
+      winnings,
+      hit: hits.length,
+      hits,
+      newBet: false,
+      lastBet: bet,
+      randomHitOrder,
+      activePayLine: null
+    });
+    if (this.state.firstPlay) this.firstPlay();
+    this.payLine(randomHitOrder, random.simMarked.length, delayExponent);
+    this.hitTiming(randomHitOrder);
+    this.setState({ kenoBallStatus: "add" });
+    setTimeout(() => {
+      if (this.state.activePayLine) sounds.playWinSound(volume);
+    }, 2000 * delayExponent);
+    setTimeout(() => {
+      this.setState({
+        status: "ready",
+        credit,
+        kenoBallExit: false,
+        randomLast: this.state.random,
+        hitsLast: this.state.hits
+      });
+    }, 2500 * delayExponent);
+  };
+
   softInit = () => {
     const status = this.state.status;
     const kenoNumbers = [...this.state.kenoNumbers];
@@ -361,6 +429,7 @@ class Machine extends Component {
           pick={this.quickPick}
           deal={this.initDeal}
           status={this.state.status}
+          simulate={this.simulateJackPot}
         />
       </React.Fragment>
     );

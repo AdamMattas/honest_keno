@@ -151,6 +151,38 @@ export function setDenomination(denom, options) {
   }
 }
 
+export function simulate(picked, hit) {
+  let simNumbers = [];
+  let simMarked = [];
+
+  for (let i = 1; i <= hit; ) {
+    simNumbers.push(i);
+    simMarked.push(i);
+    i++;
+  }
+
+  for (let i = 0; i < 20 - hit; ) {
+    const random = Math.floor(Math.random() * 80 + 1);
+    const duplicate = simNumbers.indexOf(random);
+    if (duplicate === -1) {
+      simNumbers.push(random);
+      i++;
+    }
+  }
+
+  for (let i = 0; i < picked - hit; ) {
+    const random = Math.floor(Math.random() * 80 + 1);
+    const duplicate1 = simNumbers.indexOf(random);
+    const duplicate2 = simMarked.indexOf(random);
+    if (duplicate1 === -1 && duplicate2 === -1) {
+      simMarked.push(random);
+      i++;
+    }
+  }
+
+  return { simNumbers, simMarked };
+}
+
 export default {
   generate,
   setNumberStatus,
@@ -163,5 +195,6 @@ export default {
   setQuickPick,
   selectNumber,
   deselectNumber,
-  setDenomination
+  setDenomination,
+  simulate
 };
