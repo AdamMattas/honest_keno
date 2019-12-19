@@ -121,7 +121,7 @@ export function playWinSound(volume, winnings) {
   if (winnings > 16 && winnings < 100) winSound = WinSound20;
   if (winnings > 99 && winnings < 1000) winSound = WinSound100;
   if (winnings > 999) winSound = WinSound1000;
-  console.log("WINNINGS SOUND", winnings);
+  console.log("WINNINGS SOUND", winSound);
   const sound = new Sound(winSound, volume, "win");
 
   sound.play();

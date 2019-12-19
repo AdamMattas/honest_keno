@@ -223,16 +223,18 @@ class Machine extends Component {
 
   creditRoll = winnings => {
     let prevCredit = this.state.credit;
-    console.log("WINNER!!!");
-    console.log("PREV CREDIT", prevCredit);
-    console.log("WINNINGS", winnings);
     let tempCredit = prevCredit;
-    let time = 50;
+    let timeBase = 11;
+    let time = 0;
+
+    if (winnings < 17) timeBase = 93;
+    if (winnings > 16 && winnings < 100) timeBase = 46;
+    if (winnings > 99 && winnings < 1000) timeBase = 23;
+
     for (let i = 1; i <= winnings; i++) {
       tempCredit += 1;
-      console.log("TEMP CREDIT", tempCredit);
       this.creditTimeout(time, tempCredit);
-      time += 50;
+      time = time += timeBase;
     }
   };
 

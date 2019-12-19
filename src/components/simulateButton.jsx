@@ -19,8 +19,12 @@ class SimulateButton extends Component {
   render() {
     return (
       <form>
-        <input type="text" placeholder="10" onChange={this.selected}></input>
-        <input type="text" placeholder="5" onChange={this.hit}></input>
+        <input
+          type="text"
+          placeholder="Marked"
+          onChange={this.selected}
+        ></input>
+        <input type="text" placeholder="Hit" onChange={this.hit}></input>
 
         <span className={"button"} onClick={this.send}>
           SIMULATE
