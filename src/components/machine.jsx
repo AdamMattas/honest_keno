@@ -122,7 +122,7 @@ class Machine extends Component {
 
     setTimeout(() => {
       if (this.state.activePayLine) {
-        sounds.playWinSound(volume);
+        sounds.playWinSound(volume, winnings);
         this.creditRoll(winnings); //Animate credit increase
       }
     }, 2000 * delayExponent);
@@ -206,7 +206,7 @@ class Machine extends Component {
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
       if (this.state.activePayLine) {
-        sounds.playWinSound(volume);
+        sounds.playWinSound(volume, winnings);
         this.creditRoll(winnings); //Animate credit increase
       }
     }, 2000 * delayExponent);
@@ -233,7 +233,6 @@ class Machine extends Component {
       console.log("TEMP CREDIT", tempCredit);
       this.creditTimeout(time, tempCredit);
       time += 50;
-      //i++;
     }
   };
 
