@@ -42,6 +42,7 @@ class Machine extends Component {
     volume: 0.5
   };
 
+  // Init keno numbers and set denomination
   componentDidMount() {
     const { denomination, denomOption } = this.state;
     const numbers = dealer.listNumbers(1, 80);
@@ -50,9 +51,12 @@ class Machine extends Component {
     this.setState({ numbers, kenoNumbers, denomination: getDenom });
   }
 
+  // Route numClick to select or deselect function
   numClick = (e, number) => {
-    const isSelected = e.currentTarget.classList.contains("selected");
-    isSelected ? this.deselectNumber(number) : this.selectNumber(number);
+    if (this.state.status === "ready") {
+      const isSelected = e.currentTarget.classList.contains("selected");
+      isSelected ? this.deselectNumber(number) : this.selectNumber(number);
+    }
   };
 
   selectNumber = number => {
@@ -127,9 +131,6 @@ class Machine extends Component {
       }
     }, 2000 * delayExponent);
 
-    // setTimeout(() => {
-    //   if (this.state.activePayLine) sounds.playWinSound(volume);
-    // }, 2000 * delayExponent);
     setTimeout(() => {
       this.setState({
         status: "ready",
@@ -141,13 +142,10 @@ class Machine extends Component {
     }, 2500 * delayExponent);
   };
 
+  // Reset keno ball state
   softInit = () => {
-    const status = this.state.status;
-    const kenoNumbers = [...this.state.kenoNumbers];
-
-    if (status === "ready") {
-      const setNumbers = dealer.setNumberDeal(kenoNumbers);
-
+    if (this.state.status === "ready") {
+      const setNumbers = dealer.setNumberDeal([...this.state.kenoNumbers]);
       this.setState({
         kenoNumbers: setNumbers
       });
@@ -162,8 +160,7 @@ class Machine extends Component {
     }
 
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
-      let credit = this.state.credit;
-      credit = credit - bet;
+      let credit = this.state.credit - bet;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
       this.setState({
         credit,
@@ -172,6 +169,8 @@ class Machine extends Component {
         status: "running",
         kenoBallStatus: "remove"
       });
+      // Delay to allow state to update before deal
+      // Fix?
       setTimeout(() => {
         this.deal(setNumbers, credit);
       }, 100);
@@ -229,20 +228,11 @@ class Machine extends Component {
     let time = 0;
     let increment = Math.round(winnings / 64);
 
-    if (winnings < 17) {
-      //timeBase = 93.32;
-      increment = 1;
-    }
-    if (winnings > 16 && winnings < 100) {
-      //timeBase = 93.32;
-      increment = Math.round(winnings / 32);
-    }
-    if (winnings > 99 && winnings < 1000) {
-      //timeBase = 93.32;
-      increment = Math.round(winnings / 48);
-    }
+    if (winnings < 17) increment = 1;
 
-    console.log("INCREMENT", increment);
+    if (winnings > 16 && winnings < 100) increment = Math.round(winnings / 32);
+
+    if (winnings > 99 && winnings < 1000) increment = Math.round(winnings / 48);
 
     for (let i = increment; i <= winnings; i += increment) {
       tempCredit += increment;
@@ -265,11 +255,7 @@ class Machine extends Component {
   };
 
   payLine = (order, marked, delay) => {
-    //console.log("PAY LINE! ", order); // [{obj}]
-    //console.log("PAY LINE MARKED! ", marked);
-    //console.log("PAY LINE DELAY! ", delay);
     const payArray = calculator.payTable(marked);
-    //console.log("PAY LINE FROM TABLE! ", payArray);
     order.forEach(num => {
       const payIndex = order.indexOf(num);
       if (payArray[payIndex] > 0) {
@@ -280,9 +266,6 @@ class Machine extends Component {
       } else {
         num.pay = false;
       }
-      //console.log("PAY LINE INDEX!", payIndex);
-
-      //console.log("PAY LINE NUM!", order);
     });
   };
 
@@ -295,9 +278,7 @@ class Machine extends Component {
   hitTiming = order => {
     let hit = 0;
     order.forEach(num => {
-      //console.log("HIT TIMING ORDER: ", order);
       num.delay = dealer.payDelay()[num.index];
-      //console.log("HIT TIMING: ", num);
       hit++;
       this.setHit(hit, num.delay);
     });
@@ -306,27 +287,17 @@ class Machine extends Component {
   setHit = (hit, delay) => {
     setTimeout(() => {
       this.setState({ hitDelayed: hit });
-      //console.log("HIT DELAYED: ", this.state.hitDelayed);
     }, delay * this.state.delayExponent);
   };
 
   clearBet = () => {
-    const bet = 0;
-    this.setState({ bet });
+    this.setState({ bet: 0 });
   };
 
   clearSingleCard = () => {
     if (this.state.status === "ready") {
-      const marked = [];
-      const kenoNumbers = [...this.state.kenoNumbers];
-      kenoNumbers.forEach(num => {
-        const zeroIndex = num.number - 1;
-        kenoNumbers[zeroIndex].active = false;
-        kenoNumbers[zeroIndex].hit = false;
-        kenoNumbers[zeroIndex].selected = false;
-        kenoNumbers[zeroIndex].randomOrder = false;
-      });
-      this.setState({ kenoNumbers, marked });
+      const kenoNumbers = dealer.clearCard([...this.state.kenoNumbers]);
+      this.setState({ kenoNumbers, marked: [] });
     }
   };
 
@@ -339,41 +310,22 @@ class Machine extends Component {
   };
 
   betPlus = () => {
-    //let credit = this.state.credit;
     let bet = this.state.bet;
     if (bet < 5) {
-      //credit--;
       bet++;
       this.setState({ bet, newBet: true });
     }
   };
 
   betMinus = () => {
-    //let credit = this.state.credit;
     let bet = this.state.bet;
     if (bet > 0) {
-      //credit++;
       bet--;
       this.setState({ bet, newBet: true });
     }
   };
 
   betMax = () => {
-    // const maxBet = this.state.maxBet;
-    // let credit = this.state.credit;
-    // let bet = this.state.bet;
-    // let betDiff = maxBet - bet;
-    // if (betDiff > 0 && credit >= betDiff) {
-    //   credit -= betDiff;
-    //   bet += betDiff;
-    //   this.setState({ credit, bet, newBet: true });
-    // }
-
-    // if (credit < betDiff) {
-    //   bet = bet + credit;
-    //   credit = 0;
-    //   this.setState({ bet, credit, newBet: true });
-    // }
     this.setState({ bet: this.state.maxBet });
   };
 

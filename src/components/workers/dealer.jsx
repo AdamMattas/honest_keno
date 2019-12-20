@@ -12,9 +12,6 @@ export function generate(quantity) {
 }
 
 export function setNumberStatus(random, hits, numbers) {
-  // console.log("RANDOM: ", random);
-  // console.log("HITS: ", hits);
-  // console.log("NUMBERS: ", numbers);
   random.forEach((num, i) => {
     if (numbers[num - 1]) {
       numbers[num - 1].active = true;
@@ -31,14 +28,10 @@ export function setNumberStatus(random, hits, numbers) {
 }
 
 export function setNumberDeal(kenoNumbers) {
-  //console.log("KENO NUMBERS: ", kenoNumbers);
   kenoNumbers.forEach(num => {
-    //const zeroIndex = num.number - 1;
-    //if (kenoNumbers[zeroIndex]) {
     num.active = false;
     num.hit = false;
     num.randomOrder = null;
-    //}
   });
   return kenoNumbers;
 }
@@ -48,6 +41,18 @@ export function setQuickPick(random, numbers) {
     numbers[num - 1].selected = true;
   });
   return numbers;
+}
+
+export function clearCard(kenoNumbers) {
+  kenoNumbers.forEach(num => {
+    const zeroIndex = num.number - 1;
+    kenoNumbers[zeroIndex].active = false;
+    kenoNumbers[zeroIndex].hit = false;
+    kenoNumbers[zeroIndex].selected = false;
+    kenoNumbers[zeroIndex].randomOrder = false;
+  });
+
+  return kenoNumbers;
 }
 
 export function compareNumbers(random, player) {
@@ -86,7 +91,7 @@ export function payDelay() {
     delay.push(i);
   }
 
-  console.log("DELAY ARRAY COMPILED: ", delay);
+  //console.log("DELAY ARRAY COMPILED: ", delay);
 
   return delay;
 }
@@ -112,15 +117,6 @@ export function listNumbers(start, end) {
     .fill()
     .map((item, index) => start + index);
 }
-
-// export function getCurrentUser() {
-//   try {
-//     const jwt = localStorage.getItem(tokenKey);
-//     return jwtDecode(jwt);
-//   } catch (ex) {
-//     return null;
-//   }
-// }
 
 export function selectNumber(number, marked, kenoNumbers) {
   if (marked.length < 10) {
@@ -192,6 +188,7 @@ export default {
   payDelay,
   createNumbers,
   listNumbers,
+  clearCard,
   setQuickPick,
   selectNumber,
   deselectNumber,
