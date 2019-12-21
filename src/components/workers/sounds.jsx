@@ -94,7 +94,7 @@ function Sound(src, volume, delay) {
   };
 }
 
-export function playWinSound(volume, winnings) {
+export function playWinSound(volume, winnings, denomination) {
   let soundArray = [
     WinSound1,
     WinSound2,
@@ -117,11 +117,12 @@ export function playWinSound(volume, winnings) {
     WinSound1000
   ];
   let winSound = "";
+  winnings = winnings / denomination;
   if (winnings < 17) winSound = soundArray[winnings - 1];
   if (winnings > 16 && winnings < 100) winSound = WinSound20;
   if (winnings > 99 && winnings < 1000) winSound = WinSound100;
   if (winnings > 999) winSound = WinSound1000;
-  console.log("WINNINGS SOUND", winSound);
+  console.log("WINNINGS: ", winnings);
   const sound = new Sound(winSound, volume, "win");
 
   sound.play();

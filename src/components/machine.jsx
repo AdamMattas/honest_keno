@@ -74,7 +74,6 @@ class Machine extends Component {
   };
 
   simulateJackPot = (picked, hit) => {
-    console.log("CLICKED");
     const { status, bet } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
 
@@ -96,9 +95,15 @@ class Machine extends Component {
 
   simulate = (numbers, random) => {
     console.log("SIMNUMBERS", random);
-    const { bet, volume, delayExponent } = this.state;
+    const { bet, volume, delayExponent, denomination } = this.state;
     const hits = dealer.compareNumbers(random.simNumbers, random.simMarked);
-    const winnings = calculator.calculateWinnings(hits, random.simMarked, bet);
+    //const winnings = calculator.calculateWinnings(hits, random.simMarked, bet);
+    const winnings = calculator.calculateWinnings(
+      hits,
+      random.simMarked,
+      bet,
+      denomination
+    );
     const credit = this.state.credit + winnings;
     const randomHitOrder = dealer.randomHitOrder(random.simNumbers, hits);
     const kenoNumbers = dealer.setNumberStatus(
@@ -126,8 +131,8 @@ class Machine extends Component {
 
     setTimeout(() => {
       if (this.state.activePayLine) {
-        sounds.playWinSound(volume, winnings);
-        this.creditRoll(winnings); //Animate credit increase
+        sounds.playWinSound(volume, winnings, denomination);
+        this.creditRoll(winnings, denomination); //Animate credit increase
       }
     }, 2000 * delayExponent);
 
@@ -210,8 +215,8 @@ class Machine extends Component {
     this.setState({ kenoBallStatus: "add" });
     setTimeout(() => {
       if (this.state.activePayLine) {
-        sounds.playWinSound(volume, winnings);
-        this.creditRoll(winnings); //Animate credit increase
+        sounds.playWinSound(volume, winnings, denomination);
+        this.creditRoll(winnings, denomination); //Animate credit increase
       }
     }, 2000 * delayExponent);
     setTimeout(() => {
@@ -225,13 +230,16 @@ class Machine extends Component {
     }, 2500 * delayExponent);
   };
 
-  creditRoll = winnings => {
+  creditRoll = (winnings, denomination) => {
     // 16 = 16, 20 = 32, 100 = 48, 1000 = 64
     let prevCredit = this.state.credit;
     let tempCredit = prevCredit;
     let timeBase = 105;
     let time = 0;
     let increment = Math.round(winnings / 64);
+    let original = winnings;
+
+    winnings = winnings / denomination;
 
     if (winnings < 17) increment = 1;
 
@@ -240,12 +248,12 @@ class Machine extends Component {
     if (winnings > 99 && winnings < 1000) increment = Math.round(winnings / 48);
 
     for (let i = increment; i <= winnings; i += increment) {
-      tempCredit += increment;
+      tempCredit += increment * denomination;
       this.creditTimeout(time, tempCredit);
       time = time += timeBase;
     }
     time = time += timeBase;
-    const realCredit = (prevCredit += winnings);
+    const realCredit = (prevCredit += original);
     this.creditTimeout(time, realCredit);
   };
 
