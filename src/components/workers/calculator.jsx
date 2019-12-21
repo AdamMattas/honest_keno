@@ -11,14 +11,15 @@ const spots = [
   [0, 0, 0, 0, 5, 24, 146, 1000, 4500, 10000] //10
 ];
 
-export function calculateWinnings(hits, marked, bet) {
-  console.log("SPOTS!", spots);
-  console.log("Hits: ", hits);
-  console.log("Marked: ", marked);
-  console.log("Bet: ", bet);
-  console.log("Won!", spots[marked.length - 1][hits.length - 1]);
+export function calculateWinnings(hits, marked, bet, denomination) {
+  // console.log("SPOTS!", spots);
+  // console.log("Hits: ", hits);
+  // console.log("Marked: ", marked);
+  // console.log("Bet: ", bet);
+  // console.log("Won!", spots[marked.length - 1][hits.length - 1]);
 
-  const winnings = spots[marked.length - 1][hits.length - 1] * bet;
+  const winnings =
+    spots[marked.length - 1][hits.length - 1] * bet * denomination;
 
   return winnings ? winnings : 0;
 }

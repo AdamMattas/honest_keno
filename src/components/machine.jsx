@@ -29,9 +29,9 @@ class Machine extends Component {
     bet: 0,
     maxBet: 5,
     newBet: true,
-    credit: 30,
+    credit: 10.0,
     creditType: "dollar",
-    addCredit: 100,
+    addCredit: 10.0,
     winnings: 0,
     status: "ready",
     lastBet: 0,
@@ -153,14 +153,14 @@ class Machine extends Component {
   };
 
   initDeal = () => {
-    const { status, bet, lastBet, credit, marked } = this.state;
+    const { status, bet, credit, denomination, lastBet, marked } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
     if (lastBet > credit) {
       //console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
 
     if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
-      let credit = this.state.credit - bet;
+      let credit = this.state.credit - bet * denomination;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
       this.setState({
         credit,
@@ -178,10 +178,15 @@ class Machine extends Component {
   };
 
   deal = (numbers, credit) => {
-    const { marked, bet, volume, delayExponent } = this.state;
+    const { marked, bet, volume, delayExponent, denomination } = this.state;
     const random = dealer.generate(20);
     const hits = dealer.compareNumbers(random, marked);
-    const winnings = calculator.calculateWinnings(hits, marked, bet);
+    const winnings = calculator.calculateWinnings(
+      hits,
+      marked,
+      bet,
+      denomination
+    );
     credit = credit + winnings;
     const randomHitOrder = dealer.randomHitOrder(random, hits);
     const kenoNumbers = dealer.setNumberStatus(random, hits, numbers);
