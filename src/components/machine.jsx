@@ -7,6 +7,7 @@ import KenoBallRackLast from "./kenoBallRackLast";
 import calculator from "./workers/calculator";
 import dealer from "./workers/dealer";
 import sounds from "./workers/sounds";
+import operations from "./workers/operations";
 
 class Machine extends Component {
   state = {
@@ -54,23 +55,14 @@ class Machine extends Component {
   // Route numClick to select or deselect function
   numClick = (e, number) => {
     if (this.state.status === "ready") {
+      this.softInit();
+      const { marked, kenoNumbers } = this.state;
       const isSelected = e.currentTarget.classList.contains("selected");
-      isSelected ? this.deselectNumber(number) : this.selectNumber(number);
+      const returnSelected = isSelected
+        ? dealer.deselectNumber(number, marked, kenoNumbers)
+        : dealer.selectNumber(number, marked, kenoNumbers);
+      this.setState({ returnSelected });
     }
-  };
-
-  selectNumber = number => {
-    this.softInit();
-    const { marked, kenoNumbers } = this.state;
-    const returnSelected = dealer.selectNumber(number, marked, kenoNumbers);
-    this.setState({ returnSelected });
-  };
-
-  deselectNumber = number => {
-    this.softInit();
-    const { marked, kenoNumbers } = this.state;
-    const returnDeselected = dealer.deselectNumber(number, marked, kenoNumbers);
-    this.setState({ returnDeselected });
   };
 
   simulateJackPot = (picked, hit) => {
