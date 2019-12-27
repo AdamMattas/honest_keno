@@ -1,12 +1,12 @@
 import React from "react";
-//import { Link, NavLink } from "react-router-dom";
+import logo from "../public/keno_logo.png";
 
 const NavBar = () => {
   return (
     <div>
       <span className="logo-text">
         Honest
-        <img className="logo" />
+        <img alt="honest keno logo" className="logo" src={logo} />
         Keno
       </span>
       <div className="navbar" />

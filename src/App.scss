@@ -9,7 +9,7 @@
 }
 
 .logo {
-  content: url($logo);
+  //content: url($logo);
   width: 15%;
   position: relative;
   padding: 0 5px;
@@ -175,6 +175,10 @@ th {
   font-size: 36px;
   padding: 5px;
   font-weight: 350;
+}
+
+.hint {
+  background-color: $green !important;
 }
 
 .pay {

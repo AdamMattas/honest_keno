@@ -40,7 +40,8 @@ class Machine extends Component {
     delayExponent: 2,
     randomHitOrder: [],
     activePayLine: null,
-    volume: 0.5
+    volume: 0.5,
+    betHint: false
   };
 
   // Init keno numbers and set denomination
@@ -152,11 +153,22 @@ class Machine extends Component {
   initDeal = () => {
     const { status, bet, credit, denomination, lastBet, marked } = this.state;
     const kenoNumbers = [...this.state.kenoNumbers];
+    const amount = bet * denomination;
     if (lastBet > credit) {
       //console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
 
-    if (status === "ready" && bet > 0 && credit >= bet && marked.length > 1) {
+    console.log("CREDIT MAIN: ", credit);
+    console.log("BET MAIN: ", bet);
+
+    if (status === "ready" && bet < 1) this.setState({ betHint: true });
+
+    if (
+      status === "ready" &&
+      bet > 0 &&
+      credit >= amount &&
+      marked.length > 1
+    ) {
       let credit = this.state.credit - bet * denomination;
       const setNumbers = dealer.setNumberDeal(kenoNumbers);
       this.setState({
@@ -366,6 +378,7 @@ class Machine extends Component {
     const {
       activePayLine,
       bet,
+      betHint,
       marked,
       random,
       randomLast,
@@ -413,6 +426,7 @@ class Machine extends Component {
           />
         </div>
         <Buttons
+          betHint={betHint}
           betPlus={this.betPlus}
           betMinus={this.betMinus}
           betMax={this.betMax}
