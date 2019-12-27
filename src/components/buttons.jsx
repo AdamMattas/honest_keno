@@ -13,7 +13,7 @@ const Buttons = props => {
   return (
     <React.Fragment>
       <div className="button-container">
-        <AddCreditButton add={props.add} />
+        <AddCreditButton add={props.add} creditHint={props.creditHint} />
         <BetMaxButton betMax={props.betMax} />
         <span className="bet-wrap">
           <BetMinusButton betMinus={props.betMinus} />

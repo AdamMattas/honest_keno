@@ -30,7 +30,7 @@ class Machine extends Component {
     bet: 0,
     maxBet: 5,
     newBet: true,
-    credit: 10.0,
+    credit: 0,
     creditType: "dollar",
     addCredit: 10.0,
     winnings: 0,
@@ -41,7 +41,9 @@ class Machine extends Component {
     randomHitOrder: [],
     activePayLine: null,
     volume: 0.5,
-    betHint: false
+    betHint: false,
+    cardHint: false,
+    creditHint: false
   };
 
   // Init keno numbers and set denomination
@@ -158,10 +160,19 @@ class Machine extends Component {
       //console.log("Last Bet: ", lastBet, "Credit: ", credit);
     }
 
-    console.log("CREDIT MAIN: ", credit);
-    console.log("BET MAIN: ", bet);
+    if (status === "ready" && bet < 1) {
+      this.setState({ betHint: true });
+      return;
+    }
+    if (status === "ready" && credit === 0) {
+      this.setState({ creditHint: true });
+      return;
+    }
 
-    if (status === "ready" && bet < 1) this.setState({ betHint: true });
+    if (status === "ready" && marked.length === 0) {
+      this.setState({ cardHint: true });
+      return;
+    }
 
     if (
       status === "ready" &&
@@ -321,8 +332,8 @@ class Machine extends Component {
   addCredit = () => {
     const credit = this.state.addCredit;
     if (this.state.credit < credit) {
-      this.clearBet();
-      this.setState({ credit });
+      //this.clearBet();
+      this.setState({ credit, creditHint: false });
     }
   };
 
@@ -379,6 +390,8 @@ class Machine extends Component {
       activePayLine,
       bet,
       betHint,
+      cardHint,
+      creditHint,
       marked,
       random,
       randomLast,
@@ -419,6 +432,7 @@ class Machine extends Component {
           <KenoBallRack status={kenoBallStatus} random={random} hits={hits} />
           <div className="spacer-200"></div>
           <SingleCard
+            cardHint={cardHint}
             data={kenoNumbers}
             denom={denomination}
             changeDenom={this.changeDenom}
@@ -427,6 +441,7 @@ class Machine extends Component {
         </div>
         <Buttons
           betHint={betHint}
+          creditHint={creditHint}
           betPlus={this.betPlus}
           betMinus={this.betMinus}
           betMax={this.betMax}

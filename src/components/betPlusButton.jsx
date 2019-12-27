@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class BetPlusButton extends Component {
   state = { ready: false };
   render() {
-    const hint = this.props.betHint ? " hint" : "";
+    const hint = this.props.betHint ? " hint-bet" : "";
     return (
       <span className={`button plus${hint}`} onClick={this.props.betPlus}>
         <span>+</span>

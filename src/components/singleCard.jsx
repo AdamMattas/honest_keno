@@ -8,22 +8,20 @@ class SingleCard extends Component {
       bottom: []
     };
 
-    //console.log("DATA: ", this.props.data);
-
     this.props.data.map(item =>
       item.number < 41 ? section.top.push(item) : section.bottom.push(item)
     );
 
-    //console.log("SECTION :", section);
     return section;
   };
 
   render() {
     const split = this.splitNumbers();
+    const hint = this.props.cardHint ? " hint-card" : "";
 
     return (
       <div className="number-box-wrap">
-        <div className="number-box-container container-top">
+        <div className={`number-box-container container-top${hint}`}>
           {split.top.map(item => (
             <span
               className={
@@ -49,7 +47,7 @@ class SingleCard extends Component {
           changeDenom={this.props.changeDenom}
         />
 
-        <div className="number-box-container container-bottom">
+        <div className={`number-box-container container-bottom${hint}`}>
           {split.bottom.map(item => (
             <span
               className={
