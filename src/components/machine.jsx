@@ -30,7 +30,7 @@ class Machine extends Component {
     bet: 0,
     maxBet: 5,
     newBet: true,
-    credit: 0,
+    credit: 10.0,
     creditType: "dollar",
     addCredit: 10.0,
     winnings: 0,
@@ -64,7 +64,7 @@ class Machine extends Component {
       const returnSelected = isSelected
         ? dealer.deselectNumber(number, marked, kenoNumbers)
         : dealer.selectNumber(number, marked, kenoNumbers);
-      this.setState({ returnSelected });
+      this.setState({ returnSelected, cardHint: false });
     }
   };
 
@@ -169,7 +169,7 @@ class Machine extends Component {
       return;
     }
 
-    if (status === "ready" && marked.length === 0) {
+    if (status === "ready" && marked.length < 2) {
       this.setState({ cardHint: true });
       return;
     }
