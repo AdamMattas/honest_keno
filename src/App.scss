@@ -179,6 +179,26 @@ th {
 
 .hint {
   background-color: $green !important;
+  box-shadow: 0 0 0 0 $greenRGB100;
+  transform: scale(1);
+  animation: pulse-green 1s;
+}
+
+@keyframes pulse-green {
+  0% {
+    transform: scale(1);
+    //box-shadow: 0 0 0 0 $greenRGB70;
+  }
+
+  50% {
+    transform: scale(1.5);
+    //box-shadow: 0 0 0 10px $greenRGB0;
+  }
+
+  100% {
+    transform: scale(1);
+    //box-shadow: 0 0 0 0 $greenRGB0;
+  }
 }
 
 .pay {

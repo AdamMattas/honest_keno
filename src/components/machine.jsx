@@ -330,7 +330,7 @@ class Machine extends Component {
     let bet = this.state.bet;
     if (bet < 5) {
       bet++;
-      this.setState({ bet, newBet: true });
+      this.setState({ bet, newBet: true, betHint: false });
     }
   };
 
