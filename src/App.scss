@@ -270,11 +270,6 @@ th {
 .denomination {
   font-size: 75px;
   text-align: center;
-  //content: "\00A2";
-  // letter-spacing: 0.3em;
-  // margin-right: -0.3em;
-  // position: absolute;
-  // bottom: 0px;
   text-shadow: 2px 2px 5px white, -2px -2px 5px white;
 }
 
@@ -1022,3 +1017,92 @@ th {
   //-webkit-transition: all 1s ease;
   //transition: all 1s ease;
 }
+
+//Begin - Mobile and Screen Scale Styling
+@media screen and (max-width: 1024px) {
+  .navbar {
+    height: 35px;
+  }
+
+  .logo {
+    width: 10%;
+    top: 6px;
+  }
+
+  .logo-text {
+    font-size: 28px;
+    top: -5px;
+  }
+
+  .machine-wrap {
+    top: 50px;
+  }
+
+  .denomination {
+    font-size: 50px;
+  }
+
+  .number-box {
+    font-size: 18px;
+  }
+
+  .table-bottom {
+    bottom: 26px;
+  }
+
+  .table-top tr > td {
+    font-size: 18px;
+  }
+
+  .table-bottom tr > td {
+    font-size: 18px;
+  }
+
+  th {
+    font-size: 18px;
+  }
+
+  .credit-text {
+    font-size: 18px;
+  }
+
+  .button-container {
+    // position: relative;
+    // width: 90%;
+    // margin: 0 auto;
+    top: 75px;
+    // display: flex;
+    // justify-content: space-between;
+  }
+
+  .button {
+    font-size: 14px;
+  }
+
+  .ball {
+    width: 35px;
+    height: 35px;
+    // position: absolute;
+    // top: -85px;
+    // text-align: center;
+  }
+
+  .last-ball {
+    width: 35px;
+    height: 35px;
+    // position: absolute;
+    // border-radius: 50%;
+    // text-align: center;
+  }
+
+  .last-ball > span,
+  .ball > span {
+    display: inline-block;
+    color: white;
+    font-family: Arial;
+    font-size: 16px;
+    text-shadow: 2px 2px 5px black;
+    margin-top: calc(65% - 15px);
+  }
+}
+//End - Mobile and Screen Scale Styling
