@@ -1020,6 +1020,7 @@ th {
 
 //Begin - Mobile and Screen Scale Styling
 @media screen and (max-width: 1024px) {
+  $topPix: -35px;
   .navbar {
     height: 35px;
   }
@@ -1035,11 +1036,11 @@ th {
   }
 
   .machine-wrap {
-    top: 50px;
+    top: 40px;
   }
 
   .denomination {
-    font-size: 50px;
+    font-size: 25px;
   }
 
   .number-box {
@@ -1076,20 +1077,20 @@ th {
   }
 
   .button {
-    font-size: 14px;
+    font-size: 12px;
   }
 
   .ball {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     // position: absolute;
-    // top: -85px;
+    top: $topPix1024;
     // text-align: center;
   }
 
   .last-ball {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     // position: absolute;
     // border-radius: 50%;
     // text-align: center;
@@ -1100,9 +1101,100 @@ th {
     display: inline-block;
     color: white;
     font-family: Arial;
-    font-size: 16px;
+    font-size: 14px;
     text-shadow: 2px 2px 5px black;
-    margin-top: calc(65% - 15px);
+    margin-top: calc(70% - 15px);
+  }
+
+  @keyframes keno-ball-down-1 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 90%;
+    }
+  }
+  @keyframes keno-ball-down-2 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 80%;
+    }
+  }
+  @keyframes keno-ball-down-3 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 70%;
+    }
+  }
+  @keyframes keno-ball-down-4 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 60%;
+    }
+  }
+  @keyframes keno-ball-down-5 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 50%;
+    }
+  }
+  @keyframes keno-ball-down-6 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 40%;
+    }
+  }
+  @keyframes keno-ball-down-7 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 30%;
+    }
+  }
+  @keyframes keno-ball-down-8 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 20%;
+    }
+  }
+  @keyframes keno-ball-down-9 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 10%;
+    }
+  }
+  @keyframes keno-ball-down-10 {
+    0% {
+      top: $topPix1024;
+    }
+
+    100% {
+      top: 0%;
+    }
   }
 }
 //End - Mobile and Screen Scale Styling
