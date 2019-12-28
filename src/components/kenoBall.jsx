@@ -4,18 +4,11 @@ class KenoBall extends Component {
   state = { index: null };
 
   componentDidMount() {
-    // const index = 0;
-    // this.setState({ index });
-    //console.log("KENOBALL PROPS", this.props);
     const index = this.props.index + 1;
-    // this.setState({ index });
+
     setTimeout(() => {
       this.setState({ index });
     }, 0);
-  }
-
-  componentWillUnmount() {
-    //console.log("KENO BALL UNMOUNTING!");
   }
 
   render() {

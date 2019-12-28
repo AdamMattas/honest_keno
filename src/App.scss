@@ -608,6 +608,16 @@ th {
   margin-top: calc(50% - 15px);
 }
 
+.ball-test-right {
+  transform: rotate($rotateLeft);
+  right: $rightPercent;
+}
+
+.ball-test-left {
+  transform: rotate($rotateRight);
+  right: $leftPercent;
+}
+
 .ball-1 {
   animation-name: keno-ball-down-1;
   animation-duration: 0.5s * $delayExponent;

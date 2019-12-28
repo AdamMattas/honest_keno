@@ -7,7 +7,6 @@ import KenoBallRackLast from "./kenoBallRackLast";
 import calculator from "./workers/calculator";
 import dealer from "./workers/dealer";
 import sounds from "./workers/sounds";
-import operations from "./workers/operations";
 
 class Machine extends Component {
   state = {
@@ -56,7 +55,7 @@ class Machine extends Component {
   }
 
   // Route numClick to select or deselect function
-  numClick = (e, number) => {
+  selectToggle = (e, number) => {
     if (this.state.status === "ready") {
       this.softInit();
       const { marked, kenoNumbers } = this.state;
@@ -257,9 +256,7 @@ class Machine extends Component {
     winnings = winnings / denomination;
 
     if (winnings < 17) increment = 1;
-
     if (winnings > 16 && winnings < 100) increment = Math.round(winnings / 32);
-
     if (winnings > 99 && winnings < 1000) increment = Math.round(winnings / 48);
 
     for (let i = increment; i <= winnings; i += increment) {
@@ -436,7 +433,7 @@ class Machine extends Component {
             data={kenoNumbers}
             denom={denomination}
             changeDenom={this.changeDenom}
-            numSelect={this.numClick}
+            selectToggle={this.selectToggle}
           />
         </div>
         <Buttons

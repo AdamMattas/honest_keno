@@ -35,7 +35,7 @@ class SingleCard extends Component {
                 (item.randomOrder ? ` random-${item.randomOrder}` : "")
               }
               key={item.number}
-              onClick={e => this.props.numSelect(e, item.number)}
+              onClick={e => this.props.selectToggle(e, item.number)}
             >
               {item.number}
             </span>
@@ -61,7 +61,7 @@ class SingleCard extends Component {
                 (item.randomOrder ? ` random-${item.randomOrder}` : "")
               }
               key={item.number}
-              onClick={e => this.props.numSelect(e, item.number)}
+              onClick={e => this.props.selectToggle(e, item.number)}
             >
               {item.number}
             </span>
