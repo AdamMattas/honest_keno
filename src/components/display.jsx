@@ -7,12 +7,14 @@ const Display = props => {
   const hitDelay = props.hitDelayed ? ` ${props.hitDelayed}` : "";
 
   return (
-    <div className="display-wrap">
-      <table className="table-top">
+    <div className="display">
+      <table className="display__table">
         <tbody>
-          <tr className="display-row-top">
-            <th className="text-left">HIT {hitDelay}</th>
-            <th className="text-right">WIN</th>
+          <tr className="display__top">
+            <th className="display__text-left display--top-text">
+              HIT {hitDelay}
+            </th>
+            <th className="display__text-right display--top-text">WIN</th>
           </tr>
 
           {payTable.map((pays, i) => {
@@ -23,14 +25,16 @@ const Display = props => {
               return (
                 <tr
                   className={
-                    props.active === divId ? "pay-line pay" : "pay-line"
+                    props.active === divId
+                      ? "display__pay-line display--pay"
+                      : "display__pay-line"
                   }
                   id={divId}
                 >
-                  <td className="text-left pay-text">
+                  <td className="display__text-left">
                     {payTable.indexOf(pays) + 1}
                   </td>
-                  <td className="text-right pay-text">{pays * payProduct}</td>
+                  <td className="display__text-right">{pays * payProduct}</td>
                 </tr>
               );
             } else {
@@ -39,11 +43,11 @@ const Display = props => {
           })}
         </tbody>
       </table>
-      <table className="table-bottom">
+      <table className="display__table display--bottom">
         <tbody>
           <tr>
-            <td className="text-left">BET</td>
-            <td className="text-right">{props.bet}</td>
+            <td className="display__text-left">BET</td>
+            <td className="display__text-right">{props.bet}</td>
           </tr>
         </tbody>
       </table>

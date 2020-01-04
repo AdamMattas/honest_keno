@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
-import NavBar from "./components/navBar";
+import Navbar from "./components/navbar";
 import Background from "./components/background";
 import Machine from "./components/machine";
 import "./App.scss";
@@ -9,7 +9,7 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <NavBar />
+        <Navbar />
         <Background />
         <Machine />
       </React.Fragment>

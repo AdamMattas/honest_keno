@@ -3,13 +3,12 @@ import logo from "../public/keno_logo.png";
 
 const NavBar = () => {
   return (
-    <div>
-      <span className="logo-text">
+    <div className="navbar">
+      <span className="navbar__logo-text">
         Honest
-        <img alt="honest keno logo" className="logo" src={logo} />
+        <img alt="honest keno logo" className="navbar__logo" src={logo} />
         Keno
       </span>
-      <div className="navbar" />
     </div>
   );
 };

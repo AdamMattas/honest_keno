@@ -7,7 +7,7 @@ const Credit = props => {
   const credit =
     props.type === "dollar" ? equation : Math.trunc(props.credit / props.denom);
   return (
-    <div className="credit-text" onClick={props.toggle}>
+    <div className="display__credit" onClick={props.toggle}>
       {`${props.type === "dollar" ? "$" : ""}${credit}`}
     </div>
   );

@@ -407,7 +407,7 @@ class Machine extends Component {
 
     return (
       <React.Fragment>
-        <div className="machine-wrap">
+        <div className="machine">
           <Display
             active={activePayLine}
             bet={bet}
