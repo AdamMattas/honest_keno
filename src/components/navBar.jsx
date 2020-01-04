@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../public/keno_logo.png";
 
-const NavBar = () => {
+const Navbar = () => {
   return (
     <div className="navbar">
       <span className="navbar__logo-text">
@@ -13,4 +13,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

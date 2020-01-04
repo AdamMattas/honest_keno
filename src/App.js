@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 // import logo from "./logo.svg";
-import Navbar from "./components/navBar";
+import Navbar from "./components/navbar";
 import Background from "./components/background";
 import Machine from "./components/machine";
 import "./App.scss";
