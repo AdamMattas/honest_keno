@@ -26,7 +26,7 @@ class SimulateButton extends Component {
         ></input>
         <input type="text" placeholder="Hit" onChange={this.hit}></input>
 
-        <span className={"button"} onClick={this.send}>
+        <span className="button" onClick={this.send}>
           SIMULATE
         </span>
       </form>

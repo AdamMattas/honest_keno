@@ -2,10 +2,10 @@
 import React from "react";
 
 const DealButton = props => {
-  const status = props.status === "running" ? " running" : "";
+  const status = props.status === "running" ? "button--running" : "";
 
   return (
-    <span className={`button${status}`} onClick={props.deal}>
+    <span className={`button ${status}`} onClick={props.deal}>
       DEAL
     </span>
   );

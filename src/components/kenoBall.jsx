@@ -12,11 +12,11 @@ class KenoBall extends Component {
   }
 
   render() {
-    const numType = this.props.index % 2 ? "even" : "odd";
+    const ballType = this.props.index % 2 ? "ball--even" : "ball--odd";
 
     return (
       <span
-        className={`ball ${numType} ball-${this.state.index} ${this.props.status} time-${this.state.index}`}
+        className={`ball ${ballType} ball--${this.state.index} ${this.props.status}`}
       >
         <span>{this.props.number}</span>
       </span>

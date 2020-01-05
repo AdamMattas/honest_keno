@@ -17,22 +17,24 @@ class SingleCard extends Component {
 
   render() {
     const split = this.splitNumbers();
-    const hint = this.props.cardHint ? " hint-card" : "";
+    const hint = this.props.cardHint ? " card--hint" : "";
 
     return (
-      <div className="number-box-wrap">
-        <div className={`number-box-container container-top${hint}`}>
+      <div className="card">
+        <div className={`card__container ${hint}`}>
           {split.top.map(item => (
             <span
               className={
-                "number-box" +
-                (item.active ? " active" : "") +
+                "card__number" +
+                (item.active ? " card__number--active" : "") +
                 "" +
-                (item.selected ? " selected" : "") +
+                (item.selected ? " card__number--selected" : "") +
                 "" +
-                (item.hit ? " hit" : "") +
+                (item.hit ? " card__number--hit" : "") +
                 "" +
-                (item.randomOrder ? ` random-${item.randomOrder}` : "")
+                (item.randomOrder
+                  ? ` card__number--random-${item.randomOrder}`
+                  : "")
               }
               key={item.number}
               onClick={e => this.props.selectToggle(e, item.number)}
@@ -47,18 +49,20 @@ class SingleCard extends Component {
           changeDenom={this.props.changeDenom}
         />
 
-        <div className={`number-box-container container-bottom${hint}`}>
+        <div className={`card__container ${hint}`}>
           {split.bottom.map(item => (
             <span
               className={
-                "number-box" +
-                (item.active ? " active" : "") +
+                "card__number" +
+                (item.active ? " card__number--active" : "") +
                 "" +
-                (item.selected ? " selected" : "") +
+                (item.selected ? " card__number--selected" : "") +
                 "" +
-                (item.hit ? " hit" : "") +
+                (item.hit ? " card__number--hit" : "") +
                 "" +
-                (item.randomOrder ? ` random-${item.randomOrder}` : "")
+                (item.randomOrder
+                  ? ` card__number--random-${item.randomOrder}`
+                  : "")
               }
               key={item.number}
               onClick={e => this.props.selectToggle(e, item.number)}

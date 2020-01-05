@@ -11,18 +11,17 @@ class KenoBall extends Component {
     }, 0);
   }
 
-  componentWillUnmount() {
-    //console.log("KENO BALL UNMOUNTING!");
-  }
-
   render() {
     //console.log("REMOVE STATUS: ", this.props.status);
-    const numType = this.props.index % 2 ? "even-last" : "odd-last";
-    const remove = this.props.fade ? "fade-trans fade-out" : "";
+    const ballType =
+      this.props.index % 2 ? "last-ball--even-last" : "last-ball--odd-last";
+    const remove = this.props.fade
+      ? "last-ball--fade-trans last-ball--fade-out"
+      : "";
 
     return (
       <span
-        className={`last-ball ${numType} last-ball-${this.state.index} ${remove} ${this.props.status} time-${this.state.index}`}
+        className={`last-ball ${ballType} last-ball--${this.state.index} ${remove} ${this.props.status}`}
       >
         <span>{this.props.number}</span>
       </span>

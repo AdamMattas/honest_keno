@@ -15,7 +15,7 @@ const Buttons = props => {
       <div className="button-container">
         <AddCreditButton add={props.add} creditHint={props.creditHint} />
         <BetMaxButton betMax={props.betMax} />
-        <span className="bet-wrap">
+        <span className="bet-container">
           <BetMinusButton betMinus={props.betMinus} />
           <BetPlusButton betPlus={props.betPlus} betHint={props.betHint} />
         </span>
@@ -23,9 +23,6 @@ const Buttons = props => {
         <ClearButton status={props.status} clear={props.clear} />
         <QuickPickButton status={props.status} pick={props.pick} />
         <DealButton status={props.status} deal={props.deal} />
-      </div>
-      <div className="button-simulate">
-        <SimulateButton simulate={props.simulate} />
       </div>
     </React.Fragment>
   );

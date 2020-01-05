@@ -59,7 +59,9 @@ class Machine extends Component {
     if (this.state.status === "ready") {
       this.softInit();
       const { marked, kenoNumbers } = this.state;
-      const isSelected = e.currentTarget.classList.contains("selected");
+      const isSelected = e.currentTarget.classList.contains(
+        "card__number--selected"
+      );
       const returnSelected = isSelected
         ? dealer.deselectNumber(number, marked, kenoNumbers)
         : dealer.selectNumber(number, marked, kenoNumbers);

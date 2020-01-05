@@ -195,7 +195,7 @@ tr {
   color: $white;
 }
 
-.hint-card {
+.card--hint {
   //background-color: $red !important;
   //box-shadow: 0 0 0 0 $greenRGB100;
   transform: scale(1);
@@ -219,14 +219,14 @@ tr {
   }
 }
 
-.hint-credit {
+.button--hint-credit {
   background-color: $red !important;
   //box-shadow: 0 0 0 0 $greenRGB100;
   transform: scale(1);
   animation: pulse 1s;
 }
 
-.hint-bet {
+.button--hint-bet {
   background-color: $green !important;
   //box-shadow: 0 0 0 0 $greenRGB100;
   transform: scale(1);
@@ -255,9 +255,8 @@ tr {
 //   color: $black;
 // }
 
-.number-box-wrap {
+.card {
   display: table-cell;
-  //width: calc(75% - 2px);
   width: 56.7%;
   vertical-align: top;
   margin-top: 50px;
@@ -266,11 +265,7 @@ tr {
 .spacer-200 {
   width: 12.73%;
   height: calc(100% - 4px);
-  //width: calc(15% - 39px);
-  //border: 2px solid black;
   position: absolute;
-  // bottom: 0px;
-  //border: 1px solid black;
   text-align: center;
   margin-left: 1.3%;
 }
@@ -303,7 +298,7 @@ tr {
   //margin-top: 100px;
 }
 
-.number-box-container {
+.card__container {
   //width: 50%;
   border: 1px solid $black-75;
   background-color: $black-75;
@@ -311,7 +306,7 @@ tr {
   flex-wrap: wrap;
 }
 
-.number-box {
+.card__number {
   //display: inline-block;
   position: relative;
   border: 1px solid $black-75;
@@ -330,15 +325,15 @@ tr {
   transition: 0s ease-out;
 }
 
-.active {
+.card__number--active {
   background-color: $red;
 }
 
-.selected {
+.card__number--selected {
   background-color: $yellow;
 }
 
-.hit {
+.card__number--hit {
   background-color: $green !important;
   border-color: $white;
 }
@@ -368,17 +363,17 @@ tr {
   cursor: pointer;
 }
 
-.button-simulate {
+.simulate {
   position: absolute;
   bottom: 0px;
 }
 
-.running {
+.button--running {
   // cursor: not-allowed !important;
   background-color: $red;
 }
 
-.bet-wrap {
+.bet-container {
   //flex: 0 0 13%;
   display: flex;
   width: 13%;
@@ -386,118 +381,107 @@ tr {
   //border: 1px solid red;
 }
 
-.plus:first-child {
-  //margin-right: 13%;
-}
-
-.plus,
-.minus {
-  //font-size: 48px;
-  //width: 50%;
+.button--plus,
+.button--minus {
   flex: 0 0 43%;
 }
 
-.plus,
-.minus > span {
-  //position: absolute;
-}
-
-.random-1 {
+.card__number--random-1 {
   transition-delay: 0s * $delayExponent;
   -webkit-transition-delay: 0s; /* Safari */
 }
 
-.random-2 {
+.card__number--random-2 {
   transition-delay: 0.1s * $delayExponent;
   -webkit-transition-delay: 0.1s * $delayExponent; /* Safari */
 }
 
-.random-3 {
+.card__number--random-3 {
   transition-delay: 0.2s * $delayExponent;
   -webkit-transition-delay: 0.2s * $delayExponent; /* Safari */
 }
 
-.random-4 {
+.card__number--random-4 {
   transition-delay: 0.3s * $delayExponent;
   -webkit-transition-delay: 0.3s * $delayExponent; /* Safari */
 }
 
-.random-5 {
+.card__number--random-5 {
   transition-delay: 0.4s * $delayExponent;
   -webkit-transition-delay: 0.4s * $delayExponent; /* Safari */
 }
 
-.random-6 {
+.card__number--random-6 {
   transition-delay: 0.5s * $delayExponent;
   -webkit-transition-delay: 0.5s * $delayExponent; /* Safari */
 }
 
-.random-7 {
+.card__number--random-7 {
   transition-delay: 0.6s * $delayExponent;
   -webkit-transition-delay: 0.6s * $delayExponent; /* Safari */
 }
 
-.random-8 {
+.card__number--random-8 {
   transition-delay: 0.7s * $delayExponent;
   -webkit-transition-delay: 0.7s * $delayExponent; /* Safari */
 }
 
-.random-9 {
+.card__number--random-9 {
   transition-delay: 0.8s * $delayExponent;
   -webkit-transition-delay: 0.8s * $delayExponent; /* Safari */
 }
 
-.random-10 {
+.card__number--random-10 {
   transition-delay: 0.9s * $delayExponent;
   -webkit-transition-delay: 0.9s * $delayExponent; /* Safari */
 }
 
-.random-11 {
+.card__number--random-11 {
   transition-delay: 1s * $delayExponent;
   -webkit-transition-delay: 1s * $delayExponent; /* Safari */
 }
 
-.random-12 {
+.card__number--random-12 {
   transition-delay: 1.1s * $delayExponent;
   -webkit-transition-delay: 1.1s * $delayExponent; /* Safari */
 }
 
-.random-13 {
+.card__number--random-13 {
   transition-delay: 1.2s * $delayExponent;
   -webkit-transition-delay: 1.2s * $delayExponent; /* Safari */
 }
 
-.random-14 {
+.card__number--random-14 {
   transition-delay: 1.3s * $delayExponent;
   -webkit-transition-delay: 1.3s * $delayExponent; /* Safari */
 }
 
-.random-15 {
+.card__number--random-15 {
   transition-delay: 1.4s * $delayExponent;
   -webkit-transition-delay: 1.4s * $delayExponent; /* Safari */
 }
 
-.random-16 {
+.card__number--random-16 {
   transition-delay: 1.5s * $delayExponent;
   -webkit-transition-delay: 1.5s * $delayExponent; /* Safari */
 }
 
-.random-17 {
+.card__number--random-17 {
   transition-delay: 1.6s * $delayExponent;
   -webkit-transition-delay: 1.6s * $delayExponent; /* Safari */
 }
 
-.random-18 {
+.card__number--random-18 {
   transition-delay: 1.7s * $delayExponent;
   -webkit-transition-delay: 1.7s * $delayExponent; /* Safari */
 }
 
-.random-19 {
+.card__number--random-19 {
   transition-delay: 1.8s * $delayExponent;
   -webkit-transition-delay: 1.8s * $delayExponent; /* Safari */
 }
 
-.random-20 {
+.card__number--random-20 {
   transition-delay: 1.9s * $delayExponent;
   -webkit-transition-delay: 1.9s * $delayExponent; /* Safari */
 }
@@ -554,29 +538,30 @@ tr {
   text-align: center;
 }
 
-.even {
+.ball--even {
   left: -140px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);
 }
 
-.even-last {
+.last-ball--even-last {
   left: $leftPercent;
 }
 
-.odd {
+.ball--odd {
   right: -125px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);
 }
 
-.odd-last {
+.last-ball--odd-last {
   right: $rightPercent;
 }
 
-.ball-green {
+.ball--green,
+.last-ball--green {
   // background: radial-gradient(
   //   circle at 65% 15%,
   //   white 1px,
@@ -591,7 +576,8 @@ tr {
   background: radial-gradient(circle at 20px 20px, $greenBall, $black);
 }
 
-.ball-red {
+.ball--red,
+.last-ball--red {
   // background: radial-gradient(
   //   circle at 65% 15%,
   //   white 1px,
@@ -626,7 +612,7 @@ tr {
   right: $leftPercent;
 }
 
-.ball-1 {
+.ball--1 {
   animation-name: keno-ball-down-1;
   animation-duration: 0.5s * $delayExponent;
   animation-timing-function: linear;
@@ -637,7 +623,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-2 {
+.ball--2 {
   animation-name: keno-ball-down-1;
   animation-duration: 0.5s * $delayExponent;
   animation-timing-function: linear;
@@ -649,8 +635,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-1,
-.last-ball-2 {
+.last-ball--1,
+.last-ball--2 {
   top: 90%;
 }
 
@@ -664,7 +650,7 @@ tr {
   }
 }
 
-.ball-3 {
+.ball--3 {
   animation-name: keno-ball-down-2;
   animation-duration: 0.45s * $delayExponent;
   animation-timing-function: linear;
@@ -676,7 +662,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-4 {
+.ball--4 {
   animation-name: keno-ball-down-2;
   animation-duration: 0.45s * $delayExponent;
   animation-timing-function: linear;
@@ -688,8 +674,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-3,
-.last-ball-4 {
+.last-ball--3,
+.last-ball--4 {
   top: 80%;
 }
 
@@ -703,7 +689,7 @@ tr {
   }
 }
 
-.ball-5 {
+.ball--5 {
   animation-name: keno-ball-down-3;
   animation-duration: 0.4s * $delayExponent;
   animation-timing-function: linear;
@@ -715,7 +701,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-6 {
+.ball--6 {
   animation-name: keno-ball-down-3;
   animation-duration: 0.4s * $delayExponent;
   animation-timing-function: linear;
@@ -727,8 +713,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-5,
-.last-ball-6 {
+.last-ball--5,
+.last-ball--6 {
   top: 70%;
 }
 
@@ -742,7 +728,7 @@ tr {
   }
 }
 
-.ball-7 {
+.ball--7 {
   animation-name: keno-ball-down-4;
   animation-duration: 0.35s * $delayExponent;
   animation-timing-function: linear;
@@ -754,7 +740,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-8 {
+.ball--8 {
   animation-name: keno-ball-down-4;
   animation-duration: 0.35s * $delayExponent;
   animation-timing-function: linear;
@@ -766,8 +752,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-7,
-.last-ball-8 {
+.last-ball--7,
+.last-ball--8 {
   top: 60%;
 }
 
@@ -781,7 +767,7 @@ tr {
   }
 }
 
-.ball-9 {
+.ball--9 {
   animation-name: keno-ball-down-5;
   animation-duration: 0.3s * $delayExponent;
   animation-timing-function: linear;
@@ -793,7 +779,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-10 {
+.ball--10 {
   animation-name: keno-ball-down-5;
   animation-duration: 0.3s * $delayExponent;
   animation-timing-function: linear;
@@ -805,8 +791,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-9,
-.last-ball-10 {
+.last-ball--9,
+.last-ball--10 {
   top: 50%;
 }
 
@@ -820,7 +806,7 @@ tr {
   }
 }
 
-.ball-11 {
+.ball--11 {
   animation-name: keno-ball-down-6;
   animation-duration: 0.25s * $delayExponent;
   animation-timing-function: linear;
@@ -832,7 +818,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-12 {
+.ball--12 {
   animation-name: keno-ball-down-6;
   animation-duration: 0.25s * $delayExponent;
   animation-timing-function: linear;
@@ -844,8 +830,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-11,
-.last-ball-12 {
+.last-ball--11,
+.last-ball--12 {
   top: 40%;
 }
 
@@ -859,7 +845,7 @@ tr {
   }
 }
 
-.ball-13 {
+.ball--13 {
   animation-name: keno-ball-down-7;
   animation-duration: 0.2s * $delayExponent;
   animation-timing-function: linear;
@@ -871,7 +857,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-14 {
+.ball--14 {
   animation-name: keno-ball-down-7;
   animation-duration: 0.2s * $delayExponent;
   animation-timing-function: linear;
@@ -883,8 +869,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-13,
-.last-ball-14 {
+.last-ball--13,
+.last-ball--14 {
   top: 30%;
 }
 
@@ -898,7 +884,7 @@ tr {
   }
 }
 
-.ball-15 {
+.ball--15 {
   animation-name: keno-ball-down-8;
   animation-duration: 0.15s * $delayExponent;
   animation-timing-function: linear;
@@ -910,7 +896,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-16 {
+.ball--16 {
   animation-name: keno-ball-down-8;
   animation-duration: 0.15s * $delayExponent;
   animation-timing-function: linear;
@@ -922,8 +908,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-15,
-.last-ball-16 {
+.last-ball--15,
+.last-ball--16 {
   top: 20%;
 }
 
@@ -937,7 +923,7 @@ tr {
   }
 }
 
-.ball-17 {
+.ball--17 {
   animation-name: keno-ball-down-9;
   animation-duration: 0.1s * $delayExponent;
   animation-timing-function: linear;
@@ -949,7 +935,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-18 {
+.ball--18 {
   animation-name: keno-ball-down-9;
   animation-duration: 0.1s * $delayExponent;
   animation-timing-function: linear;
@@ -961,8 +947,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-17,
-.last-ball-18 {
+.last-ball--17,
+.last-ball--18 {
   top: 10%;
 }
 
@@ -976,7 +962,7 @@ tr {
   }
 }
 
-.ball-19 {
+.ball--19 {
   animation-name: keno-ball-down-10;
   animation-duration: 0.05s * $delayExponent;
   animation-timing-function: linear;
@@ -988,7 +974,7 @@ tr {
   right: $rightPercent;
 }
 
-.ball-20 {
+.ball--20 {
   animation-name: keno-ball-down-10;
   animation-duration: 0.05s * $delayExponent;
   animation-timing-function: linear;
@@ -1000,8 +986,8 @@ tr {
   left: $leftPercent;
 }
 
-.last-ball-19,
-.last-ball-20 {
+.last-ball--19,
+.last-ball--20 {
   top: 0%;
 }
 
@@ -1015,11 +1001,11 @@ tr {
   }
 }
 
-.fade-trans {
+.last-ball--fade-trans {
   opacity: 0;
 }
 
-.fade-out {
+.last-ball--fade-out {
   transition: opacity 0.5s * $delayExponent;
   transition-timing-function: linear;
 }
@@ -1061,7 +1047,7 @@ tr {
     font-size: 25px;
   }
 
-  .number-box {
+  .card__number {
     font-size: 14px;
   }
 
