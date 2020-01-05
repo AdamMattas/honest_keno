@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../public/keno_logo.png";
+import logo from "../public/keno_logo.svg";
 
 const Navbar = () => {
   return (
