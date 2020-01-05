@@ -13,12 +13,12 @@
   width: 15%;
   position: relative;
   padding: 0 5px;
-  top: 18px;
+  top: 15px;
 }
 
 .navbar__logo-text {
   position: absolute;
-  top: -12px;
+  top: -9px;
   left: calc(5% + 5px);
   font-size: 36px;
   font-weight: 350;
@@ -347,9 +347,6 @@ tr {
   justify-content: space-between;
 }
 
-.button-wrap {
-}
-
 .button {
   flex: 0 0 13%;
   padding: 5px 0px 5px 0px;
@@ -486,11 +483,28 @@ tr {
   -webkit-transition-delay: 1.9s * $delayExponent; /* Safari */
 }
 
+.origin-box {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: -80px;
+  z-index: 1;
+}
+
+.origin-box--left {
+  left: 0px;
+}
+
+.origin-box--right {
+  right: 0px;
+}
+
 .ball {
   width: 55px;
   height: 55px;
   position: absolute;
   top: $topPix;
+  z-index: 0;
   //border-radius: 50%;
 
   text-align: center;
@@ -539,7 +553,7 @@ tr {
 }
 
 .ball--even {
-  left: -140px;
+  left: 2px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);
@@ -550,7 +564,7 @@ tr {
 }
 
 .ball--odd {
-  right: -125px;
+  right: 2px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);
@@ -1031,7 +1045,7 @@ tr {
 
   .navbar__logo {
     width: 10%;
-    top: 6px;
+    top: 7px;
   }
 
   .navbar__logo-text {

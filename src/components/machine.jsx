@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Box from "./box";
 import Buttons from "./buttons";
 import Display from "./display";
 import SingleCard from "./singleCard";
@@ -422,7 +423,8 @@ class Machine extends Component {
             winnings={winnings}
             toggleCredits={this.toggleCredits}
           />
-
+          <Box position={"origin-box--left"} />
+          <Box position={"origin-box--right"} />
           <KenoBallRackLast
             fade={kenoBallExit}
             random={randomLast}
