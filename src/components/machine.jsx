@@ -406,7 +406,8 @@ class Machine extends Component {
       credit,
       creditType,
       denomination,
-      winnings
+      winnings,
+      status
     } = this.state;
 
     return (
@@ -424,9 +425,19 @@ class Machine extends Component {
             winnings={winnings}
             toggleCredits={this.toggleCredits}
           />
-          <Box position={"origin-box--left"} />
+          <Box
+            boxPosition={"origin-box--left"}
+            circlePosition={"origin-circle--left"}
+            rotate={"origin-circle--rotate-left"}
+            status={status}
+          />
           <Box2 position={"origin-box--mid-left"} />
-          <Box position={"origin-box--right"} />
+          <Box
+            boxPosition={"origin-box--right"}
+            circlePosition={"origin-circle--right"}
+            rotate={"origin-circle--rotate-right"}
+            status={status}
+          />
           <Box2 position={"origin-box--mid-right"} />
           <KenoBallRackLast
             fade={kenoBallExit}

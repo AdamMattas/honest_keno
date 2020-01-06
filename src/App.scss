@@ -488,9 +488,8 @@ tr {
   width: 60px;
   height: 60px;
   top: -81px;
-  //background-color: $black-75;
   z-index: 1;
-  border: 2px solid $black;
+  //border: 2px solid $black;
 }
 
 .origin-box--left {
@@ -498,8 +497,10 @@ tr {
 }
 
 .origin-box--mid-left {
-  //left: $leftPercent;
-  left: calc(#{$leftPercent} - 2px);
+  left: calc(#{$leftPercent} - 17px);
+  width: 75px;
+  height: 75px;
+  border: none;
 }
 
 .origin-box--right {
@@ -507,8 +508,100 @@ tr {
 }
 
 .origin-box--mid-right {
-  //right: $rightPercent;
-  right: calc(#{$rightPercent} - 2px);
+  right: calc(#{$rightPercent} - 18px);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  width: 75px;
+  height: 75px;
+  border: none;
+}
+
+.origin-circle {
+  position: absolute;
+  width: 48px;
+  height: 48px;
+  top: -75px;
+  z-index: 1;
+  //display: none;
+  //transition: transform rotate(0deg);
+}
+
+.origin-circle--left {
+  left: 6px;
+}
+
+.origin-circle--mid-left {
+  left: calc(#{$leftPercent} + 3px);
+}
+
+.origin-circle--right {
+  right: 6px;
+}
+
+.origin-circle--mid-right {
+  right: calc(#{$rightPercent} + 2px);
+}
+
+.origin-circle--rotate-left {
+  //transform: rotate(1080deg);
+  animation: rotation-left 1s infinite linear;
+  -webkit-animation: rotation-left 1s infinite linear;
+}
+
+.origin-circle--rotate-right {
+  //transform: rotate(1080deg);
+  animation: rotation-right 1s infinite linear;
+  -webkit-animation: rotation-right 1s infinite linear;
+}
+
+@-moz-keyframes rotation-left {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(359deg);
+  }
+}
+@keyframes rotation-left {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes rotation-left {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+  }
+}
+
+@-moz-keyframes rotation-right {
+  from {
+    -moz-transform: rotate(0deg);
+  }
+  to {
+    -moz-transform: rotate(-359deg);
+  }
+}
+@keyframes rotation-right {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-359deg);
+  }
+}
+@-webkit-keyframes rotation-right {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(-359deg);
+  }
 }
 
 .ball {
