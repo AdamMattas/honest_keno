@@ -1,5 +1,5 @@
 import React from "react";
-import box from "../public/box_working_blue.svg";
+import box from "../public/box_working_2.svg";
 
 const Box = props => {
   return (

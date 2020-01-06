@@ -487,16 +487,28 @@ tr {
   position: absolute;
   width: 60px;
   height: 60px;
-  top: -80px;
+  top: -81px;
+  //background-color: $black-75;
   z-index: 1;
+  border: 2px solid $black;
 }
 
 .origin-box--left {
   left: 0px;
 }
 
+.origin-box--mid-left {
+  //left: $leftPercent;
+  left: calc(#{$leftPercent} - 2px);
+}
+
 .origin-box--right {
   right: 0px;
+}
+
+.origin-box--mid-right {
+  //right: $rightPercent;
+  right: calc(#{$rightPercent} - 2px);
 }
 
 .ball {
@@ -553,7 +565,7 @@ tr {
 }
 
 .ball--even {
-  left: 2px;
+  left: 3px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);
@@ -564,7 +576,7 @@ tr {
 }
 
 .ball--odd {
-  right: 2px;
+  right: 5px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);

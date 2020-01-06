@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Box from "./box";
+import Box2 from "./box2";
 import Buttons from "./buttons";
 import Display from "./display";
 import SingleCard from "./singleCard";
@@ -424,7 +425,9 @@ class Machine extends Component {
             toggleCredits={this.toggleCredits}
           />
           <Box position={"origin-box--left"} />
+          <Box2 position={"origin-box--mid-left"} />
           <Box position={"origin-box--right"} />
+          <Box2 position={"origin-box--mid-right"} />
           <KenoBallRackLast
             fade={kenoBallExit}
             random={randomLast}
