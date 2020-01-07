@@ -294,10 +294,6 @@ tr {
   width: calc(27.8% - 4px);
 }
 
-.container-bottom {
-  //margin-top: 100px;
-}
-
 .card__container {
   //width: 50%;
   border: 1px solid $black-75;
@@ -501,6 +497,7 @@ tr {
   width: 110px;
   height: 69px;
   border: none;
+  z-index: -1;
 }
 
 .origin-box--right {
@@ -514,6 +511,7 @@ tr {
   width: 110px;
   height: 69px;
   border: none;
+  z-index: -1;
 }
 
 .origin-circle {
