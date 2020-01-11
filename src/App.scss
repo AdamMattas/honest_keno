@@ -484,7 +484,7 @@ tr {
   width: 60px;
   height: 60px;
   top: -81px;
-  z-index: 1;
+  z-index: 2;
   //border: 2px solid $black;
 }
 
@@ -493,11 +493,11 @@ tr {
 }
 
 .origin-box--mid-left {
-  left: calc(#{$leftPercent} - 52px);
-  width: 110px;
-  height: 69px;
+  left: calc(#{$leftPercent} - 15px);
+  width: 72px;
+  height: 72px;
   border: none;
-  z-index: -1;
+  //z-index: -1;
 }
 
 .origin-box--right {
@@ -505,13 +505,13 @@ tr {
 }
 
 .origin-box--mid-right {
-  right: calc(#{$rightPercent} - 52px);
+  right: calc(#{$rightPercent} - 15px);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
-  width: 110px;
-  height: 69px;
+  width: 72px;
+  height: 72px;
   border: none;
-  z-index: -1;
+  //z-index: -1;
 }
 
 .origin-circle {
@@ -519,7 +519,7 @@ tr {
   width: 48px;
   height: 48px;
   top: -75px;
-  z-index: 1;
+  z-index: 2;
   //display: none;
   //rotate(0deg);
   //transition: all 2.5s linear;
@@ -553,6 +553,26 @@ tr {
   animation: rotation-right 5s linear;
   -webkit-animation: rotation-right 5s linear;
   //animation-fill-mode: both;
+}
+
+.origin-tube {
+  position: absolute;
+  top: -81px;
+  height: 58px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5) inset;
+  z-index: 1;
+}
+
+.origin-tube--right {
+  right: 58px;
+  width: 55%;
+}
+
+.origin-tube--left {
+  left: 58px;
+  width: 26%;
 }
 
 @-moz-keyframes rotation-left {

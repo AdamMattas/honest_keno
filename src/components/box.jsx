@@ -18,6 +18,8 @@ const Box = props => {
         alt="keno ball origin"
         src={circle}
       />
+
+      <span className={`origin-tube ${props.tubePosition}`}></span>
     </React.Fragment>
   );
 };
