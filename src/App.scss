@@ -575,30 +575,25 @@ tr {
 .origin-tube {
   position: absolute;
   top: -81px;
-  height: 58px;
+  height: 56px;
   // background: rgba(255, 255, 255, 0.25);
   // border: 1px solid rgba(255, 255, 255, 0.7);
   // box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.5) inset;
   background: linear-gradient(
-    to bottom,
-    rgba(180, 180, 180, 0.8) 0%,
-    rgba(180, 180, 180, 0.5) 3%,
-    rgba(180, 180, 180, 0.1) 45%,
+    to top,
+    rgba(180, 180, 180, 0.5) 0%,
+    rgba(180, 180, 180, 0.1) 5%,
     rgba(0, 0, 0, 0) 0%,
     rgba(0, 0, 0, 0.3) 28%,
     rgba(0, 0, 0, 0.3) 60%,
-    rgba(0, 0, 0, 0.3) 65%,
-    rgba(255, 255, 255, 0.3) 90%,
-    rgba(0, 0, 0, 0.3) 95%,
-    rgba(0, 0, 0, 0.3) 100%
-  ); /* W3C */
-  border-color: rgba(0, 0, 0, 0.6);
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(255, 255, 255, 0.3) 90%
+  );
+  border-color: rgba(0, 0, 0, 1);
   border-image: none;
   border-style: solid;
-  border-width: 0px;
+  border-width: 2px;
 
-  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.4) inset,
-    0 2px 6px rgba(0, 0, 0, 0.5), 0 10px rgba(0, 0, 0, 0.05) inset;
   z-index: 1;
 }
 
