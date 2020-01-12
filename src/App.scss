@@ -514,6 +514,23 @@ tr {
   //z-index: -1;
 }
 
+.origin-box-back {
+  width: 50px;
+  top: -76px;
+  position: absolute;
+  height: 50px;
+  border-radius: 50%;
+  background-color: $black-75;
+}
+
+.origin-box-back--left {
+  left: 5px;
+}
+
+.origin-box-back--right {
+  right: 5px;
+}
+
 .origin-circle {
   position: absolute;
   width: 48px;
@@ -699,7 +716,7 @@ tr {
 }
 
 .ball--even {
-  left: 3px;
+  left: 2px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);
@@ -710,7 +727,7 @@ tr {
 }
 
 .ball--odd {
-  right: 5px;
+  right: 2px;
   transition: all 0.5s * $delayExponent;
   transition-timing-function: linear;
   transform: rotate(0deg);

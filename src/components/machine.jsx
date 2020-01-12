@@ -427,6 +427,7 @@ class Machine extends Component {
           />
           <Box
             boxPosition={"origin-box--left"}
+            backPosition={"origin-box-back--left"}
             tubePosition={"origin-tube--left"}
             circlePosition={"origin-circle--left"}
             rotate={"origin-circle--rotate-left"}
@@ -435,6 +436,7 @@ class Machine extends Component {
           <Box2 position={"origin-box--mid-left"} />
           <Box
             boxPosition={"origin-box--right"}
+            backPosition={"origin-box-back--right"}
             tubePosition={"origin-tube--right"}
             circlePosition={"origin-circle--right"}
             rotate={"origin-circle--rotate-right"}
