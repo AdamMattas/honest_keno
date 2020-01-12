@@ -1,6 +1,8 @@
 import React from "react";
 import box from "../public/box_working_blue.svg";
 import circle from "../public/circle_working_blue.svg";
+import gear from "../public/gear.svg";
+import gear2 from "../public/gear_2.svg";
 
 const Box = props => {
   const rotate = props.status === "running" ? props.rotate : "";
@@ -16,7 +18,7 @@ const Box = props => {
       <img
         className={`origin-circle ${props.circlePosition} ${rotate}`}
         alt="keno ball origin"
-        src={circle}
+        src={gear2}
       />
 
       <span className={`origin-tube ${props.tubePosition}`}></span>
