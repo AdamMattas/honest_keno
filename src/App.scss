@@ -81,7 +81,7 @@
   width: 90%;
   margin: 0 auto;
   position: relative;
-  top: 100px;
+  top: 110px;
 }
 
 .display {
@@ -338,7 +338,7 @@ tr {
   position: relative;
   width: 90%;
   margin: 0 auto;
-  top: 125px;
+  top: 133px;
   display: flex;
   justify-content: space-between;
 }
@@ -483,7 +483,7 @@ tr {
   position: absolute;
   width: 60px;
   height: 60px;
-  top: -81px;
+  top: -85px;
   z-index: 2;
   //border: 2px solid $black;
 }
@@ -493,7 +493,7 @@ tr {
 }
 
 .origin-box--mid-left {
-  left: calc(#{$leftPercent} - 15px);
+  left: calc(#{$leftPercent} - 9px);
   width: 72px;
   height: 72px;
   border: none;
@@ -505,7 +505,7 @@ tr {
 }
 
 .origin-box--mid-right {
-  right: calc(#{$rightPercent} - 15px);
+  right: calc(#{$rightPercent} - 9px);
   -webkit-transform: scaleX(-1);
   transform: scaleX(-1);
   width: 72px;
@@ -516,7 +516,7 @@ tr {
 
 .origin-box-back {
   width: 50px;
-  top: -76px;
+  top: -80px;
   position: absolute;
   height: 50px;
   border-radius: 50%;
@@ -535,7 +535,7 @@ tr {
   position: absolute;
   width: 48px;
   height: 48px;
-  top: -75px;
+  top: -79px;
   z-index: 2;
   //display: none;
   //rotate(0deg);
@@ -574,7 +574,7 @@ tr {
 
 .origin-tube {
   position: absolute;
-  top: -81px;
+  top: -85px;
   height: 56px;
   // background: rgba(255, 255, 255, 0.25);
   // border: 1px solid rgba(255, 255, 255, 0.7);
@@ -599,12 +599,12 @@ tr {
 
 .origin-tube--right {
   right: 58px;
-  width: 55%;
+  width: calc(57% + 1px);
 }
 
 .origin-tube--left {
   left: 58px;
-  width: 26%;
+  width: calc(28% + 1px);
 }
 
 @-moz-keyframes rotation-left {
@@ -718,7 +718,7 @@ tr {
 }
 
 .last-ball--even-last {
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .ball--odd {
@@ -729,7 +729,7 @@ tr {
 }
 
 .last-ball--odd-last {
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--green,
@@ -792,7 +792,7 @@ tr {
   -webkit-animation-delay: 0.5s * $delayExponent; /* Safari */
   animation-fill-mode: forwards;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--2 {
@@ -804,7 +804,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.1s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--1,
@@ -831,7 +831,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.2s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--4 {
@@ -843,7 +843,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.3s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--3,
@@ -870,7 +870,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.4s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--6 {
@@ -882,7 +882,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.5s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--5,
@@ -909,7 +909,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.6s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--8 {
@@ -921,7 +921,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.7s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--7,
@@ -948,7 +948,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.8s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--10 {
@@ -960,7 +960,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 0.9s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--9,
@@ -987,7 +987,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--12 {
@@ -999,7 +999,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.1s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--11,
@@ -1026,7 +1026,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.2s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--14 {
@@ -1038,7 +1038,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.3s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--13,
@@ -1065,7 +1065,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.4s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--16 {
@@ -1077,7 +1077,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.5s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--15,
@@ -1104,7 +1104,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.6s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--18 {
@@ -1116,7 +1116,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.7s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--17,
@@ -1143,7 +1143,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.8s * $delayExponent;
   transform: rotate($rotateLeft);
-  right: $rightPercent;
+  right: calc(#{$rightPercent} + 5px);
 }
 
 .ball--20 {
@@ -1155,7 +1155,7 @@ tr {
   animation-fill-mode: forwards;
   transition-delay: 1.9s * $delayExponent;
   transform: rotate($rotateRight);
-  left: $leftPercent;
+  left: calc(#{$leftPercent} + 5px);
 }
 
 .last-ball--19,
@@ -1202,17 +1202,78 @@ tr {
   }
 
   .navbar__logo {
-    width: 10%;
-    top: 7px;
+    width: 14%;
+    top: 18px;
   }
 
   .navbar__logo-text {
     font-size: 28px;
-    top: -5px;
+    top: -16px;
   }
 
   .machine {
-    top: 40px;
+    top: 57px;
+  }
+
+  .origin-box {
+    width: 30px;
+    height: 30px;
+    top: -43px;
+  }
+
+  .origin-box--mid-left {
+    left: calc(#{$leftPercent} - 1px);
+    width: 35px;
+    height: 35px;
+  }
+
+  .origin-box--mid-right {
+    right: calc(#{$rightPercent} - 1px);
+    width: 35px;
+    height: 35px;
+  }
+
+  .origin-circle {
+    width: 24px;
+    height: 24px;
+    top: -40px;
+  }
+
+  .origin-circle--left {
+    left: 3px;
+  }
+
+  .origin-circle--right {
+    right: 3px;
+  }
+
+  .origin-box-back {
+    width: 25px;
+    height: 25px;
+    top: -40px;
+  }
+
+  .origin-box-back--left {
+    left: 2px;
+  }
+
+  .origin-box-back--right {
+    right: 2px;
+  }
+
+  .origin-tube {
+    top: -43px;
+    height: 26px;
+  }
+
+  .origin-tube--right {
+    right: 28px;
+    width: calc(57% + 1px);
+  }
+
+  .origin-tube--left {
+    left: 28px;
+    width: calc(28% + 1px);
   }
 
   .denomination {
@@ -1247,12 +1308,12 @@ tr {
     font-size: 18px;
   }
 
-  .credit-text {
+  .display__credit {
     font-size: 18px;
   }
 
   .button-container {
-    top: 50px;
+    top: 67px;
   }
 
   .button {
