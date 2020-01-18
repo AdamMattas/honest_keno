@@ -1,11 +1,8 @@
 import React from "react";
 import box from "../public/box_working_blue.svg";
-import circle from "../public/circle_working_blue.svg";
-import gear from "../public/gear.svg";
-import gear2 from "../public/gear_2.svg";
 import dotted from "../public/dotted.svg";
 
-const Box = props => {
+const ballBox = props => {
   const rotate = props.status === "running" ? props.rotate : "";
 
   return (
@@ -29,4 +26,4 @@ const Box = props => {
   );
 };
 
-export default Box;
+export default ballBox;

@@ -1,14 +1,14 @@
 import React from "react";
-import box from "../public/elbow_black_sm.svg";
+import elbow from "../public/elbow_black_sm.svg";
 
-const Box = props => {
+const Elbow = props => {
   return (
     <img
       className={`origin-box ${props.position}`}
       alt="keno ball origin"
-      src={box}
+      src={elbow}
     />
   );
 };
 
-export default Box;
+export default Elbow;

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Box from "./box";
-import Box2 from "./box2";
+import BallBox from "./ballBox";
+import Elbow from "./elbow";
 import Buttons from "./buttons";
 import Display from "./display";
 import SingleCard from "./singleCard";
@@ -425,7 +425,7 @@ class Machine extends Component {
             winnings={winnings}
             toggleCredits={this.toggleCredits}
           />
-          <Box
+          <BallBox
             boxPosition={"origin-box--left"}
             backPosition={"origin-box-back--left"}
             tubePosition={"origin-tube--left"}
@@ -433,8 +433,8 @@ class Machine extends Component {
             rotate={"origin-circle--rotate-left"}
             status={status}
           />
-          <Box2 position={"origin-box--mid-left"} />
-          <Box
+          <Elbow position={"origin-box--mid-left"} />
+          <BallBox
             boxPosition={"origin-box--right"}
             backPosition={"origin-box-back--right"}
             tubePosition={"origin-tube--right"}
@@ -442,7 +442,7 @@ class Machine extends Component {
             rotate={"origin-circle--rotate-right"}
             status={status}
           />
-          <Box2 position={"origin-box--mid-right"} />
+          <Elbow position={"origin-box--mid-right"} />
           <KenoBallRackLast
             fade={kenoBallExit}
             random={randomLast}
