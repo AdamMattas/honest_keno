@@ -8,7 +8,16 @@ import Machine from "./components/machine";
 import "./App.scss";
 
 const App = () => {
-  ReactGA.initialize("UA-159342205-1");
+  ReactGA.initialize("UA-159342205-1", {
+    debug: true,
+    titleCase: false,
+    gaOptions: {
+      userId: 123,
+      siteSpeedSampleRate: 100
+    }
+  });
+
+  //ReactGA.initialize("UA-159342205-1");
 
   //const history = createBrowserHistory();
 
