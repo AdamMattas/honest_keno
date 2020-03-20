@@ -24,9 +24,9 @@ const Buttons = props => {
         <QuickPickButton status={props.status} pick={props.pick} />
         <DealButton status={props.status} deal={props.deal} />
       </div>
-      {/* <div className="simulate">
+      <div className="simulate">
         <SimulateButton simulate={props.simulate} />
-      </div> */}
+      </div>
     </React.Fragment>
   );
 };
