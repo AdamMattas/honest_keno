@@ -11,7 +11,8 @@
 
 .navbar__logo {
   //content: url($logo);
-  width: 18%;
+  // width: 18%;
+  width: 78px;
   position: relative;
   padding: 0 5px;
   top: 33px;
@@ -357,9 +358,16 @@ tr {
   cursor: pointer;
 }
 
+.speed-button {
+  // color: $gray;
+  opacity: 0.75;
+}
+
 .simulate {
   position: absolute;
   bottom: 0px;
+  // hide simulate button
+  display: none;
 }
 
 .button--running {
@@ -1203,7 +1211,8 @@ tr {
   }
 
   .navbar__logo {
-    width: 14%;
+    // width: 14%;
+    width: 42px;
     top: 17px;
     z-index: 5;
   }
